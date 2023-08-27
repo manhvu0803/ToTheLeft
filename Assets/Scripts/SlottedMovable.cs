@@ -29,10 +29,12 @@ public class SlottedMovable : Interactable
     {
         transform.Translate(0, 0, 0.5f);
         var hit = Physics2D.Raycast(MainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, SlotLayers);
+        var isSlotEmpty = SlottedLevelController.Instance.UpdateSlot(transform, hit.collider?.transform);
 
-        if (hit.collider != null)
+        if (isSlotEmpty && hit.collider != null)
         {
-            transform.SetPositionAndRotation(hit.collider.transform.position, hit.collider.transform.rotation);
+            var position = hit.collider.transform.position + new Vector3(0, 0, -0.5f);
+            transform.SetPositionAndRotation(position, hit.collider.transform.rotation);
             return;
         }
 
