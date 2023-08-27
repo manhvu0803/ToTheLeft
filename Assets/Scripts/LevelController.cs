@@ -4,16 +4,22 @@ using UnityEngine.Events;
 
 public class LevelController : MonoBehaviour
 {
+    public float WinCheckInterval = 1;
+
     public UnityEvent OnLevelComplete;
 
     private bool _isCheckingWinState;
 
+    private float _lastWinCheckTime;
+
     protected virtual void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || _lastWinCheckTime + WinCheckInterval > Time.time)
         {
             return;
         }
+
+        _lastWinCheckTime = Time.time;
 
         if (IsWinStateFufilled())
         {

@@ -66,7 +66,7 @@ public class SlottedLevelController : LevelController
     {
         foreach (var slot in _slots)
         {
-            if (slot.Target.position != slot.Transform.position)
+            if (!_slotMap.TryGetValue(slot.Transform, out var occupant) || occupant != slot.Target)
             {
                 return false;
             }
