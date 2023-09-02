@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: b19228ffec66bbd4da9dd7c742cccc89
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_17
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 585
+        width: 44
+        height: 515
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 870e348aa04fcd04e9ddb9704395348e
+      internalID: 709031632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_89
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 651
+        width: 42
+        height: 511
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ec35013ab50874bb07def584bb03d5
+      internalID: -1905202626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_90
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 699
+        width: 41
+        height: 510
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cb378c07a4c4b54e872df6b00b688f0
+      internalID: 328439542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_91
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 650
+        width: 41
+        height: 511
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f1ee1fa859fc34d81444359d9932e0
+      internalID: 1120709372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_92
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 583
+        width: 40
+        height: 515
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76764ba033b08a845a9b68c2628505ea
+      internalID: 667422031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_29: -272562067
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_51: -555107268
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_13: -957368834
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_1: 714640354
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_15: -544443438
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_60: -1223569442
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_16: -251529474
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_80: -554950136
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_58: 1820710884
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_23: 833999755
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_76: 2103094214
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_0: -218870530
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_72: -840222241
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_34: 206529332
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_85: -894973799
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_36: 1535206507
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_63: 1215439115
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_82: 1973565097
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_8: -1145621195
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_91: 1120709372
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_40: 950923389
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_73: 520228097
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_62: -919137536
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_7: -316352768
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_3: -1513392998
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_25: -254389118
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_61: -1750557085
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_81: -128282654
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_50: -1460702988
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_30: -1779256417
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_5: -19328788
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_75: 1611171046
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_47: 1404255958
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_17: 709031632
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_27: -52524056
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_44: 1931734986
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_41: 1811700029
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_12: 682750093
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_39: -1006821176
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_59: -813055614
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_32: -30797827
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_56: -470892930
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_92: 667422031
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_79: 1484988528
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_9: 1417662987
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_38: -169203014
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_22: 1162094387
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_11: 1600669553
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_46: -540002869
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_74: 279671206
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_42: 1713011105
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_2: 297719298
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_66: 1781783850
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_10: -1419938934
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_86: -1480061066
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_52: -1222689466
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_37: -395699609
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_14: -1961527034
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_71: -303814109
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_67: -1629578973
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_53: -1808040299
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_33: -2070553909
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_90: 328439542
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_48: -1850818327
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_21: -1130628491
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_69: 2033608069
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_20: 719704841
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_88: 231251431
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_83: 2066793833
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_43: -1245517417
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_64: 355357329
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_24: 1625473218
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_28: 586390768
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_70: -2119050069
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_35: -1845992849
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_55: -2009060712
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_77: 617217042
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_89: -1905202626
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_57: -642294155
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_54: -458704715
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_18: 917129677
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_26: 121958896
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_78: 536294270
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_68: 959146902
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_87: -359325298
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_45: -1491651126
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_65: 1457137470
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_6: 1692191358
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_19: 38057270
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_49: -1099444588
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_84: -1733082796
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_31: -2105382910
+      sactx-3-2048x2048-BC7-DailyTidy-Badges-326185fb_4: -1179163293
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,29 +2,42 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public float SpeedMultiplier = 50;
+    static protected Camera MainCamera;
 
-    private Vector3 _lastMousePosition;
+    public float SpeedMultiplier = 1;
+
+    protected Vector3 LastMousePosition { get; private set; }
+
+    protected virtual void Start()
+    {
+        if (MainCamera == null)
+        {
+            MainCamera = Camera.main;
+        }
+    }
 
     protected virtual void OnMouseDown()
     {
-        _lastMousePosition = Input.mousePosition;
+        if (!enabled)
+        {
+            return;
+        }
+
+        LastMousePosition = MainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
     protected virtual void OnMouseDrag()
     {
-        var currentMousePosition = Input.mousePosition;
-        var delta = currentMousePosition - _lastMousePosition;
-        OnInteract(SpeedMultiplier * new Vector2(delta.x / Screen.width, delta.y / Screen.height));
-        OnRawInteract(SpeedMultiplier * (Vector2)delta);
-        _lastMousePosition = currentMousePosition;
+        if (!enabled)
+        {
+            return;
+        }
+
+        var currentMousePosition = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+        var delta = currentMousePosition - LastMousePosition;
+        OnInteract(SpeedMultiplier * delta, currentMousePosition);
+        LastMousePosition = currentMousePosition;
     }
 
-    /// <summary>
-    /// Normalized delta
-    /// </summary>
-    /// <param name="delta"></param>
-    protected virtual void OnInteract(Vector2 delta) {}
-
-    protected virtual void OnRawInteract(Vector2 delta) {}
+    protected abstract void OnInteract(Vector3 delta, Vector3 currentMousePosition);
 }

@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class SlottedLevelController : LevelController
 {
-    [Serializable]
-    public struct Slot
-    {
-        public Transform Transform;
-
-        public Transform Target;
-    }
-
+    [Header("Slot")]
     private static SlottedLevelController _instance;
 
     public static SlottedLevelController Instance => _instance;
 
+    public LayerMask SlotLayers;
+
     [SerializeField]
-    private Slot[] _slots;
+    protected Slot[] Slots;
 
-    private readonly Dictionary<Transform, Transform> _slotMap = new();
+    protected readonly Dictionary<Transform, Transform> SlotMap = new();
 
-    private readonly Dictionary<Transform, Transform> _occupantMap = new();
+    protected readonly Dictionary<Transform, Transform> OccupantMap = new();
+
 
     private void Awake()
     {
@@ -34,39 +30,33 @@ public class SlottedLevelController : LevelController
     /// <param name="target"></param>
     /// <param name="slot"></param>
     /// <returns>true if the slot is empty, false otherwise</returns>
-    public bool UpdateSlot(Transform target, Transform slot)
+    public virtual bool UpdateSlot(Transform target, Transform slot)
     {
-        if (slot == null)
+        if (OccupantMap.TryGetValue(target, out var oldSlot) && oldSlot != null)
         {
-            if (_occupantMap.TryGetValue(target, out slot) && slot != null)
+            SlotMap[oldSlot] = null;
+        }
+
+        if (slot != null)
+        {
+            // slot is occupied
+            if (SlotMap.TryGetValue(slot, out var occupant) && occupant != null && occupant != target)
             {
-                _slotMap[slot] = null;
+                return false;
             }
 
-            _occupantMap[target] = slot;
-            return true;
+            SlotMap[slot] = target;
         }
 
-        if (_slotMap.TryGetValue(slot, out var occupant) && occupant != null && occupant != target)
-        {
-            return false;
-        }
-
-        if (_occupantMap.TryGetValue(target, out var oldSlot) && oldSlot != null)
-        {
-            _slotMap[oldSlot] = null;
-        }
-
-        _slotMap[slot] = target;
-        _occupantMap[target] = slot;
+        OccupantMap[target] = slot;
         return true;
     }
 
     protected override bool IsWinStateFufilled()
     {
-        foreach (var slot in _slots)
+        foreach (var slot in Slots)
         {
-            if (!_slotMap.TryGetValue(slot.Transform, out var occupant) || occupant != slot.Target)
+            if (!SlotMap.TryGetValue(slot.transform, out var occupant) || occupant != slot.Target)
             {
                 return false;
             }

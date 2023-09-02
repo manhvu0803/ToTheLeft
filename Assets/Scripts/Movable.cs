@@ -12,15 +12,16 @@ public class Movable : Interactable
 
     private Vector3 _targetPosition;
 
-    protected override void OnInteract(Vector2 delta)
+    protected override void OnInteract(Vector3 delta, Vector3 currentMousePotion)
     {
-        _targetPosition = transform.position + (Vector3)delta;
+        _targetPosition = transform.position + new Vector3(delta.x, delta.y, 0);
         _targetPosition.x = Mathf.Clamp(_targetPosition.x, -MaxOffset.x, MaxOffset.x);
         _targetPosition.y = Mathf.Clamp(_targetPosition.y, -MaxOffset.y, MaxOffset.y);
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _targetPosition = transform.position;
     }
 

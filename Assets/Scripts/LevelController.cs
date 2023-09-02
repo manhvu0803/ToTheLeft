@@ -44,7 +44,12 @@ public class LevelController : MonoBehaviour
         {
             enabled = false;
             OnLevelComplete?.Invoke();
-            GameController.Instance?.CompleteLevel();
+            print("Win");
+
+            if (GameController.Instance != null)
+            {
+                GameController.Instance.CompleteLevel();
+            }
         }
 
         _isCheckingWinState = false;
