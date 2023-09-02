@@ -20,7 +20,7 @@ public class SlottedMovable : Interactable
 
     protected RaycastHit2D Raycast()
     {
-        var slotLayers = SlottedLevelController.Instance.SlotLayers;
+        var slotLayers = SlotLevelController.Instance.SlotLayers;
         return Physics2D.Raycast(MainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, slotLayers);
     }
 
@@ -40,6 +40,7 @@ public class SlottedMovable : Interactable
 
         if (hit.collider != null && hit.collider.TryGetComponent(out slot))
         {
+            SlotLevelController.Instance.UpdateSlot(transform, slot.transform, true);
             slot.Show();
         }
 
@@ -63,16 +64,17 @@ public class SlottedMovable : Interactable
         }
 
         var hit = Raycast();
-        var isSlotEmpty = SlottedLevelController.Instance.UpdateSlot(transform, (hit.collider != null) ? hit.collider.transform : null);
+        var hitTransform = (hit.collider != null) ? hit.collider.transform : null;
+        var isSlotEmpty = SlotLevelController.Instance.UpdateSlot(transform, hitTransform);
 
-        if (isSlotEmpty && hit.collider != null)
+        if (isSlotEmpty && hitTransform != null)
         {
-            var position = hit.collider.transform.position + new Vector3(0, 0, -0.5f);
+            var position = hitTransform.position - new Vector3(0, 0, 0.5f);
             transform.DOMove(position, 0.15f);
 
             if (RotateOnMouseDown)
             {
-                transform.DORotate(hit.collider.transform.eulerAngles, 0.15f);
+                transform.DORotate(hitTransform.eulerAngles, 0.15f);
             }
 
             return;
