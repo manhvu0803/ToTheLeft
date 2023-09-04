@@ -712,7 +712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &202753595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,6 +949,7 @@ MonoBehaviour:
   - Scenes/Level2
   - Scenes/Level3
   - Scenes/Level4
+  - Scenes/Level5
   _loadingGroup: {fileID: 73506537}
   _endLevelGroup: {fileID: 1614635818}
 --- !u!4 &607677720

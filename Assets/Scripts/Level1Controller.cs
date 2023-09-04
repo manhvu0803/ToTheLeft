@@ -32,6 +32,6 @@ public class Level1Controller : FreeSlotLevelController
 
     protected override bool IsWinStateFufilled()
     {
-        return _target.transform.eulerAngles == Vector3.zero;
+        return _target != null && _target.transform.eulerAngles.z <= 0.01f;
     }
 }

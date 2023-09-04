@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LevelController : MonoBehaviour
+public abstract class LevelController : MonoBehaviour
 {
     public float WinCheckInterval = 1;
 
@@ -55,8 +55,5 @@ public class LevelController : MonoBehaviour
         _isCheckingWinState = false;
     }
 
-    protected virtual bool IsWinStateFufilled()
-    {
-        return false;
-    }
+    protected abstract bool IsWinStateFufilled();
 }

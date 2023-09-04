@@ -17,4 +17,9 @@ public class TapRotatable : MonoBehaviour
 
         transform.DOLocalRotate(transform.eulerAngles + new Vector3(0, 0, Rotation), 0.15f, RotateMode.FastBeyond360);
     }
+
+    private void OnDestroy()
+    {
+        DOTween.Kill(transform);
+    }
 }

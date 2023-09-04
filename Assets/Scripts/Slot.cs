@@ -40,4 +40,9 @@ public class Slot : MonoBehaviour
         Renderer.DOFade(0, 0.2f)
             .OnComplete(() => Renderer.enabled = false);
     }
+
+    private void OnDestroy()
+    {
+        DOTween.Kill(Renderer);
+    }
 }
