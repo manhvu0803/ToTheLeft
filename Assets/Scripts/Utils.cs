@@ -1,5 +1,23 @@
+using UnityEngine;
+
 public static class Utils
 {
+    public static void Fill<T>(this Component component, ref T target) where T : Component
+    {
+        if (target == null)
+        {
+            target = component.GetComponent<T>();
+        }
+    }
+
+    public static void FillFromChildren<T>(this Component component, ref T target) where T : Component
+    {
+        if (target == null)
+        {
+            target = component.GetComponentInChildren<T>();
+        }
+    }
+
     /// <summary>
     /// Clamp a 360 angle value to -clampValue and clampValue
     /// </summary>

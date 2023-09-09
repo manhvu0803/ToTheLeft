@@ -1,76 +1,91 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
+using UnityEngine.Events;
+using System.Collections.ObjectModel;
+using System;
 
 public class GameController : MonoBehaviour
 {
     private static GameController _instance;
 
+    public static GameController Instance => _instance;
+
     [SerializeField]
     private string[] _levels;
 
-    [SerializeField]
-    private CanvasGroup _loadingGroup;
+    public ReadOnlyCollection<string> Levels => Array.AsReadOnly(_levels);
 
-    [SerializeField]
-    private CanvasGroup _endLevelGroup;
+    public UnityEvent OnLevelComplete;
+
+    public UnityEvent OnLoadingNextLevel;
+
+    public UnityEvent OnLoadingLevelComplete;
+
+    public int Progress { get; private set; }
 
     private int _levelIndex = -1;
-
-    public static GameController Instance => _instance;
 
     private void Awake()
     {
         _instance = this;
+        Progress = PlayerPrefs.GetInt("progress", 0);
+    }
+
+    public void LoadLevel(int level)
+    {
+        if (level < 0 || level >= _levels.Length)
+        {
+            Debug.LogError($"Level {level} doesn't exist");
+            return;
+        }
+
+        StartCoroutine(UnloadAndLoad(level));
     }
 
     public void CompleteLevel()
     {
-        _endLevelGroup.alpha = 1;
-        _endLevelGroup.gameObject.SetActive(true);
+        OnLevelComplete?.Invoke();
+        Progress = Mathf.Max(_levelIndex + 1, Progress);
+        PlayerPrefs.SetInt("progress", Progress);
     }
 
     public void NextLevel()
     {
-        _loadingGroup.gameObject.SetActive(true);
-        _loadingGroup.DOFade(1, 0.5f);
-        _endLevelGroup.DOFade(0, 0.5f)
-            .OnComplete(() => _endLevelGroup.gameObject.SetActive(false));
-
         if (_levelIndex + 1 >= _levels.Length)
         {
             return;
         }
 
-        _levelIndex++;
+        if (_levelIndex < 0)
+        {
+            StartCoroutine(UnloadAndLoad(Mathf.Min(Progress, _levels.Length - 1)));
+            return;
+        }
 
-        if (_levelIndex > 0)
-        {
-            StartCoroutine(UnloadAndLoad(_levels[_levelIndex - 1], _levels[_levelIndex ]));
-        }
-        else
-        {
-            StartCoroutine(Load(_levels[_levelIndex ]));
-        }
+        StartCoroutine(UnloadAndLoad(_levelIndex + 1));
     }
 
-    private IEnumerator UnloadAndLoad(string oldLevelName, string newLevelName)
+    private IEnumerator UnloadAndLoad(int level)
     {
-        print("Begin unload");
-        var operation = SceneManager.UnloadSceneAsync(oldLevelName);
+        OnLoadingNextLevel?.Invoke();
 
-        while (!operation.isDone)
+        if (_levelIndex >= 0 && _levelIndex < _levels.Length)
         {
-            yield return null;
+            var operation = SceneManager.UnloadSceneAsync(_levels[_levelIndex]);
+
+            while (!operation.isDone)
+            {
+                yield return null;
+            }
         }
 
-        StartCoroutine(Load(newLevelName));
+        _levelIndex = level;
+        StartCoroutine(Load(_levels[level]));
     }
 
     private IEnumerator Load(string levelName)
     {
-        print("Begin load");
         var operation = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
 
         while (!operation.isDone)
@@ -78,7 +93,6 @@ public class GameController : MonoBehaviour
             yield return null;
         }
 
-        _loadingGroup.DOFade(0, 0.5f)
-            .OnComplete(() => _loadingGroup.gameObject.SetActive(false));
+        OnLoadingLevelComplete?.Invoke();
     }
 }

@@ -78,16 +78,17 @@ public class OrderedSlotLevelController : SlotLevelController
         }
     }
 
-    protected override bool IsWinStateFufilled()
+    protected override float CompletionRate()
     {
+        int completeSlotCount = 0;
         for (int i = 0; i < Slots.Length; ++i)
         {
-            if (Slots[i].Target != _targets[i])
+            if (Slots[i].Target == _targets[i])
             {
-                return false;
+                completeSlotCount++;
             }
         }
 
-        return true;
+        return (float)completeSlotCount / Slots.Length;
     }
 }

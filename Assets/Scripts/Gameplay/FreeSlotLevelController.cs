@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,16 +38,17 @@ public class FreeSlotLevelController : SlotLevelController
         return true;
     }
 
-    protected override bool IsWinStateFufilled()
+    protected override float CompletionRate()
     {
+        var completedSlotCount = 0;
         foreach (var slot in Slots)
         {
             if (!OccupantMap.TryGetValue(slot.transform, out var occupant) || occupant != slot.Target)
             {
-                return false;
+                completedSlotCount++;
             }
         }
 
-        return true;
+        return (float)completedSlotCount / Slots.Length;
     }
 }

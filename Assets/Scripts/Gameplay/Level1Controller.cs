@@ -30,8 +30,15 @@ public class Level1Controller : FreeSlotLevelController
         return result;
     }
 
-    protected override bool IsWinStateFufilled()
+    protected override float CompletionRate()
     {
-        return _target != null && _target.transform.eulerAngles.z <= 0.01f;
+        if (_target == null)
+        {
+            return 0;
+        }
+
+        // _target != null means the picture is in the right place, hence at least 50% complete (0.5f)
+        // The other half is just how much farther from 0 degree the picture is
+        return 0.5f + (1 - Vector3.Angle(_target.up, Vector3.up) / 180) / 2;
     }
 }
