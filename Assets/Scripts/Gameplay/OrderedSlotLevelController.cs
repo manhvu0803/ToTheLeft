@@ -11,8 +11,10 @@ public class OrderedSlotLevelController : SlotLevelController
 
     private readonly Dictionary<Transform, int> _slotIndexMap = new();
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         if (_targets.Length != Slots.Length)
         {
             Debug.LogWarning("The number of books and slots are not equal");

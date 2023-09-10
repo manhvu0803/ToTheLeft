@@ -5,23 +5,24 @@ public class Level1Controller : FreeSlotLevelController
 {
     private Transform _target;
 
-    public override bool UpdateSlot(Transform target, Transform slot, bool isInteracting = false)
+    public override bool UpdateSlot(Transform target, Transform slotTransform, bool isInteracting = false)
     {
         if (isInteracting)
         {
             return false;
         }
 
-        var result = base.UpdateSlot(target, slot);
+        var result = base.UpdateSlot(target, slotTransform);
 
-        if (slot != null && OccupantMap.TryGetValue(slot, out var slotTarget) && target == slotTarget)
+        if (slotTransform != null
+            && SlotTransforms.TryGetValue(slotTransform, out var slot)
+            && slot.Target == target)
         {
             _target = target;
 
             DOVirtual.DelayedCall(0.15f, () =>
             {
-                var movable = target.GetComponent<SlottedMovable>();
-                Destroy(movable);
+                Destroy(target.GetComponent<SlottedMovable>());
                 var rotatable = target.GetComponent<TapRotatable>();
                 rotatable.enabled = true;
             });

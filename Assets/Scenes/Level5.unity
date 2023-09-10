@@ -316,7 +316,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.099999994, y: 0.099999994, z: 0.099999994, w: 0.099999994}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 6.27, y: 6.27}
     newSize: {x: 6.27, y: 6.27}
@@ -442,7 +442,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.099999994, y: 0.099999994, z: 0.099999994, w: 0.099999994}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 6.27, y: 6.27}
     newSize: {x: 6.27, y: 6.27}
@@ -534,6 +534,107 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 261288737}
   <Target>k__BackingField: {fileID: 1921761846}
+--- !u!1001 &268676551
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1404240490316508310, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_Name
+      value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950378213503662130, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
 --- !u!1 &413698174
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,7 +753,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.099999994, y: 0.099999994, z: 0.099999994, w: 0.099999994}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 6.27, y: 6.27}
     newSize: {x: 6.27, y: 6.27}
@@ -853,7 +954,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.099999994, y: 0.099999994, z: 0.099999994, w: 0.099999994}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 6.27, y: 6.27}
     newSize: {x: 6.27, y: 6.27}
@@ -1306,7 +1407,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.099999994, y: 0.099999994, z: 0.099999994, w: 0.099999994}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 6.27, y: 6.27}
     newSize: {x: 6.27, y: 6.27}
@@ -1677,7 +1778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WinCheckInterval: 0.5
-  OnLevelComplete:
+  OnCompletionRateChanged:
     m_PersistentCalls:
       m_Calls: []
   SlotLayers:

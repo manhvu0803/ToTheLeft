@@ -6,32 +6,27 @@ public abstract class LevelController : MonoBehaviour
 {
     private static readonly float Epsilon = 0.01f;
 
-    public float WinCheckInterval = 1;
-
     public UnityEvent<float> OnCompletionRateChanged;
-
-    private float _lastWinCheckTime;
 
     private float _lastCompletionRate;
 
-    protected virtual void Update()
+    protected void Awake()
     {
-        if (Input.GetMouseButton(0) || _lastWinCheckTime + WinCheckInterval > Time.time)
-        {
-            return;
-        }
+        SingletonManager.Add(this);
+    }
 
-        _lastWinCheckTime = Time.time;
+    public void CheckCompletionRate()
+    {
         var completionRate = CompletionRate();
 
-        if (Mathf.Abs(completionRate - _lastCompletionRate) > Epsilon)
+        if (Mathf.Abs(completionRate - _lastCompletionRate) >= Epsilon)
         {
             OnCompletionRateChanged?.Invoke(completionRate);
         }
 
         _lastCompletionRate = completionRate;
 
-        if (completionRate - 1 <= Epsilon)
+        if (1 - completionRate <= Epsilon)
         {
             StartCoroutine(WinCorountine());
         }

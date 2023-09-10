@@ -20,7 +20,7 @@ public class SlottedMovable : Interactable
 
     protected RaycastHit2D Raycast()
     {
-        var slotLayers = SlotLevelController.Instance.SlotLayers;
+        var slotLayers = SingletonManager.Get<SlotLevelController>().SlotLayers;
         return Physics2D.Raycast(MainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, slotLayers);
     }
 
@@ -40,7 +40,7 @@ public class SlottedMovable : Interactable
 
         if (hit.collider != null && hit.collider.TryGetComponent(out slot))
         {
-            SlotLevelController.Instance.UpdateSlot(transform, slot.transform, true);
+            SingletonManager.Get<SlotLevelController>().UpdateSlot(transform, slot.transform, true);
             slot.Show();
         }
 
@@ -52,7 +52,7 @@ public class SlottedMovable : Interactable
         _lastShowedSlot = slot;
     }
 
-    private void OnMouseUp()
+    protected override void OnMouseUp()
     {
         transform.DOScale(_originalScale, 0.15f);
         transform.Translate(0, 0, 0.5f);
@@ -65,12 +65,14 @@ public class SlottedMovable : Interactable
 
         var hit = Raycast();
         var hitTransform = (hit.collider != null) ? hit.collider.transform : null;
-        var isSlotEmpty = SlotLevelController.Instance.UpdateSlot(transform, hitTransform);
+        var controller = SingletonManager.Get<SlotLevelController>();
+        var isSlotEmpty = controller.UpdateSlot(transform, hitTransform);
 
         if (isSlotEmpty && hitTransform != null)
         {
             var position = hitTransform.position - new Vector3(0, 0, 0.5f);
-            transform.DOMove(position, 0.15f);
+            transform.DOMove(position, 0.15f)
+                .OnComplete(() => controller.CheckCompletionRate());
 
             if (RotateOnMouseDown)
             {

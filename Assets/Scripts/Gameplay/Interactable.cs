@@ -6,10 +6,14 @@ public abstract class Interactable : MonoBehaviour
 
     public float SpeedMultiplier = 1;
 
+    private LevelController _controller;
+
     protected Vector3 LastMousePosition { get; private set; }
 
     protected virtual void Start()
     {
+        _controller = SingletonManager.Get<LevelController>();
+
         if (MainCamera == null)
         {
             MainCamera = Camera.main;
@@ -39,5 +43,19 @@ public abstract class Interactable : MonoBehaviour
         LastMousePosition = currentMousePosition;
     }
 
-    protected abstract void OnInteract(Vector3 delta, Vector3 currentMousePosition);
+    protected virtual void OnMouseUp()
+    {
+        OnDoneInteract();
+
+        if (_controller == null)
+        {
+            _controller = SingletonManager.Get<LevelController>();
+        }
+
+        _controller.CheckCompletionRate();
+    }
+
+    protected virtual void OnInteract(Vector3 delta, Vector3 currentMousePosition) { }
+
+    protected virtual void OnDoneInteract() { }
 }

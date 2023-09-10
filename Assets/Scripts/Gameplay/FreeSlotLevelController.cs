@@ -7,6 +7,27 @@ public class FreeSlotLevelController : SlotLevelController
 
     protected readonly Dictionary<Transform, Transform> SlotMap = new();
 
+    public List<string> Occs;
+
+    public List<string> Slts;
+
+    public void Write()
+    {
+        Occs = new List<string>(OccupantMap.Count);
+
+        foreach (var pair in OccupantMap)
+        {
+            Occs.Add($"{pair.Key?.name ?? "null"} {pair.Value?.name ?? "null"}");
+        }
+
+        Slts = new List<string>(SlotMap.Count);
+
+        foreach (var pair in SlotMap)
+        {
+            Slts.Add($"{pair.Key?.name ?? "null"} {pair.Value?.name ?? "null"}");
+        }
+    }
+
     /// <summary>
     /// Try to put the target transform into slot and return the result
     /// </summary>
@@ -28,6 +49,7 @@ public class FreeSlotLevelController : SlotLevelController
             // slot is occupied
             if (OccupantMap.TryGetValue(slot, out var occupant) && occupant != null && occupant != target)
             {
+                Write();
                 return false;
             }
 
@@ -35,20 +57,22 @@ public class FreeSlotLevelController : SlotLevelController
         }
 
         SlotMap[target] = slot;
+        Write();
         return true;
     }
 
     protected override float CompletionRate()
     {
-        var completedSlotCount = 0;
+        var wrongSlotCount = 0;
+
         foreach (var slot in Slots)
         {
-            if (!OccupantMap.TryGetValue(slot.transform, out var occupant) || occupant != slot.Target)
+            if (!OccupantMap.TryGetValue(slot.transform, out var occupant) || occupant == null || occupant != slot.Target)
             {
-                completedSlotCount++;
+                wrongSlotCount++;
             }
         }
 
-        return (float)completedSlotCount / Slots.Length;
+        return 1 - (float)wrongSlotCount / Slots.Length;
     }
 }

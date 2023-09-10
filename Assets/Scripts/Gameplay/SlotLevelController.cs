@@ -1,20 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class SlotLevelController : LevelController
 {
-    [Header("Slot")]
-    private static SlotLevelController _instance;
-
-    public static SlotLevelController Instance => _instance;
-
     public LayerMask SlotLayers;
 
     [SerializeField]
     protected Slot[] Slots;
 
-    private void Awake()
+    protected readonly Dictionary<Transform, Slot> SlotTransforms = new();
+
+    protected virtual void Start()
     {
-        _instance = this;
+        foreach (var slot in Slots)
+        {
+            SlotTransforms.Add(slot.transform, slot);
+        }
     }
 
     /// <summary>
