@@ -1,46 +1,44 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class SlottedMovable : Interactable
+public class SlottedMovable : Movable
 {
-    [Tooltip("Relative")]
-    public Vector3 ScaleOnDrag = new(0.25f, 0.25f, 0.25f);
+    #region Static
+    private static SlotLevelController _controller;
 
-    public bool RotateOnMouseDown = false;
+    protected static new SlotLevelController Controller
+    {
+        get
+        {
+            if (_controller == null)
+            {
+                _controller = SingletonManager.Get<SlotLevelController>();
+            }
 
-    private Vector3 _originalScale;
+            return _controller;
+        }
+    }
+
+    static protected RaycastHit2D Raycast()
+    {
+        var slotLayers = Controller.SlotLayers;
+        return Physics2D.Raycast(MainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, slotLayers);
+    }
+    #endregion
+
+    public bool RotateOnMouseUp = false;
 
     private Slot _lastShowedSlot;
 
-    protected override void Start()
-    {
-        base.Start();
-        _originalScale = transform.localScale;
-    }
-
-    protected RaycastHit2D Raycast()
-    {
-        var slotLayers = SingletonManager.Get<SlotLevelController>().SlotLayers;
-        return Physics2D.Raycast(MainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, slotLayers);
-    }
-
-    protected override void OnMouseDown()
-    {
-        base.OnMouseDown();
-        DOTween.Kill(transform, complete: true);
-        transform.DOScale(_originalScale + ScaleOnDrag, 0.15f);
-        transform.Translate(0, 0, -0.5f);
-    }
-
     protected override void OnInteract(Vector3 delta, Vector3 currentMousePostion)
     {
-        transform.position += new Vector3(delta.x, delta.y, 0);
+        base.OnInteract(delta, currentMousePostion);
         var hit = Raycast();
         Slot slot = null;
 
         if (hit.collider != null && hit.collider.TryGetComponent(out slot))
         {
-            SingletonManager.Get<SlotLevelController>().UpdateSlot(transform, slot.transform, true);
+            Controller.UpdateSlot(transform, slot.transform, true);
             slot.Show();
         }
 
@@ -54,8 +52,7 @@ public class SlottedMovable : Interactable
 
     protected override void OnMouseUp()
     {
-        transform.DOScale(_originalScale, 0.15f);
-        transform.Translate(0, 0, 0.5f);
+        SnapAndReturn();
 
         if (_lastShowedSlot != null)
         {
@@ -65,16 +62,15 @@ public class SlottedMovable : Interactable
 
         var hit = Raycast();
         var hitTransform = (hit.collider != null) ? hit.collider.transform : null;
-        var controller = SingletonManager.Get<SlotLevelController>();
-        var isSlotEmpty = controller.UpdateSlot(transform, hitTransform);
+        var isSlotEmpty = Controller.UpdateSlot(transform, hitTransform);
 
         if (isSlotEmpty && hitTransform != null)
         {
             var position = hitTransform.position - new Vector3(0, 0, 0.5f);
             transform.DOMove(position, 0.15f)
-                .OnComplete(() => controller.CheckCompletionRate());
+                .OnComplete(() => Controller.CheckCompletionRate());
 
-            if (RotateOnMouseDown)
+            if (RotateOnMouseUp)
             {
                 transform.DORotate(hitTransform.eulerAngles, 0.15f);
             }
@@ -82,14 +78,9 @@ public class SlottedMovable : Interactable
             return;
         }
 
-        if (RotateOnMouseDown)
+        if (RotateOnMouseUp)
         {
             transform.DORotate(new Vector3(0, 0, (Random.Range(0, 2) == 0) ? -20 : 20), 0.15f);
         }
-    }
-
-    private void OnDestroy()
-    {
-        DOTween.Kill(transform);
     }
 }

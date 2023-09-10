@@ -7,6 +7,8 @@ public class FreeSlotLevelController : SlotLevelController
 
     protected readonly Dictionary<Transform, Transform> SlotMap = new();
 
+#if DEBUG || UNITY_EDITOR
+    [Header("Debug")]
     public List<string> Occs;
 
     public List<string> Slts;
@@ -17,16 +19,17 @@ public class FreeSlotLevelController : SlotLevelController
 
         foreach (var pair in OccupantMap)
         {
-            Occs.Add($"{pair.Key?.name ?? "null"} {pair.Value?.name ?? "null"}");
+            Occs.Add($"{pair.Key?.name ?? "null"}-{pair.Value?.name ?? "null"}");
         }
 
         Slts = new List<string>(SlotMap.Count);
 
         foreach (var pair in SlotMap)
         {
-            Slts.Add($"{pair.Key?.name ?? "null"} {pair.Value?.name ?? "null"}");
+            Slts.Add($"{pair.Key?.name ?? "null"}-{pair.Value?.name ?? "null"}");
         }
     }
+#endif
 
     /// <summary>
     /// Try to put the target transform into slot and return the result
@@ -61,13 +64,13 @@ public class FreeSlotLevelController : SlotLevelController
         return true;
     }
 
-    protected override float CompletionRate()
+    public override float CompletionRate()
     {
         var wrongSlotCount = 0;
 
         foreach (var slot in Slots)
         {
-            if (!OccupantMap.TryGetValue(slot.transform, out var occupant) || occupant == null || occupant != slot.Target)
+            if (!OccupantMap.TryGetValue(slot.transform, out var occupant) || occupant != slot.Target)
             {
                 wrongSlotCount++;
             }

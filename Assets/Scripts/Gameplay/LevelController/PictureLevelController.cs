@@ -5,7 +5,7 @@ public class PictureLevelController : LevelController
     [SerializeField]
     private Transform[] _pictures;
 
-    protected override float CompletionRate()
+    public override float CompletionRate()
     {
         // How much farther all the pictures is from 0 degree
         var angleSum = 0f;

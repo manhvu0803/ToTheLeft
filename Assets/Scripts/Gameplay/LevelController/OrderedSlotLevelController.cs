@@ -80,7 +80,7 @@ public class OrderedSlotLevelController : SlotLevelController
         }
     }
 
-    protected override float CompletionRate()
+    public override float CompletionRate()
     {
         int completeSlotCount = 0;
         for (int i = 0; i < Slots.Length; ++i)

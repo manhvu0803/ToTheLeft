@@ -16,8 +16,9 @@ public class ProgressBar : MonoBehaviour
     private IEnumerator Start()
     {
         yield return null;
-        SingletonManager.Get<LevelController>().OnCompletionRateChanged.AddListener(UpdateProgress);
-        UpdateProgress(0);
+        var controller = SingletonManager.Get<LevelController>();
+        controller.OnCompletionRateChanged.AddListener(UpdateProgress);
+        UpdateProgress(controller.CompletionRate());
     }
 
     public void UpdateProgress(float progress)
@@ -27,7 +28,7 @@ public class ProgressBar : MonoBehaviour
             _text.text = $"[{progress * 100:N0}%]";
         }
 
-        _slider.DOValue(progress, 0.75f)
+        _slider.DOValue(progress, 1)
             .SetEase(Ease.OutElastic);
     }
 }

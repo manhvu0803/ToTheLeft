@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Movable : Interactable
+public class Slidable : Interactable
 {
     public Vector2 MaxOffset = new(2, 2);
 
@@ -19,9 +19,8 @@ public class Movable : Interactable
         _targetPosition.y = Mathf.Clamp(_targetPosition.y, -MaxOffset.y, MaxOffset.y);
     }
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
         _targetPosition = transform.position;
     }
 
@@ -29,7 +28,7 @@ public class Movable : Interactable
     {
         transform.position = Vector3.Lerp(transform.position, _targetPosition, LerpRate);
 
-        if ((transform.localPosition - Vector3.zero).sqrMagnitude <= SnapDistance * SnapDistance)
+        if (transform.localPosition.sqrMagnitude <= SnapDistance * SnapDistance)
         {
             transform.localPosition = Vector3.zero;
         }

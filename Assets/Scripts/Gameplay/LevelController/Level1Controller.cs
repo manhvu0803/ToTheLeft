@@ -31,7 +31,7 @@ public class Level1Controller : FreeSlotLevelController
         return result;
     }
 
-    protected override float CompletionRate()
+    public override float CompletionRate()
     {
         if (_target == null)
         {

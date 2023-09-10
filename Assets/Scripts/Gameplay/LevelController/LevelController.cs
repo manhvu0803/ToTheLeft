@@ -18,6 +18,9 @@ public abstract class LevelController : MonoBehaviour
     public void CheckCompletionRate()
     {
         var completionRate = CompletionRate();
+#if UNITY_EDITOR || DEBUG
+        print("Completion rate: " + completionRate);
+#endif
 
         if (Mathf.Abs(completionRate - _lastCompletionRate) >= Epsilon)
         {
@@ -45,5 +48,5 @@ public abstract class LevelController : MonoBehaviour
         }
     }
 
-    protected abstract float CompletionRate();
+    public abstract float CompletionRate();
 }

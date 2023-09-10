@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class Utils
@@ -15,6 +16,22 @@ public static class Utils
         if (target == null)
         {
             target = component.GetComponentInChildren<T>();
+        }
+    }
+
+    public static void Fill<T>(ref T[] target) where T : Component
+    {
+        if (target == null || target.Length <= 0)
+        {
+            target = Object.FindObjectsOfType<T>();
+        }
+    }
+
+    public static void Fill<T>(ref List<T> target) where T : Component
+    {
+        if (target == null || target.Count <= 0)
+        {
+            target = new List<T>(Object.FindObjectsOfType<T>());
         }
     }
 
