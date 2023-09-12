@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Interactable : MonoBehaviour
 {
@@ -34,6 +35,12 @@ public abstract class Interactable : MonoBehaviour
     }
     #endregion
 
+    public UnityEvent OnPointerDown;
+
+    public UnityEvent OnPointerDrag;
+
+    public UnityEvent OnPointerUp;
+
     protected Vector3 LastMousePosition { get; private set; }
 
     protected virtual void OnMouseDown()
@@ -44,6 +51,7 @@ public abstract class Interactable : MonoBehaviour
         }
 
         LastMousePosition = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+        OnPointerDown?.Invoke();
     }
 
     protected virtual void OnMouseDrag()
@@ -62,9 +70,21 @@ public abstract class Interactable : MonoBehaviour
         }
 
         LastMousePosition = currentMousePosition;
+        OnPointerDrag?.Invoke();
     }
 
-    protected virtual void OnMouseUp()
+    protected void OnMouseUp()
+    {
+        if (!enabled)
+        {
+            return;
+        }
+
+        OnDoneInteract();
+        OnPointerUp?.Invoke();
+    }
+
+    protected virtual void OnDoneInteract()
     {
         Controller.CheckCompletionRate();
     }

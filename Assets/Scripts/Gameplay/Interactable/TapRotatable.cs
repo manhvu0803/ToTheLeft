@@ -6,7 +6,7 @@ public class TapRotatable : Interactable
     [Range(-360, 360)]
     public float Rotation = 45;
 
-    protected override void OnMouseUp()
+    protected override void OnDoneInteract()
     {
         if (!enabled)
         {

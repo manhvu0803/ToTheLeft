@@ -153,9 +153,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!61 &52391908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -190,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52391906}
   m_LocalRotation: {x: 0, y: 0, z: -0.32556805, w: 0.9455186}
-  m_LocalPosition: {x: -0.6, y: -0.59, z: 0}
+  m_LocalPosition: {x: -0.6, y: -0.72999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -335,7 +345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136996848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 1}
+  m_LocalPosition: {x: 0, y: 1.66, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -461,7 +471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261288733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.5, z: 1}
+  m_LocalPosition: {x: 0, y: 3.3600001, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -671,7 +681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623962137}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.039999984, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -774,9 +784,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!61 &679720371
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -811,7 +831,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679720369}
   m_LocalRotation: {x: 0, y: 0, z: -0.5750053, w: 0.81814975}
-  m_LocalPosition: {x: 0.93, y: 2.91, z: 0}
+  m_LocalPosition: {x: 0.93, y: 2.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -872,7 +892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709351236}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.6, z: 1}
+  m_LocalPosition: {x: 0, y: -1.74, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1328,9 +1348,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!61 &1141155825
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1365,7 +1395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141155823}
   m_LocalRotation: {x: 0, y: -0, z: 0.9958844, w: -0.09063237}
-  m_LocalPosition: {x: -0.46, y: -2.61, z: 0}
+  m_LocalPosition: {x: -0.46, y: -2.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1426,7 +1456,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525987179}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.3, z: 1}
+  m_LocalPosition: {x: 0, y: -3.44, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1613,9 +1643,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!61 &1712464825
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1650,7 +1690,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712464823}
   m_LocalRotation: {x: 0, y: 0, z: -0.42412046, w: 0.90560585}
-  m_LocalPosition: {x: -1.22, y: 3.23, z: 0}
+  m_LocalPosition: {x: -1.22, y: 3.0900002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1710,7 +1750,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1921761844}
   m_LocalRotation: {x: -0, y: -0, z: 0.15299207, w: 0.9882274}
-  m_LocalPosition: {x: 0.27, y: 0.98, z: 0}
+  m_LocalPosition: {x: 0.27, y: 0.84000003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1730,9 +1770,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!1 &2120956458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,7 +1827,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0560990d076990247adf0bb63edf0bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WinCheckInterval: 1
   OnCompletionRateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1790,3 +1839,5 @@ MonoBehaviour:
   - {fileID: 623962141}
   - {fileID: 709351240}
   - {fileID: 1525987183}
+  Occs: []
+  Slts: []

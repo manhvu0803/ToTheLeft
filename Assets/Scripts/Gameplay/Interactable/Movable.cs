@@ -35,7 +35,7 @@ public class Movable : Interactable
         transform.localPosition = position;
     }
 
-    protected override void OnMouseUp()
+    protected override void OnDoneInteract()
     {
         SnapAndReturn();
         Controller.CheckCompletionRate();

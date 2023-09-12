@@ -26,7 +26,7 @@ public class SlottedMovable : Movable
     }
     #endregion
 
-    public bool RotateOnMouseUp = false;
+    public bool RotateOnMouseUp = true;
 
     private Slot _lastShowedSlot;
 
@@ -50,7 +50,7 @@ public class SlottedMovable : Movable
         _lastShowedSlot = slot;
     }
 
-    protected override void OnMouseUp()
+    protected override void OnDoneInteract()
     {
         SnapAndReturn();
 
@@ -82,5 +82,7 @@ public class SlottedMovable : Movable
         {
             transform.DORotate(new Vector3(0, 0, (Random.Range(0, 2) == 0) ? -20 : 20), 0.15f);
         }
+
+        Controller.CheckCompletionRate();
     }
 }
