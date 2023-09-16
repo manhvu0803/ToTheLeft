@@ -9,6 +9,9 @@ public class Slot : MonoBehaviour
     [field: SerializeField]
     public Transform Target { get; private set; }
 
+    [SerializeField]
+    private Transform[] _targets;
+
     private float _originalAlpha;
 
     private void OnValidate()
@@ -16,6 +19,11 @@ public class Slot : MonoBehaviour
         if (Renderer == null)
         {
             Renderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
+        if ((_targets == null || _targets.Length <= 0) && Target != null)
+        {
+            _targets = new Transform[] { Target };
         }
     }
 
@@ -39,6 +47,24 @@ public class Slot : MonoBehaviour
     {
         Renderer.DOFade(0, 0.2f)
             .OnComplete(() => Renderer.enabled = false);
+    }
+
+    public bool IsTarget(Transform transform)
+    {
+        if (Target == transform)
+        {
+            return true;
+        }
+
+        foreach (var target in _targets)
+        {
+            if (target == transform)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void OnDestroy()

@@ -16,7 +16,7 @@ public class Level1Controller : FreeSlotLevelController
 
         if (slotTransform != null
             && SlotTransforms.TryGetValue(slotTransform, out var slot)
-            && slot.Target == target)
+            && slot.IsTarget(target))
         {
             _target = target;
 

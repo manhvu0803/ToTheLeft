@@ -74,7 +74,7 @@ public class FreeSlotLevelController : SlotLevelController
 
         foreach (var slot in Slots)
         {
-            if (!OccupantMap.TryGetValue(slot.transform, out var occupant) || occupant != slot.Target)
+            if (!OccupantMap.TryGetValue(slot.transform, out var occupant) || !slot.IsTarget(occupant))
             {
                 wrongSlotCount++;
             }

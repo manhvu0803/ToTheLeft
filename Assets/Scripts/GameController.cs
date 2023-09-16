@@ -3,7 +3,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class GameController : MonoBehaviour
 {
@@ -12,9 +17,9 @@ public class GameController : MonoBehaviour
     public static GameController Instance => _instance;
 
     [SerializeField]
-    private string[] _levels;
+    private List<string> _levels;
 
-    public ReadOnlyCollection<string> Levels => Array.AsReadOnly(_levels);
+    public ReadOnlyCollection<string> Levels => _levels.AsReadOnly();
 
     public UnityEvent OnLevelComplete;
 
@@ -34,7 +39,7 @@ public class GameController : MonoBehaviour
 
     public void LoadLevel(int level)
     {
-        if (level < 0 || level >= _levels.Length)
+        if (level < 0 || level >= _levels.Count)
         {
             Debug.LogError($"Level {level} doesn't exist");
             return;
@@ -52,14 +57,14 @@ public class GameController : MonoBehaviour
 
     public void NextLevel()
     {
-        if (_levelIndex + 1 >= _levels.Length)
+        if (_levelIndex + 1 >= _levels.Count)
         {
             return;
         }
 
         if (_levelIndex < 0)
         {
-            StartCoroutine(UnloadAndLoad(Mathf.Min(Progress, _levels.Length - 1)));
+            StartCoroutine(UnloadAndLoad(Mathf.Min(Progress, _levels.Count - 1)));
             return;
         }
 
@@ -70,7 +75,7 @@ public class GameController : MonoBehaviour
     {
         OnLoadingNextLevel?.Invoke();
 
-        if (_levelIndex >= 0 && _levelIndex < _levels.Length)
+        if (_levelIndex >= 0 && _levelIndex < _levels.Count)
         {
             var operation = SceneManager.UnloadSceneAsync(_levels[_levelIndex]);
 
@@ -95,4 +100,27 @@ public class GameController : MonoBehaviour
 
         OnLoadingLevelComplete?.Invoke();
     }
+
+#if UNITY_EDITOR
+    [ContextMenu("Refresh level list")]
+    private void RefreshLevelList()
+    {
+        _levels.Clear();
+
+        foreach(var scene in EditorBuildSettings.scenes)
+        {
+            if (!scene.enabled || scene.path.Contains("Main"))
+            {
+                continue;
+            }
+
+            var path = scene.path.AsSpan();
+
+            // Remove ".unity" at the end and "Assets/" at the start
+            path = path[..scene.path.IndexOf(".unity")][7..];
+
+            _levels.Add(path.ToString());
+        }
+    }
+#endif
 }

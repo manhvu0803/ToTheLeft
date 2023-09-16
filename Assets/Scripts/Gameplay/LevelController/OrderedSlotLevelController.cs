@@ -85,7 +85,7 @@ public class OrderedSlotLevelController : SlotLevelController
         int completeSlotCount = 0;
         for (int i = 0; i < Slots.Length; ++i)
         {
-            if (Slots[i].Target == _targets[i])
+            if (Slots[i].IsTarget(_targets[i]))
             {
                 completeSlotCount++;
             }

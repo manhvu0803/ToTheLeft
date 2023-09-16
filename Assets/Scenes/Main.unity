@@ -1296,6 +1296,7 @@ GameObject:
   - component: {fileID: 582840801}
   - component: {fileID: 582840804}
   - component: {fileID: 582840805}
+  - component: {fileID: 582840806}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1338,7 +1339,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.958613
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1418,6 +1419,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 87
   m_MaxRayIntersections: 0
+--- !u!114 &582840806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582840800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fcc4ea467ee6b647b816ffc62d81c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneWidth: 4.58
+  _camera: {fileID: 582840802}
 --- !u!1 &607677718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,13 +1463,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levels:
-  - Scenes/Level1
-  - Scenes/Level2
-  - Scenes/Level3
-  - Scenes/Level4
-  - Scenes/Level5
-  - Scenes/Level6
-  - Scenes/Level7
+  - Scenes/Level1_CatPicture
+  - Scenes/Level2_Pencil
+  - Scenes/Level3_PostIt
+  - Scenes/Level4_Pictures
+  - Scenes/Level5_Books
+  - Scenes/Level6_Tapes
+  - Scenes/Level7_PostIt3x3
   OnLevelComplete:
     m_PersistentCalls:
       m_Calls: []

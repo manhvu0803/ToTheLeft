@@ -10,6 +10,11 @@ public abstract class SlotLevelController : LevelController
 
     protected readonly Dictionary<Transform, Slot> SlotTransforms = new();
 
+    protected void OnValidate()
+    {
+        Utils.Fill(ref Slots);
+    }
+
     protected virtual void Start()
     {
         foreach (var slot in Slots)
