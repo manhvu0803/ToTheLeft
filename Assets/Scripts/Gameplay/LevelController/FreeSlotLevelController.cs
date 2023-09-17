@@ -52,6 +52,7 @@ public class FreeSlotLevelController : SlotLevelController
             // slot is occupied
             if (OccupantMap.TryGetValue(slot, out var occupant) && occupant != null && occupant != target)
             {
+                SlotMap[target] = null;
 #if DEBUG || UNITY_EDITOR
                 Write();
 #endif

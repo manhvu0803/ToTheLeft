@@ -1,16 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class Slot : MonoBehaviour
+public abstract class Slot : MonoBehaviour
 {
     [field: SerializeField]
     public SpriteRenderer Renderer { get; private set; }
-
-    [field: SerializeField]
-    public Transform Target { get; private set; }
-
-    [SerializeField]
-    private Transform[] _targets;
 
     private float _originalAlpha;
 
@@ -19,11 +13,6 @@ public class Slot : MonoBehaviour
         if (Renderer == null)
         {
             Renderer = GetComponentInChildren<SpriteRenderer>();
-        }
-
-        if ((_targets == null || _targets.Length <= 0) && Target != null)
-        {
-            _targets = new Transform[] { Target };
         }
     }
 
@@ -49,26 +38,10 @@ public class Slot : MonoBehaviour
             .OnComplete(() => Renderer.enabled = false);
     }
 
-    public bool IsTarget(Transform transform)
-    {
-        if (Target == transform)
-        {
-            return true;
-        }
-
-        foreach (var target in _targets)
-        {
-            if (target == transform)
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     private void OnDestroy()
     {
         DOTween.Kill(Renderer);
     }
+
+    public abstract bool IsTarget(Transform transform);
 }
