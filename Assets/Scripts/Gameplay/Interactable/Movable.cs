@@ -20,6 +20,11 @@ public class Movable : Interactable
 
     protected override void OnMouseDown()
     {
+        if (!enabled)
+        {
+            return;
+        }
+
         base.OnMouseDown();
         DOTween.Kill(transform, complete: true);
         transform.DOScale(_originalScale + OffsetScaleOnDrag, 0.15f);
@@ -38,7 +43,7 @@ public class Movable : Interactable
     protected override void OnDoneInteract()
     {
         SnapAndReturn();
-        Controller.CheckCompletionRate();
+        Controller?.CheckCompletionRate();
     }
 
     protected void SnapAndReturn()

@@ -50,6 +50,7 @@ public abstract class Interactable : MonoBehaviour
             return;
         }
 
+        SingletonManager.Get<SoundManager>()?.PlayOnInteract();
         LastMousePosition = MainCamera.ScreenToWorldPoint(Input.mousePosition);
         OnPointerDown?.Invoke();
     }
@@ -86,7 +87,8 @@ public abstract class Interactable : MonoBehaviour
 
     protected virtual void OnDoneInteract()
     {
-        Controller.CheckCompletionRate();
+        SingletonManager.Get<SoundManager>()?.PlayDoneInteract();
+        Controller?.CheckCompletionRate();
     }
 
     protected virtual void OnInteract(Vector3 delta, Vector3 currentMousePosition) { }

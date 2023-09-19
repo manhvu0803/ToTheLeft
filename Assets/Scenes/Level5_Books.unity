@@ -153,9 +153,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!61 &52391908
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -633,6 +643,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8908564250708016514, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
 --- !u!1 &413698174
@@ -875,9 +889,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!61 &679720371
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1328,9 +1352,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!61 &1141155825
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1613,9 +1647,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!61 &1712464825
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1730,9 +1774,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedMultiplier: 1
-  ScaleOnDrag: {x: 0.15, y: 0.15, z: 0.15}
-  RotateOnMouseDown: 1
+  OnPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
+  OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
+  MaxLocalOffset: {x: 100, y: 100}
+  SnapDistance: 0.1
+  RotateOnMouseUp: 1
 --- !u!1 &2120956458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,7 +1831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99491ed6136f6f9458d67d65e7664fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WinCheckInterval: 0.5
   OnCompletionRateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1785,11 +1838,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Slots:
-  - {fileID: 261288738}
-  - {fileID: 136996852}
-  - {fileID: 623962141}
-  - {fileID: 709351240}
-  - {fileID: 1525987183}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _targets:
   - {fileID: 1921761846}
   - {fileID: 1141155826}
