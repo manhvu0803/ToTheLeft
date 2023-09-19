@@ -11,15 +11,21 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip OnDoneInteractClip;
 
-    private readonly Queue<AudioSource> _sourcePool = new();
+    private Queue<AudioSource> _sourcePool;
 
     private void Awake()
     {
         SingletonManager.Add(this);
+        _sourcePool = new Queue<AudioSource>(_audioSources);
     }
 
     public void Play(AudioClip audioClip)
     {
+        if (audioClip == null)
+        {
+            return;
+        }
+
         if (_sourcePool.Count <= 0)
         {
             Debug.LogError("Out of audio source");

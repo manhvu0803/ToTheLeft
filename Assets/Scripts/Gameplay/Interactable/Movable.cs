@@ -43,14 +43,14 @@ public class Movable : Interactable
     protected override void OnDoneInteract()
     {
         SnapAndReturn();
-        Controller?.CheckCompletionRate();
+        base.OnDoneInteract();
     }
 
     protected void SnapAndReturn()
     {
         if (((Vector2)transform.localPosition).sqrMagnitude <= SnapDistance * SnapDistance)
         {
-            transform.localPosition = Vector3.zero;
+            transform.DOLocalMove(Vector3.zero, 0.15f);
         }
 
         transform.DOScale(_originalScale, 0.15f);

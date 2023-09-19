@@ -345,7 +345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136996848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6800001, y: -0.04000008, z: 1}
+  m_LocalPosition: {x: -1.51, y: -0.04000008, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -413,11 +413,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 136996848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 136996851}
-  <Target>k__BackingField: {fileID: 52391909}
+  _targets:
+  - {fileID: 52391909}
 --- !u!1 &138761964
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +726,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261288733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6800001, y: 1.6600001, z: 1}
+  m_LocalPosition: {x: -1.51, y: 1.5100002, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -793,11 +794,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 261288733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 261288737}
-  <Target>k__BackingField: {fileID: 1921761846}
+  _targets:
+  - {fileID: 1921761846}
 --- !u!1 &413698174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1021,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 623962137}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6800001, y: -1.74, z: 1}
+  m_LocalPosition: {x: -1.51, y: -1.61, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1087,11 +1089,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 623962137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 623962140}
-  <Target>k__BackingField: {fileID: 1712464826}
+  _targets:
+  - {fileID: 1712464826}
 --- !u!1 &679720369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709351236}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01999998, y: 1.6599998, z: 1}
+  m_LocalPosition: {x: 0.01999998, y: 1.51, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1298,11 +1301,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 709351236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 709351239}
-  <Target>k__BackingField: {fileID: 679720372}
+  _targets:
+  - {fileID: 679720372}
 --- !u!1 &757076345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,6 +1658,10 @@ PrefabInstance:
     - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908564250708016514, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
@@ -2022,11 +2030,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1236422309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 1236422311}
-  <Target>k__BackingField: {fileID: 872823306}
+  _targets:
+  - {fileID: 872823306}
 --- !u!212 &1236422311
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2113,7 +2122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236422309}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.69, y: -1.74, z: 1}
+  m_LocalPosition: {x: 1.5, y: -1.61, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2241,11 +2250,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1525987179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 1525987182}
-  <Target>k__BackingField: {fileID: 1141155826}
+  _targets:
+  - {fileID: 1141155826}
 --- !u!1 &1586605612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2358,11 +2368,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1629274939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 1629274941}
-  <Target>k__BackingField: {fileID: 1646609724}
+  _targets:
+  - {fileID: 1646609724}
 --- !u!212 &1629274941
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2449,7 +2460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629274939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02000003, y: -1.74, z: 1}
+  m_LocalPosition: {x: 0.02000003, y: -1.61, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2654,11 +2665,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1908234149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 1908234151}
-  <Target>k__BackingField: {fileID: 138761967}
+  _targets:
+  - {fileID: 138761967}
 --- !u!212 &1908234151
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2745,7 +2757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908234149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.69, y: -0.04000008, z: 1}
+  m_LocalPosition: {x: 1.5, y: -0.04000008, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2865,11 +2877,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1969991122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 1969991124}
-  <Target>k__BackingField: {fileID: 203039492}
+  _targets:
+  - {fileID: 203039492}
 --- !u!212 &1969991124
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2956,7 +2969,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969991122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.69, y: 1.6599998, z: 1}
+  m_LocalPosition: {x: 1.5, y: 1.51, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3014,14 +3027,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Slots:
-  - {fileID: 261288738}
   - {fileID: 136996852}
+  - {fileID: 261288738}
   - {fileID: 623962141}
   - {fileID: 709351240}
+  - {fileID: 1236422310}
   - {fileID: 1525987183}
   - {fileID: 1629274940}
-  - {fileID: 1969991123}
   - {fileID: 1908234150}
-  - {fileID: 1236422310}
+  - {fileID: 1969991123}
   Occs: []
   Slts: []

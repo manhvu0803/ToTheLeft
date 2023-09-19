@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
 
     public static GameController Instance => _instance;
 
+    public GameObject FirstScreen;
+
     [SerializeField]
     private List<string> _levels;
 
@@ -27,6 +29,7 @@ public class GameController : MonoBehaviour
 
     public UnityEvent OnLoadingLevelComplete;
 
+    [field: SerializeField]
     public int Progress { get; private set; }
 
     private int _levelIndex = -1;
@@ -99,6 +102,17 @@ public class GameController : MonoBehaviour
         }
 
         OnLoadingLevelComplete?.Invoke();
+    }
+
+    public void ReturnToMainMenu()
+    {
+        if (_levelIndex >= 0 && _levelIndex < _levels.Count)
+        {
+            SceneManager.UnloadSceneAsync(_levels[_levelIndex]);
+        }
+
+        _levelIndex = -1;
+        FirstScreen.SetActive(true);
     }
 
 #if UNITY_EDITOR

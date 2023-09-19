@@ -56,7 +56,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -124,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7776045764578753598, guid: 903b5e2f6fdda2c49aead379fe01cc22, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 475.18
+      value: 400.1953
       objectReference: {fileID: 0}
     - target: {fileID: 7776045764578753598, guid: 903b5e2f6fdda2c49aead379fe01cc22, type: 3}
       propertyPath: m_SizeDelta.y

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEditor;
 
 [CustomEditor(typeof(Interactable), true)]
@@ -5,7 +6,14 @@ public class InteractableEditor : Editor
 {
     private static readonly string[] EventProperties = new[] { "OnPointerDown", "OnPointerDrag", "OnPointerUp" };
 
+    private static string[] ExcludedProperties;
+
     private static bool ShowEvents;
+
+    private void OnEnable()
+    {
+        ExcludedProperties = EventProperties.Concat(new[] { "m_Script" }).ToArray();
+    }
 
     public override void OnInspectorGUI()
     {
@@ -20,7 +28,7 @@ public class InteractableEditor : Editor
             }
         }
 
-        DrawPropertiesExcluding(serializedObject, EventProperties);
+        DrawPropertiesExcluding(serializedObject, ExcludedProperties.ToArray());
         serializedObject.ApplyModifiedProperties();
     }
 }

@@ -251,11 +251,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 84007367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 261288737}
-  <Target>k__BackingField: {fileID: 1105960709}
+  _targets:
+  - {fileID: 1105960709}
 --- !u!61 &84007370
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -548,6 +549,10 @@ PrefabInstance:
     - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908564250708016514, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
@@ -936,11 +941,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 772897735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 961484331}
-  <Target>k__BackingField: {fileID: 2016706939}
+  _targets:
+  - {fileID: 2016706939}
 --- !u!61 &772897738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1423,11 +1429,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1020292007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 375503152}
-  <Target>k__BackingField: {fileID: 2058062171}
+  _targets:
+  - {fileID: 2058062171}
 --- !u!61 &1020292010
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1667,11 +1674,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1299063126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 1019539608}
-  <Target>k__BackingField: {fileID: 1921761846}
+  _targets:
+  - {fileID: 1921761846}
 --- !u!61 &1299063129
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1826,11 +1834,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1428606359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65db45679e908f84ea151d7e594776c4, type: 3}
+  m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Renderer>k__BackingField: {fileID: 215058613}
-  <Target>k__BackingField: {fileID: 1961061541}
+  _targets:
+  - {fileID: 1961061541}
 --- !u!61 &1428606362
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2501,10 +2510,10 @@ MonoBehaviour:
     m_Bits: 64
   Slots:
   - {fileID: 84007369}
+  - {fileID: 772897737}
   - {fileID: 1020292009}
   - {fileID: 1299063128}
   - {fileID: 1428606361}
-  - {fileID: 772897737}
   Occs: []
   Slts: []
 --- !u!1 &2145955850

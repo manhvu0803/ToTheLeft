@@ -13,6 +13,7 @@ public class TapRotatable : Interactable
             return;
         }
 
+        SingletonManager.Get<SoundManager>().PlayDoneInteract();
         transform.DOLocalRotate(transform.eulerAngles + new Vector3(0, 0, Rotation), 0.15f, RotateMode.FastBeyond360)
             .OnComplete(() => SingletonManager.Get<LevelController>().CheckCompletionRate());
     }
