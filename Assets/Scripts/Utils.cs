@@ -65,4 +65,11 @@ public static class Utils
         position.z = z;
         transform.position = position;
     }
+
+    public static void SetX(this Transform transform, float x)
+    {
+        var position = transform.position;
+        position.x = x;
+        transform.position = position;
+    }
 }

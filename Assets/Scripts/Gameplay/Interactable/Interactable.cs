@@ -8,6 +8,8 @@ public abstract class Interactable : MonoBehaviour
 
     private static LevelController _controller;
 
+    private static SoundManager _soundManager;
+
     static protected Camera MainCamera
     {
         get
@@ -33,6 +35,19 @@ public abstract class Interactable : MonoBehaviour
             return _controller;
         }
     }
+
+    protected static SoundManager SoundManager
+    {
+        get
+        {
+            if (_soundManager == null)
+            {
+                _soundManager = SingletonManager.Get<SoundManager>();
+            }
+
+            return _soundManager;
+        }
+    }
     #endregion
 
     public UnityEvent OnPointerDown;
@@ -50,7 +65,7 @@ public abstract class Interactable : MonoBehaviour
             return;
         }
 
-        SingletonManager.Get<SoundManager>()?.PlayOnInteract();
+        SoundManager?.PlayOnInteract();
         LastMousePosition = MainCamera.ScreenToWorldPoint(Input.mousePosition);
         OnPointerDown?.Invoke();
     }
@@ -87,7 +102,7 @@ public abstract class Interactable : MonoBehaviour
 
     protected virtual void OnDoneInteract()
     {
-        SingletonManager.Get<SoundManager>()?.PlayDoneInteract();
+        SoundManager?.PlayDoneInteract();
         Controller.CheckCompletionRate();
     }
 

@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEditor;
 
-[CustomEditor(typeof(Interactable), true)]
+[CustomEditor(typeof(Interactable), true), CanEditMultipleObjects]
 public class InteractableEditor : Editor
 {
     private static readonly string[] EventProperties = new[] { "OnPointerDown", "OnPointerDrag", "OnPointerUp" };

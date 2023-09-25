@@ -11,11 +11,11 @@ public class Movable : Interactable
     [Min(0)]
     public float SnapDistance = 0.1f;
 
-    private Vector3 _originalScale;
+    protected Vector3 OriginalScale;
 
-    protected void Start()
+    protected virtual void Start()
     {
-        _originalScale = transform.localScale;
+        OriginalScale = transform.localScale;
     }
 
     protected override void OnMouseDown()
@@ -27,7 +27,7 @@ public class Movable : Interactable
 
         base.OnMouseDown();
         DOTween.Kill(transform, complete: true);
-        transform.DOScale(_originalScale + OffsetScaleOnDrag, 0.15f);
+        transform.DOScale(OriginalScale + OffsetScaleOnDrag, 0.15f);
         transform.Translate(0, 0, -0.5f);
     }
 
@@ -53,7 +53,7 @@ public class Movable : Interactable
             transform.DOLocalMove(Vector3.zero, 0.15f);
         }
 
-        transform.DOScale(_originalScale, 0.15f);
+        transform.DOScale(OriginalScale, 0.15f);
         transform.Translate(0, 0, 0.5f);
     }
 
