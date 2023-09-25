@@ -58,4 +58,11 @@ public static class Utils
 
         return value;
     }
+
+    public static void SetZ(this Transform transform, float z)
+    {
+        var position = transform.position;
+        position.z = z;
+        transform.position = position;
+    }
 }

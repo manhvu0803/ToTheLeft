@@ -16,7 +16,7 @@ public abstract class Slot : MonoBehaviour
         }
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         Renderer.enabled = false;
         _originalAlpha = Renderer.color.a;

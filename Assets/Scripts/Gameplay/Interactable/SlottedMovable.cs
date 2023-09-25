@@ -38,7 +38,6 @@ public class SlottedMovable : Movable
 
         if (hit.collider != null && hit.collider.TryGetComponent(out slot))
         {
-            Controller.UpdateSlot(transform, slot.transform, true);
             slot.Show();
         }
 
@@ -63,7 +62,7 @@ public class SlottedMovable : Movable
         var hit = Raycast();
         var hitTransform = (hit.collider != null) ? hit.collider.transform : null;
         var isSlotEmpty = Controller.UpdateSlot(transform, hitTransform);
-        SingletonManager.Get<SoundManager>().PlayDoneInteract();
+        SingletonManager.Get<SoundManager>()?.PlayDoneInteract();
 
         if (isSlotEmpty && hitTransform != null)
         {

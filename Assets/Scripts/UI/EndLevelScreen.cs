@@ -1,15 +1,20 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using UnityEngine.UI;
 
 public class EndLevelScreen : MonoBehaviour
 {
     [SerializeField]
     private CanvasGroup _canvasGroup;
 
+    [SerializeField]
+    private Button _continueButton;
+
     private void OnValidate()
     {
         this.Fill(ref _canvasGroup);
+        this.FillFromChildren(ref _continueButton);
     }
 
     private IEnumerator Start()
@@ -28,10 +33,12 @@ public class EndLevelScreen : MonoBehaviour
     {
         _canvasGroup.alpha = 1;
         _canvasGroup.gameObject.SetActive(true);
+        _continueButton.interactable = true;
     }
 
     private void Disappear()
     {
+        _continueButton.interactable = false;
         _canvasGroup.DOFade(0, 0.5f)
             .OnComplete(() => gameObject.SetActive(false));
     }

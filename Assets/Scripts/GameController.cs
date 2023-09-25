@@ -29,7 +29,6 @@ public class GameController : MonoBehaviour
 
     public UnityEvent OnLoadingLevelComplete;
 
-    [field: SerializeField]
     public int Progress { get; private set; }
 
     private int _levelIndex = -1;
