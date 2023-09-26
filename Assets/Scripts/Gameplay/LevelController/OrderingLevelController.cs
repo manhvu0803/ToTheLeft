@@ -27,6 +27,8 @@ public class OrderingLevelController : LevelController
 
     public float Spacing = 0.1f;
 
+    public bool ControlYPosition = true;
+
     [SerializeField]
     private PushOutMovable[] _targets;
 
@@ -85,8 +87,12 @@ public class OrderingLevelController : LevelController
             target.OnPointerDown.AddListener(() => OnStartMoving(target));
             target.OnPointerDrag.AddListener(OnMove);
             target.OnPointerUp.AddListener(OnDoneMove);
-            target.transform.position = transform.position;
             _totalSize += target.Bounds.size.x;
+
+            if (ControlYPosition)
+            {
+                target.transform.position = transform.position;
+            }
         }
 
         _currentTargets[0].transform.SetX(transform.position.x - _totalSize / 2 + _currentTargets[0].Bounds.extents.x);
@@ -143,7 +149,14 @@ public class OrderingLevelController : LevelController
             restPosition.x = transform.position.x - _totalSize / 2 + CurrentTarget.Bounds.extents.x;
         }
 
-        CurrentTarget.transform.DOMove(restPosition, 0.15f);
+        if (ControlYPosition)
+        {
+            CurrentTarget.transform.DOMove(restPosition, 0.15f);
+        }
+        else
+        {
+            CurrentTarget.transform.DOMoveX(restPosition.x, 0.15f);
+        }
     }
 
     private void Swap(ref int index, float positionX, int dir)

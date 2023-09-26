@@ -3,6 +3,8 @@ using UnityEngine;
 
 public static class Utils
 {
+    public delegate void SetAction(ref Vector3 vector);
+
     public static void Fill<T>(this Component component, ref T target) where T : Component
     {
         if (target == null)
@@ -59,17 +61,24 @@ public static class Utils
         return value;
     }
 
-    public static void SetZ(this Transform transform, float z)
-    {
-        var position = transform.position;
-        position.z = z;
-        transform.position = position;
-    }
-
     public static void SetX(this Transform transform, float x)
     {
         var position = transform.position;
         position.x = x;
+        transform.position = position;
+    }
+
+    public static void SetY(this Transform transform, float y)
+    {
+        var position = transform.position;
+        position.y = y;
+        transform.position = position;
+    }
+
+    public static void SetZ(this Transform transform, float z)
+    {
+        var position = transform.position;
+        position.z = z;
         transform.position = position;
     }
 }

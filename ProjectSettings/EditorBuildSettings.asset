@@ -35,4 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level9_TomatoCan.unity
     guid: 08416a211af51c14ab29549be57ff48f
+  - enabled: 1
+    path: Assets/Scenes/Level10_StackPaper.unity
+    guid: a6c184e3a0035ac48a839b9bbe12d9c3
+  - enabled: 1
+    path: Assets/Scenes/Level11_Books2.unity
+    guid: da79025a5247bb441a2b0e140b900bec
+  - enabled: 1
+    path: Assets/Scenes/Level13_Spoons.unity
+    guid: 06bd65f3e9de70d49a41fc5a51b33b7c
   m_configObjects: {}

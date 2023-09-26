@@ -6,12 +6,30 @@ public class StackLevelController : SlotLevelController
     [SerializeField]
     private Transform[] _targets;
 
-    protected readonly Dictionary<Transform, HashSet<Transform>> OccupantMap = new();
+    // Use list to allow removing any item at any time
+    protected readonly Dictionary<Transform, List<Transform>> OccupantMap = new();
 
     protected readonly Dictionary<Transform, Transform> SlotMap = new();
 
+    protected readonly Dictionary<Transform, int> Positions = new();
+
+    protected override void Start()
+    {
+        base.Start();
+
+        for (int i = 0; i < _targets.Length; ++i)
+        {
+            Positions[_targets[i]] = i;
+        }
+    }
+
     public override bool UpdateSlot(Transform target, Transform slotTransform, bool isInteracting = false)
     {
+        if (!Positions.TryGetValue(target, out var targetCurrentPosition))
+        {
+            return false;
+        }
+
         if (isInteracting)
         {
             return false;
@@ -31,8 +49,14 @@ public class StackLevelController : SlotLevelController
         {
             if (!OccupantMap.TryGetValue(slotTransform, out occupants))
             {
-                occupants = new HashSet<Transform>();
+                occupants = new List<Transform>();
                 OccupantMap.Add(slotTransform, occupants);
+            }
+
+            // If the object current top obbject in the stack is smaller (has higher correct position) than the current added object
+            if (occupants.Count > 0 && Positions[occupants[^1]] > targetCurrentPosition)
+            {
+                return false;
             }
 
             foreach (var occupant in occupants)
