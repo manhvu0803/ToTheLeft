@@ -45,6 +45,7 @@ public class FreeSlotLevelController : SlotLevelController
         if (SlotMap.TryGetValue(target, out var oldSlot) && oldSlot != null)
         {
             OccupantMap[oldSlot] = null;
+            target.Translate(0, 0, -0.5f);
         }
 
         if (slot != null)

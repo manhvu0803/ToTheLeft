@@ -1701,6 +1701,10 @@ MonoBehaviour:
   - Scenes/Level7_PostIt3x3
   - Scenes/Level8_Food
   - Scenes/Level9_TomatoCan
+  - Scenes/Level10_StackPaper
+  - Scenes/Level11_Books2
+  - Scenes/Level12_Pencil2
+  - Scenes/Level13_Spoons
   OnLevelComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -1710,7 +1714,6 @@ MonoBehaviour:
   OnLoadingLevelComplete:
     m_PersistentCalls:
       m_Calls: []
-  <Progress>k__BackingField: 0
 --- !u!4 &607677720
 Transform:
   m_ObjectHideFlags: 0

@@ -25,19 +25,16 @@ public class StackLevelController : SlotLevelController
 
     public override bool UpdateSlot(Transform target, Transform slotTransform, bool isInteracting = false)
     {
-        if (!Positions.TryGetValue(target, out var targetCurrentPosition))
+        if (isInteracting || !Positions.TryGetValue(target, out var targetCurrentPosition))
         {
             return false;
         }
 
-        if (isInteracting)
-        {
-            return false;
-        }
-
+        // The target is removed from the stack
         if (SlotMap.TryGetValue(target, out var oldSlot) && oldSlot != null && OccupantMap.TryGetValue(oldSlot, out var occupants))
         {
             occupants.Remove(target);
+            target.Translate(0, 0, -0.5f);
 
             foreach (var occupant in occupants)
             {

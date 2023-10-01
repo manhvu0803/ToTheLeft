@@ -20,11 +20,6 @@ public class FakeRotatable : Interactable
 
     public float Offset => _mainSprite.transform.localPosition.x;
 
-    private void SetExtraSpritePosition(int side)
-    {
-        _extraSprite.transform.position = _mainSprite.transform.position + side * new Vector3(_mainSprite.bounds.size.x, 0);
-    }
-
     private void Start()
     {
         _mainSprite = Instantiate(_spritePrefab, transform);
@@ -33,22 +28,13 @@ public class FakeRotatable : Interactable
         var position = _mainSprite.transform.localPosition;
         position.x = InitialOffset;
         _mainSprite.transform.localPosition = position;
-
-        SetExtraSpritePosition(1);
+        SetExtraSpritePosition();
     }
 
     protected override void OnInteract(Vector3 delta, Vector3 currentMousePosition)
     {
         _mainSprite.transform.Translate(delta.x, 0, 0);
-
-        if (_mainSprite.transform.localPosition.x < 0)
-        {
-            SetExtraSpritePosition(1);
-        }
-        else
-        {
-            SetExtraSpritePosition(-1);
-        }
+        SetExtraSpritePosition();
 
         if (Mathf.Abs(_extraSprite.transform.localPosition.x) < Mathf.Abs(_mainSprite.transform.localPosition.x))
         {
@@ -65,8 +51,20 @@ public class FakeRotatable : Interactable
         }
 
         _mainSprite.transform.DOLocalMoveX(0, 0.15f)
-            .OnUpdate(() => SetExtraSpritePosition(1))
+            .OnUpdate(SetExtraSpritePosition)
             .OnComplete(base.OnDoneInteract);
+    }
+
+    private void SetExtraSpritePosition()
+    {
+        var side = -1;
+
+        if (_mainSprite.transform.localPosition.x < 0)
+        {
+            side = 1;
+        }
+
+        _extraSprite.transform.position = _mainSprite.transform.position + side * new Vector3(_mainSprite.bounds.size.x, 0);
     }
 
     private void OnDestroy()

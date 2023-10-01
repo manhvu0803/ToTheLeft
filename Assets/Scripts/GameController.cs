@@ -37,6 +37,8 @@ public class GameController : MonoBehaviour
     {
         _instance = this;
         Progress = PlayerPrefs.GetInt("progress", 0);
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
     }
 
     public void LoadLevel(int level)
@@ -134,6 +136,8 @@ public class GameController : MonoBehaviour
 
             _levels.Add(path.ToString());
         }
+
+        EditorUtility.SetDirty(this);
     }
 #endif
 }

@@ -26,6 +26,8 @@ public class SlottedMovable : Movable
     }
     #endregion
 
+    public bool SnapToSlot = true;
+
     public bool RotateOnMouseUp = true;
 
     private Slot _lastShowedSlot;
@@ -67,8 +69,16 @@ public class SlottedMovable : Movable
         if (isSlotEmpty && hitTransform != null)
         {
             var position = hitTransform.position - new Vector3(0, 0, 0.5f);
-            transform.DOMove(position, 0.15f)
-                .OnComplete(() => Controller.CheckCompletionRate());
+
+            if (SnapToSlot)
+            {
+                transform.DOMove(position, 0.15f)
+                    .OnComplete(() => Controller.CheckCompletionRate());
+            }
+            else
+            {
+                Controller.CheckCompletionRate();
+            }
 
             if (RotateOnMouseUp)
             {
