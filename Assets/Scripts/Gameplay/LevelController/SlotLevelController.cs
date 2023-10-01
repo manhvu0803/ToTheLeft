@@ -10,7 +10,7 @@ public abstract class SlotLevelController : LevelController
 
     protected readonly Dictionary<Transform, Slot> SlotTransforms = new();
 
-    protected void OnValidate()
+    protected virtual void OnValidate()
     {
         Utils.Fill(ref Slots);
     }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public abstract class Slot : MonoBehaviour
 {
+    public bool HideRenderer = true;
+
     [field: SerializeField]
     public SpriteRenderer Renderer { get; private set; }
 
@@ -18,6 +20,11 @@ public abstract class Slot : MonoBehaviour
 
     protected virtual void Start()
     {
+        if (!HideRenderer)
+        {
+            return;
+        }
+
         Renderer.enabled = false;
         _originalAlpha = Renderer.color.a;
 
@@ -28,14 +35,20 @@ public abstract class Slot : MonoBehaviour
 
     public void Show()
     {
-        Renderer.enabled = true;
-        Renderer.DOFade(_originalAlpha, 0.2f);
+        if (HideRenderer)
+        {
+            Renderer.enabled = true;
+            Renderer.DOFade(_originalAlpha, 0.2f);
+        }
     }
 
     public void Hide()
     {
-        Renderer.DOFade(0, 0.2f)
-            .OnComplete(() => Renderer.enabled = false);
+        if (HideRenderer)
+        {
+            Renderer.DOFade(0, 0.2f)
+                .OnComplete(() => Renderer.enabled = false);
+        }
     }
 
     private void OnDestroy()

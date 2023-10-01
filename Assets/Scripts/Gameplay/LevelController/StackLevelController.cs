@@ -6,7 +6,7 @@ public class StackLevelController : SlotLevelController
     [SerializeField]
     private Transform[] _targets;
 
-    // Use list to allow removing any item at any time
+    // Use List instead of HashSet to keep track of the order
     protected readonly Dictionary<Transform, List<Transform>> OccupantMap = new();
 
     protected readonly Dictionary<Transform, Transform> SlotMap = new();

@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip OnDoneInteractClip;
 
+    public AudioClip OnLevelCompleteClip;
+
     private Queue<AudioSource> _sourcePool;
 
     private void Awake()
@@ -52,5 +54,10 @@ public class SoundManager : MonoBehaviour
     public void PlayDoneInteract()
     {
         Play(OnDoneInteractClip);
+    }
+
+    public void PlayLevelComplete()
+    {
+        Play(OnLevelCompleteClip);
     }
 }

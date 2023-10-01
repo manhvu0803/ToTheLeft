@@ -31,16 +31,16 @@ public abstract class LevelController : MonoBehaviour
 
         if (1 - completionRate <= Epsilon)
         {
+            print("Win");
             StartCoroutine(WinCorountine());
         }
     }
 
     private IEnumerator WinCorountine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2);
 
         enabled = false;
-        print("Win");
 
         if (GameController.Instance != null)
         {
