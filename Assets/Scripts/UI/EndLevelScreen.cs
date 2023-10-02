@@ -19,7 +19,7 @@ public class EndLevelScreen : MonoBehaviour
 
     private IEnumerator Start()
     {
-        GameController.Instance.OnLevelComplete.AddListener(Appear);
+        GameController.Instance.OnLevelComplete.AddListener(DelayedAppear);
         GameController.Instance.OnLoadingNextLevel.AddListener(Disappear);
 
         // DOTween need this to be able to smoothly rewinded the 1st time
@@ -29,10 +29,15 @@ public class EndLevelScreen : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void DelayedAppear()
+    {
+        DOVirtual.DelayedCall(3, Appear);
+    }
+
     private void Appear()
     {
+        gameObject.SetActive(true);
         _canvasGroup.alpha = 1;
-        _canvasGroup.gameObject.SetActive(true);
         _continueButton.interactable = true;
     }
 

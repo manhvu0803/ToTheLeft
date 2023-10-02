@@ -26,6 +26,9 @@ public class PushOutMovable : Movable
         _extraRenderer = Instantiate(Renderer, transform);
         _extraRenderer.transform.Translate(0, 0, -0.1f);
         _originalScale = _extraRenderer.transform.localScale;
+
+        // We don't need to show this renderer, just need it to calculate bounds
+        Renderer.enabled = false;
     }
 
     protected override void OnMouseDown()

@@ -32,19 +32,12 @@ public abstract class LevelController : MonoBehaviour
         if (1 - completionRate <= Epsilon)
         {
             print("Win");
-            StartCoroutine(WinCorountine());
-        }
-    }
+            enabled = false;
 
-    private IEnumerator WinCorountine()
-    {
-        yield return new WaitForSeconds(2);
-
-        enabled = false;
-
-        if (GameController.Instance != null)
-        {
-            GameController.Instance.CompleteLevel();
+            if (GameController.Instance != null)
+            {
+                GameController.Instance.CompleteLevel();
+            }
         }
     }
 
