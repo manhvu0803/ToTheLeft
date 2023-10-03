@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour
 
     private int _levelIndex = -1;
 
+    private bool _isCurrentLevelComplete = false;
+
     private void Awake()
     {
         _instance = this;
@@ -54,6 +56,13 @@ public class GameController : MonoBehaviour
 
     public void CompleteLevel()
     {
+        if (_isCurrentLevelComplete)
+        {
+            return;
+        }
+
+        print("Level complete");
+        _isCurrentLevelComplete = true;
         OnLevelComplete?.Invoke();
         Progress = Mathf.Max(_levelIndex + 1, Progress);
         PlayerPrefs.SetInt("progress", Progress);
@@ -102,6 +111,7 @@ public class GameController : MonoBehaviour
             yield return null;
         }
 
+        _isCurrentLevelComplete = false;
         OnLoadingLevelComplete?.Invoke();
     }
 

@@ -31,7 +31,6 @@ public abstract class LevelController : MonoBehaviour
 
         if (1 - completionRate <= Epsilon)
         {
-            print("Win");
             enabled = false;
 
             if (GameController.Instance != null)

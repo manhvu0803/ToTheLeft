@@ -1708,6 +1708,9 @@ MonoBehaviour:
   - Scenes/Level14_PostIt5x3
   - Scenes/Level15_ToyBasket
   - Scenes/Level16_Books3
+  - Scenes/Level17_PickleJars
+  - Scenes/Level18_PastaNoodle
+  - Scenes/Level19_Shells
   OnLevelComplete:
     m_PersistentCalls:
       m_Calls:
