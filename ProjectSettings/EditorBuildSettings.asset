@@ -65,4 +65,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level19_Shells.unity
     guid: 40f65b13609d5614f8424fd42ce5d036
+  - enabled: 1
+    path: Assets/Scenes/Level20_Buttons.unity
+    guid: cd09bffce7e62be47af7614bbca71d26
+  - enabled: 1
+    path: Assets/Scenes/Level21_DirtyCoins.unity
+    guid: 9c6274dc2d091354da8b15e4d59d6fa0
   m_configObjects: {}

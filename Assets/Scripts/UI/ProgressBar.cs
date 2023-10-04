@@ -24,7 +24,8 @@ public class ProgressBar : MonoBehaviour
     {
         if (_text != null)
         {
-            _text.text = $"[{progress * 100:N0}%]";
+            print(progress);
+            _text.text = $"[{Mathf.RoundToInt(progress * 100)}%]";
         }
 
         _slider.DOValue(progress, 1)

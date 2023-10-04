@@ -1,10 +1,9 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class LevelController : MonoBehaviour
 {
-    private static readonly float Epsilon = 0.01f;
+    private static readonly float Epsilon = 0.0001f;
 
     public UnityEvent<float> OnCompletionRateChanged;
 
