@@ -24,7 +24,6 @@ public class ProgressBar : MonoBehaviour
     {
         if (_text != null)
         {
-            print(progress);
             _text.text = $"[{Mathf.RoundToInt(progress * 100)}%]";
         }
 
