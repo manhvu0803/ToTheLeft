@@ -72,16 +72,16 @@ public class FreeSlotLevelController : SlotLevelController
 
     public override float CompletionRate()
     {
-        var wrongSlotCount = 0;
+        var correctSlotCount = 0;
 
         foreach (var slot in Slots)
         {
-            if (!OccupantMap.TryGetValue(slot.transform, out var occupant) || !slot.IsTarget(occupant))
+            if (OccupantMap.TryGetValue(slot.transform, out var occupant) && slot.IsTarget(occupant))
             {
-                wrongSlotCount++;
+                correctSlotCount++;
             }
         }
 
-        return 1 - (float)wrongSlotCount / Slots.Length;
+        return (float)correctSlotCount / Slots.Length;
     }
 }

@@ -54,17 +54,11 @@ public class SlottedMovable : Movable
     protected override void OnDoneInteract()
     {
         SnapAndReturn();
-
-        if (_lastShowedSlot != null)
-        {
-            _lastShowedSlot.Hide();
-            _lastShowedSlot = null;
-        }
+        HideShadow();
 
         var hit = Raycast();
         var hitTransform = (hit.collider != null) ? hit.collider.transform : null;
         var isSlotEmpty = Controller.UpdateSlot(transform, hitTransform);
-        SoundManager?.PlayDoneInteract();
 
         if (isSlotEmpty && hitTransform != null)
         {
@@ -94,5 +88,15 @@ public class SlottedMovable : Movable
         }
 
         Controller.CheckCompletionRate();
+        SoundManager?.PlayDoneInteract();
+    }
+
+    protected void HideShadow()
+    {
+        if (_lastShowedSlot != null)
+        {
+            _lastShowedSlot.Hide();
+            _lastShowedSlot = null;
+        }
     }
 }

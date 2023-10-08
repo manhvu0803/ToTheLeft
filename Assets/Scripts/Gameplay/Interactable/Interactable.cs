@@ -23,7 +23,7 @@ public abstract class Interactable : MonoBehaviour
         }
     }
 
-    protected static LevelController Controller
+    protected static LevelController LevelController
     {
         get
         {
@@ -103,7 +103,7 @@ public abstract class Interactable : MonoBehaviour
     protected virtual void OnDoneInteract()
     {
         SoundManager?.PlayDoneInteract();
-        Controller.CheckCompletionRate();
+        LevelController.CheckCompletionRate();
     }
 
     protected virtual void OnInteract(Vector3 delta, Vector3 currentMousePosition) { }
