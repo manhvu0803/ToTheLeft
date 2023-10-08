@@ -71,4 +71,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level21_DirtyCoins.unity
     guid: 9c6274dc2d091354da8b15e4d59d6fa0
+  - enabled: 1
+    path: Assets/Scenes/Level22_CatPictures.unity
+    guid: 026fc4344ef39274fa76ba7ad841ae24
+  - enabled: 1
+    path: Assets/Scenes/Level23_PostItCircle.unity
+    guid: d27f59583ed2f6943a58c54f778544f6
+  - enabled: 1
+    path: Assets/Scenes/Level24_OrderedRocks.unity
+    guid: e689307777012a94b90985112605adb0
+  - enabled: 1
+    path: Assets/Scenes/Level25_Clovers.unity
+    guid: d20d7dade8e4a1847a1b6f00a2eba7f0
   m_configObjects: {}
