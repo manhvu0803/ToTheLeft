@@ -7,27 +7,14 @@ using UnityEngine;
 
 public class OrderingLevelController : LevelController
 {
-    private static int CompareX(Component a, Component b)
-    {
-        var aX = a.transform.position.x;
-        var bX = b.transform.position.x;
+    [Serializable]
+    public enum Axis { X, Y, Z };
 
-        if (aX < bX)
-        {
-            return -1;
-        }
+    public bool ControlFullPosition = true;
 
-        if (bX < aX)
-        {
-            return 1;
-        }
-
-        return 0;
-    }
+    public Axis CompareAxis = Axis.X;
 
     public float Spacing = 0.1f;
-
-    public bool ControlYPosition = true;
 
     [SerializeField]
     private PushOutMovable[] _targets;
@@ -43,6 +30,52 @@ public class OrderingLevelController : LevelController
     private PushOutMovable CurrentRight => _currentTargets[_currentIndex + 1];
 
     private float _totalSize;
+
+    private float GetValue(Vector3 vector)
+    {
+        return CompareAxis switch
+        {
+            Axis.X => vector.x,
+            Axis.Y => vector.y,
+            _ => vector.z
+        };
+    }
+
+    private Vector3 NewValue(Vector3 vector3, float value)
+    {
+        switch (CompareAxis)
+        {
+            case Axis.X:
+                vector3.x = value;
+                break;
+            case Axis.Y:
+                vector3.y = value;
+                break;
+            default:
+                vector3.z = value;
+                break;
+        }
+
+        return vector3;
+    }
+
+    private int Compare(Component a, Component b)
+    {
+        var valueA = GetValue(a.transform.position);
+        var valueB = GetValue(b.transform.position) ;
+
+        if (valueA < valueB)
+        {
+            return -1;
+        }
+
+        if (valueB < valueA)
+        {
+            return 1;
+        }
+
+        return 0;
+    }
 
 #if UNITY_EDITOR
     protected void OnDrawGizmos()
@@ -79,7 +112,7 @@ public class OrderingLevelController : LevelController
     {
         _currentTargets = new PushOutMovable[_targets.Length];
         _targets.CopyTo(_currentTargets, 0);
-        Array.Sort(_currentTargets, CompareX);
+        Array.Sort(_currentTargets, Compare);
         _totalSize = (_targets.Length - 1) * Spacing;
 
         foreach (var target in _targets)
@@ -87,20 +120,23 @@ public class OrderingLevelController : LevelController
             target.OnPointerDown.AddListener(() => OnStartMoving(target));
             target.OnPointerDrag.AddListener(OnMove);
             target.OnPointerUp.AddListener(OnDoneMove);
-            _totalSize += target.Bounds.size.x;
+            _totalSize += GetValue(target.Bounds.size);
 
-            if (ControlYPosition)
+            if (ControlFullPosition)
             {
                 target.transform.position = transform.position;
             }
         }
 
-        _currentTargets[0].transform.SetX(transform.position.x - _totalSize / 2 + _currentTargets[0].Bounds.extents.x);
+        var firstTransform = _currentTargets[0].transform;
+        var position = NewValue(firstTransform.position, GetValue(transform.position) - _totalSize / 2 + GetValue(_currentTargets[0].Bounds.extents));
+        firstTransform.position = position;
 
         for (int i = 1; i < _currentTargets.Length; ++i)
         {
             var current = _currentTargets[i];
-            current.transform.SetX(_currentTargets[i - 1].Bounds.max.x + Spacing + current.Bounds.extents.x);
+            position = NewValue(current.transform.position, GetValue(_currentTargets[i - 1].Bounds.max) + Spacing + GetValue(current.Bounds.extents));
+            current.transform.position = position;
         }
     }
 
@@ -120,50 +156,67 @@ public class OrderingLevelController : LevelController
 
     private void OnMove()
     {
-        var spaceNeeded = CurrentTarget.Bounds.size.x + Spacing;
+        var spaceNeeded = GetValue(CurrentTarget.Bounds.size) + Spacing;
 
-        if (_currentIndex > 0 && CompareX(CurrentTarget, CurrentLeft) < 0)
+        if (_currentIndex > 0 && Compare(CurrentTarget, CurrentLeft) < 0)
         {
-            var x = CurrentLeft.Bounds.min.x + spaceNeeded + CurrentLeft.Bounds.extents.x;
-            Swap(ref _currentIndex, x, -1);
+            var position = GetValue(CurrentLeft.Bounds.min) + spaceNeeded + GetValue(CurrentLeft.Bounds.extents);
+            Swap(ref _currentIndex, position, -1);
             return;
         }
 
-        if (_currentIndex < _currentTargets.Length - 1 && CompareX(CurrentTarget, CurrentRight) > 0)
+        if (_currentIndex < _currentTargets.Length - 1 && Compare(CurrentTarget, CurrentRight) > 0)
         {
-            var x = CurrentRight.Bounds.max.x - spaceNeeded - CurrentRight.Bounds.extents.x;
-            Swap(ref _currentIndex, x, 1);
+            var position = GetValue(CurrentRight.Bounds.max) - spaceNeeded - GetValue(CurrentRight.Bounds.extents);
+            Swap(ref _currentIndex, position, 1);
         }
     }
 
     private void OnDoneMove()
     {
-        var restPosition = transform.position;
+        float restPosition;
 
         if (_currentIndex > 0)
         {
-            restPosition.x = CurrentLeft.Bounds.max.x + Spacing + CurrentTarget.Bounds.extents.x;
+            restPosition = GetValue(CurrentLeft.Bounds.max) + Spacing + GetValue(CurrentTarget.Bounds.extents);
         }
         else
         {
-            restPosition.x = transform.position.x - _totalSize / 2 + CurrentTarget.Bounds.extents.x;
+            restPosition = GetValue(transform.position) - _totalSize / 2 + GetValue(CurrentTarget.Bounds.extents);
         }
 
-        if (ControlYPosition)
+        if (ControlFullPosition)
         {
-            CurrentTarget.transform.DOMove(restPosition, 0.15f);
+            var position = NewValue(transform.position, restPosition);
+            CurrentTarget.transform.DOMove(position, 0.15f);
         }
         else
         {
-            CurrentTarget.transform.DOMoveX(restPosition.x, 0.15f);
+            DoMove(CurrentTarget.transform, restPosition);
         }
     }
 
-    private void Swap(ref int index, float positionX, int dir)
+    private void Swap(ref int index, float position, int dir)
     {
         (_currentTargets[index], _currentTargets[index + dir]) = (_currentTargets[index + dir], _currentTargets[index]);
-        _currentTargets[index].transform.DOMoveX(positionX, 0.15f);
+        DoMove(_currentTargets[index].transform, position);
         index += dir;
+    }
+
+    private void DoMove(Transform target, float position)
+    {
+        switch (CompareAxis)
+        {
+            case Axis.X:
+                target.DOMoveX(position, 0.15f);
+                break;
+            case Axis.Y:
+                target.DOMoveY(position, 0.15f);
+                break;
+            case Axis.Z:
+                target.DOMoveZ(position, 0.15f);
+                break;
+        }
     }
 
     public override float CompletionRate()

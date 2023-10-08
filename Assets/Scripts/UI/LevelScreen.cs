@@ -26,7 +26,11 @@ public class LevelScreen : MonoBehaviour
 
     private void OnEnable()
     {
+#if TEST_BUILD
+        var limit = _buttons.Count;
+#else
         var limit = Math.Min(GameController.Instance.Progress + 1, _buttons.Count);
+#endif
 
         for (int i = 0; i < limit; ++i)
         {

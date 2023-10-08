@@ -8,14 +8,21 @@ public class Movable : Interactable
 
     public Vector2 MaxLocalOffset = new(100, 100);
 
+    [Tooltip("Is MaxLocalOffset absolute?")]
+    public bool IsOffsetAbsolute = true;
+
     [Min(0)]
     public float SnapDistance = 0.1f;
 
     protected Vector3 OriginalScale;
 
+    /// <summary>Starting local position</summary>
+    private Vector3 _originalPosition;
+
     protected virtual void Start()
     {
         OriginalScale = transform.localScale;
+        _originalPosition = transform.localPosition;
     }
 
     protected override void OnMouseDown()
@@ -35,8 +42,18 @@ public class Movable : Interactable
     {
         transform.Translate(delta.x, delta.y, 0, Space.World);
         var position = transform.localPosition;
-        position.x = Mathf.Clamp(position.x, -MaxLocalOffset.x, MaxLocalOffset.x);
-        position.y = Mathf.Clamp(position.y, -MaxLocalOffset.y, MaxLocalOffset.y);
+
+        if (IsOffsetAbsolute)
+        {
+            position.x = Mathf.Clamp(position.x, -MaxLocalOffset.x, MaxLocalOffset.x);
+            position.y = Mathf.Clamp(position.y, -MaxLocalOffset.y, MaxLocalOffset.y);
+        }
+        else
+        {
+            position.x = Mathf.Clamp(position.x, _originalPosition.x - MaxLocalOffset.x, _originalPosition.x + MaxLocalOffset.x);
+            position.y = Mathf.Clamp(position.y, _originalPosition.y - MaxLocalOffset.y, _originalPosition.y + MaxLocalOffset.y);
+        }
+
         transform.localPosition = position;
     }
 
