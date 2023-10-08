@@ -1163,8 +1163,9 @@ MonoBehaviour:
   OnCompletionRateChanged:
     m_PersistentCalls:
       m_Calls: []
+  ControlFullPosition: 0
+  CompareAxis: 0
   Spacing: 0.001
-  ControlYPosition: 0
   _targets:
   - {fileID: 1921761847}
   - {fileID: 605893666}
