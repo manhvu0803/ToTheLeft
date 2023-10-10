@@ -1714,6 +1714,12 @@ MonoBehaviour:
   - Scenes/Level20_Buttons
   - Scenes/Level21_DirtyCoins
   - Scenes/Level22_CatPictures
+  - Scenes/Level23_PostItCircle
+  - Scenes/Level24_OrderedRocks
+  - Scenes/Level25_Clovers
+  - Scenes/Level26_Bowl
+  - Scenes/Level27_DirtyFloor
+  - Scenes/Level28_StackCoin
   OnLevelComplete:
     m_PersistentCalls:
       m_Calls:

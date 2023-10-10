@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Level9Controller : LevelController
+public class FakeRotateLevelController : LevelController
 {
     public float SnapDistance = 0.6f
     ;

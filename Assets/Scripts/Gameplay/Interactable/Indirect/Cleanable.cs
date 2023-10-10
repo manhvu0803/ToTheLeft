@@ -9,33 +9,33 @@ public class Cleanable : IndirectInteractable
     public float InteractLevel = 0.01f;
 
     [SerializeField]
-    private SpriteRenderer _spriteRenderer;
+    protected SpriteRenderer SpriteRenderer;
 
-    private float _cleanLevel;
+    protected float CleanLevel;
 
     protected virtual void OnValidate()
     {
-        this.FillFromChildren(ref _spriteRenderer);
+        this.FillFromChildren(ref SpriteRenderer);
     }
 
     protected virtual void Start()
     {
-        _cleanLevel = InitialCleanLevel;
+        CleanLevel = InitialCleanLevel;
         UpdateRenderer();
     }
 
     public override void Interact()
     {
-        _cleanLevel = Mathf.Min(1, _cleanLevel + InteractLevel);
+        CleanLevel = Mathf.Min(1, CleanLevel + InteractLevel);
         SingletonManager.Get<LevelController>().CheckCompletionRate();
         SingletonManager.Get<SoundManager>()?.PlayOnInteract();
         UpdateRenderer();
     }
 
-    private void UpdateRenderer()
+    protected virtual void UpdateRenderer()
     {
-        _spriteRenderer.color = new Color(_cleanLevel, _cleanLevel, _cleanLevel);
+        SpriteRenderer.color = new Color(CleanLevel, CleanLevel, CleanLevel);
     }
 
-    public override float CompletionRate => _cleanLevel;
+    public override float CompletionRate => CleanLevel;
 }
