@@ -1,8 +1,19 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FreeSlotLevelController : SlotLevelController
 {
+    [Serializable]
+    public struct Pair
+    {
+        public Transform Slot;
+
+        public Transform Target;
+    }
+
+    public Pair[] InitialPairs;
+
     protected readonly Dictionary<Transform, Transform> OccupantMap = new();
 
     protected readonly Dictionary<Transform, Transform> SlotMap = new();
@@ -30,6 +41,16 @@ public class FreeSlotLevelController : SlotLevelController
         }
     }
 #endif
+
+    protected override void Start()
+    {
+        base.Start();
+
+        foreach (var pair in InitialPairs)
+        {
+            UpdateSlot(pair.Target, pair.Slot);
+        }
+    }
 
     /// <summary>
     /// Try to put the target transform into slot and return the result

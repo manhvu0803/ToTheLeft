@@ -1720,6 +1720,9 @@ MonoBehaviour:
   - Scenes/Level26_Bowl
   - Scenes/Level27_DirtyFloor
   - Scenes/Level28_StackCoin
+  - Scenes/Level31_EggCarton
+  - Scenes/Level30_LightBulbs
+  - Scenes/Level29_Stamps
   OnLevelComplete:
     m_PersistentCalls:
       m_Calls:
