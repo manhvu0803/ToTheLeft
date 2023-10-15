@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class PushOutMovable : Movable
 {
+    [field: Header("Push-out movable")]
     [field: SerializeField]
-    public Renderer Renderer { get; private set; }
+    public SpriteRenderer Renderer { get; private set; }
+
+    public Sprite CustomBoundSprite;
 
     public Bounds Bounds => Renderer.bounds;
 
-    private Renderer _extraRenderer;
+    private SpriteRenderer _extraRenderer;
 
     private Vector3 _originalScale;
 
@@ -16,7 +19,7 @@ public class PushOutMovable : Movable
     {
         if (Renderer == null)
         {
-            Renderer = GetComponentInChildren<Renderer>();
+            Renderer = GetComponentInChildren<SpriteRenderer>();
         }
     }
 
@@ -26,6 +29,11 @@ public class PushOutMovable : Movable
         _extraRenderer = Instantiate(Renderer, transform);
         _extraRenderer.transform.Translate(0, 0, -0.1f);
         _originalScale = _extraRenderer.transform.localScale;
+
+        if (CustomBoundSprite != null)
+        {
+            Renderer.sprite = CustomBoundSprite;
+        }
 
         // We don't need to show this renderer, just need it to calculate bounds
         Renderer.enabled = false;

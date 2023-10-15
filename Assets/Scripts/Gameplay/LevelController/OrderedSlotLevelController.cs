@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using System;
 
+[Obsolete]
 public class OrderedSlotLevelController : SlotLevelController
 {
     [SerializeField]
