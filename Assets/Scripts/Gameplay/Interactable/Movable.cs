@@ -14,6 +14,9 @@ public class Movable : Interactable
     [Min(0)]
     public float SnapDistance = 0.1f;
 
+    [SerializeField]
+    private Rigidbody2D _rigidbody;
+
     protected Vector3 OriginalScale;
 
     /// <summary>Starting local position</summary>
@@ -23,6 +26,11 @@ public class Movable : Interactable
     {
         OriginalScale = transform.localScale;
         _originalPosition = transform.localPosition;
+
+        if (_rigidbody != null)
+        {
+            _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        }
     }
 
     protected override void OnMouseDown()
@@ -30,6 +38,11 @@ public class Movable : Interactable
         if (!enabled)
         {
             return;
+        }
+
+        if (_rigidbody != null)
+        {
+            _rigidbody.bodyType = RigidbodyType2D.Kinematic;
         }
 
         base.OnMouseDown();
@@ -65,6 +78,11 @@ public class Movable : Interactable
 
     protected void SnapAndReturn()
     {
+        if (_rigidbody != null)
+        {
+            _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        }
+
         if (((Vector2)transform.localPosition).sqrMagnitude <= SnapDistance * SnapDistance)
         {
             transform.DOLocalMove(Vector3.zero, 0.15f);
