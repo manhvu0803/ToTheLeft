@@ -60,9 +60,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Level17_PickleJars.unity
     guid: 8aa2d017ab11a7a4094875475ab88b0f
   - enabled: 1
-    path: Assets/Scenes/Level32_Keys.unity
-    guid: fe8401c1e1dec7f48bb084b823e622c5
-  - enabled: 1
     path: Assets/Scenes/Level19_Shells.unity
     guid: 40f65b13609d5614f8424fd42ce5d036
   - enabled: 1
@@ -93,12 +90,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Level28_StackCoin.unity
     guid: f58d1f945bbdd744aa8b460e36e59d5f
   - enabled: 1
-    path: Assets/Scenes/Level31_EggCarton.unity
-    guid: 0d864afcde4df5143859eccd45c889c8
+    path: Assets/Scenes/Level29_Stamps.unity
+    guid: c36c55eae15eba04692bfdea667c0dc0
   - enabled: 1
     path: Assets/Scenes/Level30_LightBulbs.unity
     guid: 119a3ccec2fbaef49ac8905cbe178631
   - enabled: 1
-    path: Assets/Scenes/Level29_Stamps.unity
-    guid: c36c55eae15eba04692bfdea667c0dc0
+    path: Assets/Scenes/Level31_EggCarton.unity
+    guid: 0d864afcde4df5143859eccd45c889c8
+  - enabled: 1
+    path: Assets/Scenes/Level32_Keys.unity
+    guid: fe8401c1e1dec7f48bb084b823e622c5
+  - enabled: 1
+    path: Assets/Scenes/Level33_OrganizeStuff.unity
+    guid: c032027769d28144eb33fa77c72eca14
+  - enabled: 1
+    path: Assets/Scenes/Level34_Leaves.unity
+    guid: b105f02ecbc55c440ac4fe409c9a7164
+  - enabled: 1
+    path: Assets/Scenes/Level35_RockCollection.unity
+    guid: 1446bb386d1bcf44793316f64b903095
   m_configObjects: {}
