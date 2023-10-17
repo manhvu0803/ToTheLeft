@@ -60,6 +60,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level17_PickleJars.unity
     guid: 8aa2d017ab11a7a4094875475ab88b0f
   - enabled: 1
+    path: Assets/Scenes/Level18_Pasta.unity
+    guid: e32013f832e6ddc4f88cb47492459420
+  - enabled: 1
     path: Assets/Scenes/Level19_Shells.unity
     guid: 40f65b13609d5614f8424fd42ce5d036
   - enabled: 1
@@ -110,4 +113,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level35_RockCollection.unity
     guid: 1446bb386d1bcf44793316f64b903095
+  - enabled: 1
+    path: Assets/Scenes/Level36_Clocks.unity
+    guid: 7f154560e2484cc49afd011c893f7a7a
+  - enabled: 1
+    path: Assets/Scenes/Level37_Pens.unity
+    guid: f10178d728b01eb4d9d23ee08918bdde
   m_configObjects: {}
