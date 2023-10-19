@@ -5,7 +5,6 @@ using UnityEngine.Events;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System;
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -90,12 +89,8 @@ public class GameController : MonoBehaviour
 
         if (_levelIndex >= 0 && _levelIndex < _levels.Count)
         {
-            var operation = SceneManager.UnloadSceneAsync(_levels[_levelIndex]);
-
-            while (!operation.isDone)
-            {
-                yield return null;
-            }
+            yield return SceneManager.UnloadSceneAsync(_levels[_levelIndex]);
+            yield return Resources.UnloadUnusedAssets();
         }
 
         _levelIndex = level;
@@ -104,13 +99,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator Load(string levelName)
     {
-        var operation = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
-
-        while (!operation.isDone)
-        {
-            yield return null;
-        }
-
+        yield return SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
         _isCurrentLevelComplete = false;
         OnLoadingLevelComplete?.Invoke();
     }
@@ -139,12 +128,8 @@ public class GameController : MonoBehaviour
                 continue;
             }
 
-            var path = scene.path.AsSpan();
-
-            // Remove ".unity" at the end and "Assets/" at the start
-            path = path[..scene.path.IndexOf(".unity")][7..];
-
-            _levels.Add(path.ToString());
+            // Remove "Assets/" at start and ".unity" at the end before adding to list of levels
+            _levels.Add(scene.path[7..scene.path.IndexOf(".unity")]);
         }
 
         EditorUtility.SetDirty(this);
