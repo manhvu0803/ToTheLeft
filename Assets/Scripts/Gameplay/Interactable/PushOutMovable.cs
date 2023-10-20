@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PushOutMovable : Movable
 {
@@ -39,14 +40,14 @@ public class PushOutMovable : Movable
         Renderer.enabled = false;
     }
 
-    protected override void OnMouseDown()
+    public override void OnPointerDown(PointerEventData eventData)
     {
         if (!enabled)
         {
             return;
         }
 
-        base.OnMouseDown();
+        base.OnPointerDown(eventData);
         DOTween.Kill(transform, complete: false);
         DOTween.Kill(_extraRenderer.transform, complete: true);
         _extraRenderer.transform.DOScale(_originalScale + OffsetScaleOnDrag, 0.15f);

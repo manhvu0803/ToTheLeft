@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DragRotatable : Interactable
 {
@@ -7,7 +8,7 @@ public class DragRotatable : Interactable
 
     public float MaxAngle = 90;
 
-    protected override void OnInteract(Vector3 delta, Vector3 currentMousePositon)
+    protected override void OnInteract(Vector3 delta, PointerEventData eventData)
     {
         if (Vector3.Angle(transform.up, Vector3.up) <= SnapAngle)
         {

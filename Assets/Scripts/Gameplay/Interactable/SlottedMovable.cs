@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SlottedMovable : Movable
 {
@@ -32,9 +33,9 @@ public class SlottedMovable : Movable
 
     private Slot _lastShowedSlot;
 
-    protected override void OnInteract(Vector3 delta, Vector3 currentMousePostion)
+    protected override void OnInteract(Vector3 delta, PointerEventData eventData)
     {
-        base.OnInteract(delta, currentMousePostion);
+        base.OnInteract(delta, eventData);
         var hit = Raycast();
         Slot slot = null;
 

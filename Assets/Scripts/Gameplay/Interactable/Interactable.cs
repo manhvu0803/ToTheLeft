@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public abstract class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour, IPointerDownHandler, IPointerMoveHandler, IPointerUpHandler
 {
     #region Static
     static private Camera _mainCamera;
@@ -50,15 +51,15 @@ public abstract class Interactable : MonoBehaviour
     }
     #endregion
 
-    public UnityEvent OnPointerDown;
+    public UnityEvent OnDown;
 
-    public UnityEvent OnPointerDrag;
+    public UnityEvent OnDrag;
 
-    public UnityEvent OnPointerUp;
+    public UnityEvent OnUp;
 
     protected Vector3 LastMousePosition { get; private set; }
 
-    protected virtual void OnMouseDown()
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
         if (!enabled)
         {
@@ -66,30 +67,30 @@ public abstract class Interactable : MonoBehaviour
         }
 
         SoundManager?.PlayOnInteract();
-        LastMousePosition = MainCamera.ScreenToWorldPoint(Input.mousePosition);
-        OnPointerDown?.Invoke();
+        LastMousePosition = eventData.pointerCurrentRaycast.worldPosition;
+        OnDown?.Invoke();
     }
 
-    protected virtual void OnMouseDrag()
+    public virtual void OnPointerMove(PointerEventData eventData)
     {
         if (!enabled)
         {
             return;
         }
 
-        var currentMousePosition = MainCamera.ScreenToWorldPoint(Input.mousePosition);
+        var currentMousePosition = eventData.pointerCurrentRaycast.worldPosition;
         var delta = currentMousePosition - LastMousePosition;
 
         if (delta.sqrMagnitude >= 0.000001f)
         {
-            OnInteract(delta, currentMousePosition);
+            OnInteract(delta, eventData);
         }
 
         LastMousePosition = currentMousePosition;
-        OnPointerDrag?.Invoke();
+        OnDrag?.Invoke();
     }
 
-    protected void OnMouseUp()
+    public void OnPointerUp(PointerEventData eventData)
     {
         if (!enabled)
         {
@@ -97,7 +98,7 @@ public abstract class Interactable : MonoBehaviour
         }
 
         OnDoneInteract();
-        OnPointerUp?.Invoke();
+        OnUp?.Invoke();
     }
 
     protected virtual void OnDoneInteract()
@@ -106,5 +107,5 @@ public abstract class Interactable : MonoBehaviour
         LevelController.CheckCompletionRate();
     }
 
-    protected virtual void OnInteract(Vector3 delta, Vector3 currentMousePosition) { }
+    protected virtual void OnInteract(Vector3 delta, PointerEventData eventData) { }
 }

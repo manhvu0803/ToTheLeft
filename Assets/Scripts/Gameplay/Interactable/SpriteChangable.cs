@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SpriteChangable : Interactable
 {
@@ -19,14 +20,14 @@ public class SpriteChangable : Interactable
         _originalSprite = _spriteRenderer.sprite;
     }
 
-    protected override void OnMouseDown()
+    public override void OnPointerDown(PointerEventData eventData)
     {
         if (!enabled)
         {
             return;
         }
 
-        base.OnMouseDown();
+        base.OnPointerDown(eventData);
         _spriteRenderer.sprite = InteractSprite;
     }
 

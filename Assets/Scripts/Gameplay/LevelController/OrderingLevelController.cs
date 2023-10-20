@@ -75,9 +75,9 @@ public class OrderingLevelController : LevelController
 
         foreach (var target in _targets)
         {
-            target.OnPointerDown.AddListener(() => OnStartMoving(target));
-            target.OnPointerDrag.AddListener(OnMove);
-            target.OnPointerUp.AddListener(OnDoneMove);
+            target.OnDown.AddListener(() => OnStartMoving(target));
+            target.OnDrag.AddListener(OnMove);
+            target.OnUp.AddListener(OnDoneMove);
             _totalSize += GetValue(target.Bounds.size);
 
             if (ControlFullPosition)

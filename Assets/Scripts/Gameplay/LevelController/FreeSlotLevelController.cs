@@ -46,6 +46,12 @@ public class FreeSlotLevelController : SlotLevelController
     {
         base.Start();
 
+        // In case some levels weren't reimported yet
+        if (InitialPairs == null)
+        {
+            return;
+        }
+
         foreach (var pair in InitialPairs)
         {
             UpdateSlot(pair.Target, pair.Slot);

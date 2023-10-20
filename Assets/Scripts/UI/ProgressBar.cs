@@ -15,9 +15,14 @@ public class ProgressBar : MonoBehaviour
     private IEnumerator Start()
     {
         yield return null;
-        var controller = SingletonManager.Get<LevelController>();
-        controller.OnCompletionRateChanged.AddListener(UpdateProgress);
-        UpdateProgress(controller.CompletionRate());
+        GameController.Instance.OnLoadingLevelComplete.AddListener(RegisterToLevel);
+    }
+
+    private void RegisterToLevel()
+    {
+        var levelController = SingletonManager.Get<LevelController>();
+        levelController.OnCompletionRateChanged.AddListener(UpdateProgress);
+        UpdateProgress(levelController.CompletionRate());
     }
 
     public void UpdateProgress(float progress)
@@ -25,6 +30,11 @@ public class ProgressBar : MonoBehaviour
         if (_text != null)
         {
             _text.text = $"[{Mathf.RoundToInt(progress * 100)}%]";
+        }
+
+        if (progress >= 1)
+        {
+            SingletonManager.Get<LevelController>().OnCompletionRateChanged.RemoveListener(UpdateProgress);
         }
 
         _slider.DOValue(progress, 1)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Cleaner : Movable
 {
@@ -8,9 +9,9 @@ public class Cleaner : Movable
 
     private Cleanable _currentCleanable;
 
-    protected override void OnInteract(Vector3 delta, Vector3 currentMousePostion)
+    protected override void OnInteract(Vector3 delta, PointerEventData eventData)
     {
-        base.OnInteract(delta, currentMousePostion);
+        base.OnInteract(delta, eventData);
 
         // The current direction is different from last direction OR this is the first interaction
         if (_lastDirection * delta.x < 0 || _lastDirection == 0)
@@ -20,7 +21,7 @@ public class Cleaner : Movable
 
         if (_currentCleanable == null)
         {
-            var objectCount = Physics2D.RaycastNonAlloc(currentMousePostion, Vector2.zero, hits);
+            var objectCount = Physics2D.RaycastNonAlloc(eventData.pointerPressRaycast.worldPosition, Vector2.zero, hits);
 
             // This does not account for multiple Cleanable bjects in the result
             for (int i = 0; i < objectCount; ++i)

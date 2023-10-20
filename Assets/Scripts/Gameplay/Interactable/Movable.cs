@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Movable : Interactable
 {
@@ -33,7 +34,7 @@ public class Movable : Interactable
         }
     }
 
-    protected override void OnMouseDown()
+    public override void OnPointerDown(PointerEventData eventData)
     {
         if (!enabled)
         {
@@ -45,13 +46,13 @@ public class Movable : Interactable
             _rigidbody.bodyType = RigidbodyType2D.Kinematic;
         }
 
-        base.OnMouseDown();
+        base.OnPointerDown(eventData);
         DOTween.Kill(transform, complete: true);
         transform.DOScale(OriginalScale + OffsetScaleOnDrag, 0.15f);
         transform.Translate(0, 0, -0.5f);
     }
 
-    protected override void OnInteract(Vector3 delta, Vector3 currentMousePostion)
+    protected override void OnInteract(Vector3 delta, PointerEventData eventData)
     {
         transform.Translate(delta.x, delta.y, 0, Space.World);
         var position = transform.localPosition;

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// An Interactable that mimic rotatation on sprites by using 2 masked sprites and move them horizontally
@@ -31,7 +32,7 @@ public class FakeRotatable : Interactable
         SetExtraSpritePosition();
     }
 
-    protected override void OnInteract(Vector3 delta, Vector3 currentMousePosition)
+    protected override void OnInteract(Vector3 delta, PointerEventData eventData)
     {
         _mainSprite.transform.Translate(delta.x, 0, 0);
         SetExtraSpritePosition();

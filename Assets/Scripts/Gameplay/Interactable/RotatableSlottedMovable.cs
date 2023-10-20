@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RotatableSlottedMovable : SlottedMovable
 {
@@ -8,10 +9,10 @@ public class RotatableSlottedMovable : SlottedMovable
 
     private Vector3 _totalDelta = Vector3.zero;
 
-    protected override void OnInteract(Vector3 delta, Vector3 currentMousePostion)
+    protected override void OnInteract(Vector3 delta, PointerEventData eventData)
     {
         _totalDelta += delta;
-        base.OnInteract(delta, currentMousePostion);
+        base.OnInteract(delta, eventData);
     }
 
     protected override void OnDoneInteract()

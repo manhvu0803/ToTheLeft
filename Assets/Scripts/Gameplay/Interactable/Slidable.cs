@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Slidable : Interactable
 {
@@ -12,7 +13,7 @@ public class Slidable : Interactable
 
     private Vector3 _targetPosition;
 
-    protected override void OnInteract(Vector3 delta, Vector3 currentMousePotion)
+    protected override void OnInteract(Vector3 delta, PointerEventData eventData)
     {
         _targetPosition = transform.position + new Vector3(delta.x, delta.y, 0);
         _targetPosition.x = Mathf.Clamp(_targetPosition.x, -MaxOffset.x, MaxOffset.x);
