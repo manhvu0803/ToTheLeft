@@ -96,4 +96,17 @@ public class StackLevelController : SlotLevelController
             && SlotTransforms.TryGetValue(slotTransform, out var slot)
             && slot.IsTarget(transform);
     }
+
+    public override void Hint()
+    {
+        for (int i = 1; i < _targets.Length; ++i)
+        {
+            if (!IsInCorrectSlot(_targets[i]) || _targets[i].position.z >= _targets[i - 1].position.z)
+            {
+                _targets[i].DoScaleUpDown();
+                break;
+            }
+        }
+
+    }
 }

@@ -76,7 +76,7 @@ public class OrderingLevelController : LevelController
         foreach (var target in _targets)
         {
             target.OnDown.AddListener(() => OnStartMoving(target));
-            target.OnDrag.AddListener(OnMove);
+            target.OnObjectDragged.AddListener(OnMove);
             target.OnUp.AddListener(OnDoneMove);
             _totalSize += GetValue(target.Bounds.size);
 
@@ -241,5 +241,17 @@ public class OrderingLevelController : LevelController
         }
 
         return (float)correctCount / _targets.Length;
+    }
+
+    public override void Hint()
+    {
+        for (int i = 0; i < _targets.Length; ++i)
+        {
+            if (_correctOrderedTargets[i] != _targets[i])
+            {
+                _targets[i].transform.DoScaleUpDown();
+                break;
+            }
+        }
     }
 }

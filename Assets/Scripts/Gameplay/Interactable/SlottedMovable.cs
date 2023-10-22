@@ -7,7 +7,7 @@ public class SlottedMovable : Movable
     #region Static
     private static SlotLevelController _controller;
 
-    protected static new SlotLevelController Controller
+    protected static SlotLevelController Controller
     {
         get
         {

@@ -1,23 +1,24 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FakeRotateLevelController : LevelController
 {
     public float SnapDistance = 0.6f
     ;
-    [SerializeField]
-    private FakeRotatable[] _cans;
+    [SerializeField, FormerlySerializedAs("_cans")]
+    private FakeRotatable[] _rotatables;
 
     private void OnValidate()
     {
-        Utils.Fill(ref _cans);
+        Utils.Fill(ref _rotatables);
 
-        if (_cans != null)
+        if (_rotatables != null)
         {
-            foreach (var can in _cans)
+            foreach (var rotatable in _rotatables)
             {
                 var offset = Random.Range(-3, 3f);
-                can.InitialOffset = offset + ((offset > 0) ? 2 : -2);
-                can.SnapDistance = SnapDistance;
+                rotatable.InitialOffset = offset + ((offset > 0) ? 2 : -2);
+                rotatable.SnapDistance = SnapDistance;
             }
         }
     }
@@ -26,14 +27,26 @@ public class FakeRotateLevelController : LevelController
     {
         var completedCount = 0;
 
-        foreach (var can in _cans)
+        foreach (var rotatable in _rotatables)
         {
-            if (Mathf.Abs(can.Offset) <= 0.1f)
+            if (Mathf.Abs(rotatable.Offset) <= 0.1f)
             {
                 completedCount++;
             }
         }
 
-        return (float)completedCount / _cans.Length;
+        return (float)completedCount / _rotatables.Length;
+    }
+
+    public override void Hint()
+    {
+        foreach (var rotatable in _rotatables)
+        {
+            if (Mathf.Abs(rotatable.Offset) > 0.1f)
+            {
+                rotatable.transform.DoScaleUpDown();
+                break;
+            }
+        }
     }
 }

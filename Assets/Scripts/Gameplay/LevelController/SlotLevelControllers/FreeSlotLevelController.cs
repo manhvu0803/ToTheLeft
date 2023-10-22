@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class FreeSlotLevelController : SlotLevelController
@@ -110,5 +111,32 @@ public class FreeSlotLevelController : SlotLevelController
         }
 
         return (float)correctSlotCount / Slots.Length;
+    }
+
+    public override void Hint()
+    {
+        var interactables = FindObjectsOfType<Interactable>();
+
+        foreach (var interactable in interactables)
+        {
+            var slot = GetSlot(interactable.transform);
+
+            if (!slot.IsTarget(interactable.transform))
+            {
+                slot.transform.DoScaleUpDown();
+                interactable.transform.DoScaleUpDown();
+                break;
+            }
+        }
+    }
+
+    private Slot GetSlot(Transform occupant)
+    {
+        if (SlotMap.TryGetValue(occupant, out var slotTransform) && SlotTransforms.TryGetValue(slotTransform, out var slot))
+        {
+            return slot;
+        }
+
+        return null;
     }
 }

@@ -17,4 +17,16 @@ public class PictureLevelController : LevelController
 
         return 1 - angleSum / 180 / _pictures.Length;
     }
+
+    public override void Hint()
+    {
+        foreach (var target in _pictures)
+        {
+            if (Vector3.Angle(target.up, Vector3.up) > 0.001f)
+            {
+                target.DoScaleUpDown();
+                break;
+            }
+        }
+    }
 }

@@ -40,4 +40,6 @@ public abstract class LevelController : MonoBehaviour
     }
 
     public abstract float CompletionRate();
+
+    public abstract void Hint();
 }

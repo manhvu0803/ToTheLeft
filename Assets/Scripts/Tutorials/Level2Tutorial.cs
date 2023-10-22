@@ -19,7 +19,7 @@ public class Level2Tutorial : MonoBehaviour
             return;
         }
 
-        _movable.OnDrag.AddListener(Step1);
+        _movable.OnObjectDragged.AddListener(Step1);
         _pointer.transform.position = Camera.main.WorldToScreenPoint(_movable.transform.position);
         DOTween.Sequence()
             .AppendInterval(0.25f)
@@ -32,7 +32,7 @@ public class Level2Tutorial : MonoBehaviour
     private void Step1()
     {
         DOTween.Kill(_pointer.transform);
-        _movable.OnDrag.RemoveListener(Step1);
+        _movable.OnObjectDragged.RemoveListener(Step1);
         _pointer.gameObject.SetActive(false);
         enabled = false;
     }

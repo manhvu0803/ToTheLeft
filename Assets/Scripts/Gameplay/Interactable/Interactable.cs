@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public abstract class Interactable : MonoBehaviour, IPointerDownHandler, IPointerMoveHandler, IPointerUpHandler
+public abstract class Interactable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     #region Static
     static private Camera _mainCamera;
@@ -53,7 +53,7 @@ public abstract class Interactable : MonoBehaviour, IPointerDownHandler, IPointe
 
     public UnityEvent OnDown;
 
-    public UnityEvent OnDrag;
+    public UnityEvent OnObjectDragged;
 
     public UnityEvent OnUp;
 
@@ -71,7 +71,7 @@ public abstract class Interactable : MonoBehaviour, IPointerDownHandler, IPointe
         OnDown?.Invoke();
     }
 
-    public virtual void OnPointerMove(PointerEventData eventData)
+    public virtual void OnDrag(PointerEventData eventData)
     {
         if (!enabled)
         {
@@ -87,7 +87,7 @@ public abstract class Interactable : MonoBehaviour, IPointerDownHandler, IPointe
         }
 
         LastMousePosition = currentMousePosition;
-        OnDrag?.Invoke();
+        OnObjectDragged?.Invoke();
     }
 
     public void OnPointerUp(PointerEventData eventData)

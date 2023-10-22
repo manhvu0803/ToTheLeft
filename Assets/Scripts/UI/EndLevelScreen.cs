@@ -17,16 +17,10 @@ public class EndLevelScreen : MonoBehaviour
         this.FillFromChildren(ref _continueButton);
     }
 
-    private IEnumerator Start()
+    private void Awake()
     {
         GameController.Instance.OnLevelComplete.AddListener(DelayedAppear);
         GameController.Instance.OnLoadingNextLevel.AddListener(Disappear);
-
-        // DOTween need this to be able to smoothly rewinded the 1st time
-        yield return null;
-        yield return null;
-
-        gameObject.SetActive(false);
     }
 
     private void DelayedAppear()

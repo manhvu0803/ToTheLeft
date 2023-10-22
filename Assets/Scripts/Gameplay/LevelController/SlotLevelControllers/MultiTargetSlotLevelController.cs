@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class MultiTargetSlotLevelController : SlotLevelController
@@ -76,5 +77,17 @@ public class MultiTargetSlotLevelController : SlotLevelController
             && slotTransform != null
             && SlotTransforms.TryGetValue(slotTransform, out var slot)
             && slot.IsTarget(target.transform);
+    }
+
+    public override void Hint()
+    {
+        for (int i = 0; i < _targets.Length; ++i)
+        {
+            if (!IsInCorrectSlot(_targets[i]))
+            {
+                _targets[i].transform.DoScaleUpDown();
+                break;
+            }
+        }
     }
 }

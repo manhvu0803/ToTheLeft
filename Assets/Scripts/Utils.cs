@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public static class Utils
@@ -80,5 +81,10 @@ public static class Utils
         var position = transform.position;
         position.z = z;
         transform.position = position;
+    }
+
+    public static void DoScaleUpDown(this Transform transform, float multiplier = 1.25f, float duration = 0.2f, int times = 2)
+    {
+        transform.DOScale(transform.localScale * multiplier, duration).SetLoops(times * 2, LoopType.Yoyo);
     }
 }

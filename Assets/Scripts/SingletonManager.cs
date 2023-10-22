@@ -15,7 +15,7 @@ public static class SingletonManager
 #if UNITY_EDITOR || DEBUG
         if (Singletons.ContainsKey(type))
         {
-            Debug.LogWarning($"Overriding {type.Name} in singleton manager");
+            Debug.Log($"Overriding {type.Name} in singleton manager");
         }
 #endif
 

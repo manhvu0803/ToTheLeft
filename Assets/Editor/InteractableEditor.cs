@@ -4,11 +4,11 @@ using UnityEditor;
 [CustomEditor(typeof(Interactable), true), CanEditMultipleObjects]
 public class InteractableEditor : Editor
 {
-    private static readonly string[] EventProperties = new[] { "OnPointerDown", "OnPointerDrag", "OnPointerUp" };
+    private static readonly string[] EventProperties = new[] { "OnDown", "OnObjectDragged", "OnUp" };
 
     private static string[] ExcludedProperties;
 
-    private static bool ShowEvents;
+    private bool _showEvents;
 
     private void OnEnable()
     {
@@ -18,9 +18,9 @@ public class InteractableEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        ShowEvents = EditorGUILayout.Foldout(ShowEvents, "Events");
+        _showEvents = EditorGUILayout.Foldout(_showEvents, "Events");
 
-        if (ShowEvents)
+        if (_showEvents)
         {
             foreach (var property in EventProperties)
             {
@@ -28,7 +28,7 @@ public class InteractableEditor : Editor
             }
         }
 
-        DrawPropertiesExcluding(serializedObject, ExcludedProperties.ToArray());
+        DrawPropertiesExcluding(serializedObject, ExcludedProperties);
         serializedObject.ApplyModifiedProperties();
     }
 }

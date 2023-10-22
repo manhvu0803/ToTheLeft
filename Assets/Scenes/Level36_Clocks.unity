@@ -777,13 +777,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
@@ -1863,13 +1863,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
@@ -1973,13 +1973,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
@@ -2046,13 +2046,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
@@ -2277,13 +2277,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
@@ -2471,13 +2471,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
@@ -3125,13 +3125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
@@ -3319,13 +3319,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
@@ -3597,13 +3597,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}

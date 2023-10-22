@@ -95,4 +95,9 @@ public class OrderedSlotLevelController : SlotLevelController
 
         return (float)completeSlotCount / Slots.Length;
     }
+
+    public override void Hint()
+    {
+        throw new NotImplementedException();
+    }
 }
