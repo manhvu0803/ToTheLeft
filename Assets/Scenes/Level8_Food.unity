@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b2c7ca83e968241809aee35a1f4cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 974043872}
   TargetTag: Object 2
 --- !u!1 &161143420
@@ -269,18 +270,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &161143424
 SpriteRenderer:
@@ -406,18 +410,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &207216296
 SpriteRenderer:
@@ -595,6 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b2c7ca83e968241809aee35a1f4cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 230847909}
   TargetTag: Object 1
 --- !u!1 &262786897
@@ -643,6 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 1225150082}
   _targets:
   - {fileID: 339757601}
@@ -720,6 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b2c7ca83e968241809aee35a1f4cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 546449980}
   TargetTag: Object 2
 --- !u!61 &273935988
@@ -874,6 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 302311571}
   _targets:
   - {fileID: 1442670802}
@@ -1069,124 +1080,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
---- !u!1001 &376027539
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1404240490316508310, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_Name
-      value: GameCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950378213503662130, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8908564250708016514, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
 --- !u!1 &409484740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,18 +1168,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &409484744
 SpriteRenderer:
@@ -1448,6 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b2c7ca83e968241809aee35a1f4cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 526908211}
   TargetTag: Object 1
 --- !u!1 &546449978
@@ -1574,7 +1487,7 @@ Transform:
   - {fileID: 1242828178}
   - {fileID: 273935986}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!210 &742495580
 SortingGroup:
@@ -1659,18 +1572,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &858704454
 SpriteRenderer:
@@ -1932,18 +1848,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!1 &1101430344
 GameObject:
@@ -1984,7 +1903,7 @@ Transform:
   - {fileID: 339757601}
   - {fileID: 1442670802}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1225150080
 GameObject:
@@ -2200,6 +2119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b2c7ca83e968241809aee35a1f4cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 2086838742}
   TargetTag: Object 2
 --- !u!61 &1242828180
@@ -2425,18 +2345,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!1 &1488895978
 GameObject:
@@ -2562,6 +2485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b2c7ca83e968241809aee35a1f4cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 1488895979}
   TargetTag: Object 1
 --- !u!1 &1539133159
@@ -2772,6 +2696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b2c7ca83e968241809aee35a1f4cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 1557940339}
   TargetTag: Object 1
 --- !u!1 &1782820967
@@ -2846,18 +2771,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &1782820971
 SpriteRenderer:
@@ -2983,18 +2911,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &1857050891
 SpriteRenderer:
@@ -3094,6 +3025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b2c7ca83e968241809aee35a1f4cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 1230306274}
   TargetTag: Object 2
 --- !u!61 &1926278197
@@ -3204,7 +3136,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1991366496
 GameObject:
@@ -3252,6 +3184,7 @@ MonoBehaviour:
   - {fileID: 526908214}
   - {fileID: 1488895982}
   - {fileID: 1557940342}
+  InitialPairs: []
   Occs: []
   Slts: []
 --- !u!4 &1991366498
@@ -3267,7 +3200,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2053772366
 GameObject:
@@ -3341,18 +3274,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 1000, y: 1000}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &2053772370
 SpriteRenderer:

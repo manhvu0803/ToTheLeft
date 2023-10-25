@@ -99,14 +99,22 @@ public class StackLevelController : SlotLevelController
 
     public override void Hint()
     {
-        for (int i = 1; i < _targets.Length; ++i)
+        foreach (var target in _targets)
         {
-            if (!IsInCorrectSlot(_targets[i]) || _targets[i].position.z >= _targets[i - 1].position.z)
+            if (IsInCorrectSlot(target))
             {
-                _targets[i].DoScaleUpDown();
-                break;
+                continue;
+            }
+
+            foreach (var slot in Slots)
+            {
+                if (slot.IsTarget(target.transform))
+                {
+                    slot.Hint();
+                    target.transform.DoScaleUpDown();
+                    return;
+                }
             }
         }
-
     }
 }

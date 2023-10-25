@@ -9,8 +9,7 @@ public class PostItCirleLevelController : FreeSlotLevelController
 
         foreach (var slot in Slots)
         {
-            if (OccupantMap.TryGetValue(slot.transform, out var occupant)
-                && slot.IsTarget(occupant))
+            if (OccupantMap.TryGetValue(slot.transform, out var occupant) && slot.IsTarget(occupant))
             {
                 correctSlotCount++;
 

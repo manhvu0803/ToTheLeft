@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -16,7 +17,7 @@ public class FakeRotateLevelController : LevelController
         {
             foreach (var rotatable in _rotatables)
             {
-                var offset = Random.Range(-3, 3f);
+                var offset = UnityEngine.Random.Range(-3, 3f);
                 rotatable.InitialOffset = offset + ((offset > 0) ? 2 : -2);
                 rotatable.SnapDistance = SnapDistance;
             }
@@ -27,12 +28,20 @@ public class FakeRotateLevelController : LevelController
     {
         var completedCount = 0;
 
-        foreach (var rotatable in _rotatables)
+        try
         {
-            if (Mathf.Abs(rotatable.Offset) <= 0.1f)
+            foreach (var rotatable in _rotatables)
             {
-                completedCount++;
+                if (Mathf.Abs(rotatable.Offset) <= 0.1f)
+                {
+                    completedCount++;
+                }
             }
+        }
+        // In case the rotatables aren't ready
+        catch (NullReferenceException)
+        {
+            return 0;
         }
 
         return (float)completedCount / _rotatables.Length;
@@ -44,7 +53,15 @@ public class FakeRotateLevelController : LevelController
         {
             if (Mathf.Abs(rotatable.Offset) > 0.1f)
             {
-                rotatable.transform.DoScaleUpDown();
+                if (rotatable.transform.parent != null)
+                {
+                    rotatable.transform.parent.DoScaleUpDown();
+                }
+                else
+                {
+                    rotatable.transform.DoScaleUpDown();
+                }
+
                 break;
             }
         }

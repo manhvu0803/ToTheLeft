@@ -123,111 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &332122306
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1404240490316508310, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_Name
-      value: GameCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950378213503662130, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3010094812079751656, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8908564250708016514, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 25970cac2cc1e594eb6b96da76c2056c, type: 3}
 --- !u!1 &924890077
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,18 +154,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 100, y: 100}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &924890079
 SpriteRenderer:
@@ -337,7 +235,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60.448}
 --- !u!61 &924890081
 BoxCollider2D:
@@ -396,18 +294,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 100, y: 100}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &996545008
 SpriteRenderer:
@@ -474,7 +375,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 59.512}
 --- !u!61 &996545010
 BoxCollider2D:
@@ -617,18 +518,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 100, y: 100}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &1179701892
 SpriteRenderer:
@@ -695,7 +599,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 47.952}
 --- !u!61 &1179701894
 BoxCollider2D:
@@ -754,18 +658,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 100, y: 100}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &1228655273
 SpriteRenderer:
@@ -832,7 +739,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 193.354}
 --- !u!61 &1228655275
 BoxCollider2D:
@@ -906,6 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06a2a889d054f64ba9de4661b889ce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HideRenderer: 1
   <Renderer>k__BackingField: {fileID: 1019539608}
   _targets:
   - {fileID: 2078412997}
@@ -1024,7 +932,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 137.442}
 --- !u!61 &1575047354
 BoxCollider2D:
@@ -1064,18 +972,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 100, y: 100}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!1 &2028941455
 GameObject:
@@ -1192,18 +1103,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0c896bd5e4f7141a1c1ac37baac627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPointerDown:
+  OnDown:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerDrag:
+  OnObjectDragged:
     m_PersistentCalls:
       m_Calls: []
-  OnPointerUp:
+  OnUp:
     m_PersistentCalls:
       m_Calls: []
   OffsetScaleOnDrag: {x: 0.25, y: 0.25, z: 0.25}
   MaxLocalOffset: {x: 100, y: 100}
+  IsOffsetAbsolute: 1
   SnapDistance: 0.1
+  _rigidbody: {fileID: 0}
+  SnapToSlot: 1
   RotateOnMouseUp: 1
 --- !u!212 &2078412996
 SpriteRenderer:
@@ -1270,7 +1184,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -51.825}
 --- !u!61 &2078412998
 BoxCollider2D:

@@ -42,4 +42,16 @@ public class Level1Controller : FreeSlotLevelController
         // The other half is just how much farther from 0 degree the picture is
         return 0.5f + (1 - Vector3.Angle(_target.up, Vector3.up) / 180) / 2;
     }
+
+    public override void Hint()
+    {
+        if (_target == null)
+        {
+            base.Hint();
+        }
+        else
+        {
+            _target.transform.DoScaleUpDown();
+        }
+    }
 }

@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using System;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -34,12 +33,40 @@ public class GameController : MonoBehaviour
 
     private bool _isCurrentLevelComplete = false;
 
+    private LevelController _currentLevelController;
+
+    [field: SerializeField]
+    public ProgressBar ProgressBar { get; private set; }
+
+    [field: SerializeField]
+    private EndLevelScreen _endLevelScreen;
+
+    public LevelController CurrentLevelController
+    {
+        get
+        {
+            if (_currentLevelController == null)
+            {
+                _currentLevelController = SingletonManager.Get<LevelController>();
+            }
+
+            return _currentLevelController;
+        }
+    }
+
+    private void OnValidate()
+    {
+        ProgressBar = Utils.FindIfNull(ProgressBar);
+        Utils.Find(ref _endLevelScreen);
+    }
+
     private void Awake()
     {
         _instance = this;
         Progress = PlayerPrefs.GetInt("progress", 0);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+        _endLevelScreen.Init();
     }
 
     public void LoadLevel(int level)
@@ -113,6 +140,16 @@ public class GameController : MonoBehaviour
 
         _levelIndex = -1;
         FirstScreen.SetActive(true);
+    }
+
+    public void ShowHint()
+    {
+        CurrentLevelController.Hint();
+    }
+
+    public void ShowProgressBar()
+    {
+        ProgressBar.gameObject.SetActive(true);
     }
 
 #if UNITY_EDITOR

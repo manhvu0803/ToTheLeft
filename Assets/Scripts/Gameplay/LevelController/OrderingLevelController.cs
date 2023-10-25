@@ -230,6 +230,11 @@ public class OrderingLevelController : LevelController
 
     public override float CompletionRate()
     {
+        if (_correctOrderedTargets == null)
+        {
+            return 0;
+        }
+
         var correctCount = 0;
 
         for (int i = 0; i < _targets.Length; ++i)
@@ -249,6 +254,7 @@ public class OrderingLevelController : LevelController
         {
             if (_correctOrderedTargets[i] != _targets[i])
             {
+                _correctOrderedTargets[i].transform.DoScaleUpDown();
                 _targets[i].transform.DoScaleUpDown();
                 break;
             }

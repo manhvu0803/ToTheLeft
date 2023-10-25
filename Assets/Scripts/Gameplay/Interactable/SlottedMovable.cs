@@ -23,7 +23,7 @@ public class SlottedMovable : Movable
     static protected RaycastHit2D Raycast()
     {
         var slotLayers = Controller.SlotLayers;
-        return Physics2D.Raycast(MainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, slotLayers);
+        return Physics2D.Raycast(SingletonManager.MainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, slotLayers);
     }
     #endregion
 
@@ -89,7 +89,7 @@ public class SlottedMovable : Movable
         }
 
         Controller.CheckCompletionRate();
-        SoundManager?.PlayDoneInteract();
+        SingletonManager.SoundManager.PlayDoneInteract();
     }
 
     protected void HideShadow()

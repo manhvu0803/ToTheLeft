@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class SingletonManager
+public static partial class SingletonManager
 {
     private static readonly Dictionary<Type, object> Singletons = new();
 
@@ -13,9 +13,9 @@ public static class SingletonManager
         var type = singleton.GetType();
 
 #if UNITY_EDITOR || DEBUG
-        if (Singletons.ContainsKey(type))
+        if (Singletons.TryGetValue(type, out var instance) && instance != null)
         {
-            Debug.Log($"Overriding {type.Name} in singleton manager");
+            Debug.LogWarning($"Overriding {type.Name} in singleton manager");
         }
 #endif
 

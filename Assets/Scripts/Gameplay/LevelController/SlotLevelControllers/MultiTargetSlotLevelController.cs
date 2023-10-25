@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
 public class MultiTargetSlotLevelController : SlotLevelController
@@ -81,12 +80,21 @@ public class MultiTargetSlotLevelController : SlotLevelController
 
     public override void Hint()
     {
-        for (int i = 0; i < _targets.Length; ++i)
+        foreach (var target in _targets)
         {
-            if (!IsInCorrectSlot(_targets[i]))
+            if (IsInCorrectSlot(target))
             {
-                _targets[i].transform.DoScaleUpDown();
-                break;
+                continue;
+            }
+
+            foreach (var slot in Slots)
+            {
+                if (slot.IsTarget(target.transform))
+                {
+                    slot.Hint();
+                    target.transform.DoScaleUpDown();
+                    return;
+                }
             }
         }
     }

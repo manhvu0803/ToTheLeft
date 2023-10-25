@@ -14,12 +14,32 @@ public static class Utils
         }
     }
 
+    /// <summary>
+    /// For auto properties and the likes
+    /// </summary>
+    /// <returns>Founded component if target is null, otherwise return target</returns>
+    public static T FindIfNull<T>(this Component component, T target) where T : Component
+    {
+        component.Fill(ref target);
+        return target;
+    }
+
     public static void FillFromChildren<T>(this Component component, ref T target) where T : Component
     {
         if (target == null)
         {
             target = component.GetComponentInChildren<T>();
         }
+    }
+
+    /// <summary>
+    /// For auto properties and the likes
+    /// </summary>
+    /// <returns>Founded component if target is null, otherwise return target</returns>
+    public static T FindInChildren<T>(this Component component, T target) where T : Component
+    {
+        component.FillFromChildren(ref target);
+        return target;
     }
 
     public static void Fill<T>(ref T[] target) where T : Component
@@ -36,6 +56,20 @@ public static class Utils
         {
             target = new List<T>(Object.FindObjectsOfType<T>());
         }
+    }
+
+    public static void Find<T>(ref T target, bool includeInactive = false) where T : Component
+    {
+        if (target == null)
+        {
+            target = Object.FindObjectOfType<T>(includeInactive);
+        }
+    }
+
+    public static T FindIfNull<T>(T target, bool includeInactive = false) where T : Component
+    {
+        Find(ref target, includeInactive);
+        return target;
     }
 
     /// <summary>
@@ -83,8 +117,16 @@ public static class Utils
         transform.position = position;
     }
 
-    public static void DoScaleUpDown(this Transform transform, float multiplier = 1.25f, float duration = 0.2f, int times = 2)
+    public static Tween DoScaleUpDown(this Transform transform, float multiplier = 1.25f, float duration = 0.2f, int times = 2)
     {
-        transform.DOScale(transform.localScale * multiplier, duration).SetLoops(times * 2, LoopType.Yoyo);
+        DOTween.Kill(transform, complete: true);
+        return transform.DOScale(transform.localScale * multiplier, duration).SetLoops(times * 2, LoopType.Yoyo);
+    }
+
+    public static void SetAlpha(this SpriteRenderer renderer, float alpha)
+    {
+        var color = renderer.color;
+        color.a = alpha;
+        renderer.color = color;
     }
 }

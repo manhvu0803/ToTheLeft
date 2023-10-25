@@ -27,33 +27,46 @@ public abstract class Slot : MonoBehaviour
 
         Renderer.enabled = false;
         _originalAlpha = Renderer.color.a;
-
-        var color = Renderer.color;
-        color.a = 0;
-        Renderer.color = color;
+        Renderer.SetAlpha(0);
     }
 
-    public void Show()
+    public void Show(float tweenDuration = 0.2f)
     {
-        if (HideRenderer)
+        if (!HideRenderer)
         {
-            Renderer.enabled = true;
-            Renderer.DOFade(_originalAlpha, 0.2f);
+            return;
         }
+
+        DOTween.Kill(Renderer);
+        Renderer.enabled = true;
+        Renderer.DOFade(_originalAlpha, tweenDuration);
     }
 
-    public void Hide()
+    public void Hide(float tweenDuration = 0.2f)
     {
-        if (HideRenderer)
+        if (!HideRenderer)
         {
-            Renderer.DOFade(0, 0.2f)
-                .OnComplete(() => Renderer.enabled = false);
+            return;
         }
+
+        DOTween.Kill(Renderer);
+        Renderer.DOFade(0, tweenDuration)
+            .OnComplete(() => Renderer.enabled = false);
+    }
+
+    public void Hint()
+    {
+        print("Hint");
+        Show();
+        DOTween.Kill(transform, complete: true);
+        transform.DoScaleUpDown()
+            .OnComplete(() => Hide());
     }
 
     private void OnDestroy()
     {
         DOTween.Kill(Renderer);
+        DOTween.Kill(transform);
     }
 
     public abstract bool IsTarget(Transform transform);

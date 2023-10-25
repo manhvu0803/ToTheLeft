@@ -23,7 +23,7 @@ public class RotatableSlottedMovable : SlottedMovable
             HideShadow();
             transform.DOLocalRotate(transform.eulerAngles + new Vector3(0, 0, Rotation), 0.15f, RotateMode.FastBeyond360)
                 .OnComplete(() => Controller.CheckCompletionRate());
-            SoundManager?.PlayDoneInteract();
+            SingletonManager.SoundManager.PlayDoneInteract();
         }
         else
         {

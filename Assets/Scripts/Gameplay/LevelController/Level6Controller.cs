@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 
 public class Level6Controller : LevelController
@@ -29,7 +28,7 @@ public class Level6Controller : LevelController
 
         foreach (var target in _targets)
         {
-            if (((Vector2)target.transform.localPosition).sqrMagnitude <= 0.01f)
+            if (IsCorrect(target))
             {
                 correctCount++;
             }
@@ -40,14 +39,18 @@ public class Level6Controller : LevelController
 
     public override void Hint()
     {
-
         foreach (var target in _targets)
         {
-            if (((Vector2)target.transform.localPosition).sqrMagnitude <= 0.01f)
+            if (!IsCorrect(target))
             {
                 target.transform.DoScaleUpDown();
+                return;
             }
         }
+    }
 
+    private bool IsCorrect(Component target)
+    {
+        return ((Vector2)target.transform.localPosition).sqrMagnitude <= 0.01f;
     }
 }

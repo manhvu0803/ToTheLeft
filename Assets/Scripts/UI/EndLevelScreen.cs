@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using System.Collections;
 using UnityEngine.UI;
 
 public class EndLevelScreen : MonoBehaviour
@@ -11,21 +10,25 @@ public class EndLevelScreen : MonoBehaviour
     [SerializeField]
     private Button _continueButton;
 
+    [Range(0, 5)]
+    public float AppearanceDelay = 3;
+
     private void OnValidate()
     {
         this.Fill(ref _canvasGroup);
         this.FillFromChildren(ref _continueButton);
     }
 
-    private void Awake()
+    public void Init()
     {
-        GameController.Instance.OnLevelComplete.AddListener(DelayedAppear);
-        GameController.Instance.OnLoadingNextLevel.AddListener(Disappear);
+        var controller = GameController.Instance;
+        controller.OnLevelComplete.AddListener(DelayedAppear);
+        controller.OnLoadingNextLevel.AddListener(Disappear);
     }
 
     private void DelayedAppear()
     {
-        DOVirtual.DelayedCall(3, Appear);
+        DOVirtual.DelayedCall(AppearanceDelay, Appear);
     }
 
     private void Appear()

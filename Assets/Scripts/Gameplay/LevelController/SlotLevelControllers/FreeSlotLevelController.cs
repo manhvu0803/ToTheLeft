@@ -119,20 +119,30 @@ public class FreeSlotLevelController : SlotLevelController
 
         foreach (var interactable in interactables)
         {
-            var slot = GetSlot(interactable.transform);
+            var currentSlot = GetSlot(interactable.transform);
 
-            if (!slot.IsTarget(interactable.transform))
+            if (currentSlot != null && currentSlot.IsTarget(interactable.transform))
             {
-                slot.transform.DoScaleUpDown();
-                interactable.transform.DoScaleUpDown();
-                break;
+                continue;
+            }
+
+            foreach (var slot in Slots)
+            {
+                if (slot.IsTarget(interactable.transform) && (currentSlot == null || currentSlot != slot))
+                {
+                    slot.Hint();
+                    interactable.transform.DoScaleUpDown();
+                    return;
+                }
             }
         }
     }
 
     private Slot GetSlot(Transform occupant)
     {
-        if (SlotMap.TryGetValue(occupant, out var slotTransform) && SlotTransforms.TryGetValue(slotTransform, out var slot))
+        if (SlotMap.TryGetValue(occupant, out var slotTransform)
+            && slotTransform != null
+            && SlotTransforms.TryGetValue(slotTransform, out var slot))
         {
             return slot;
         }

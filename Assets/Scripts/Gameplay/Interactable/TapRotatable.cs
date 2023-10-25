@@ -8,9 +8,9 @@ public class TapRotatable : Interactable
 
     protected override void OnDoneInteract()
     {
+        SingletonManager.SoundManager.PlayDoneInteract();
         transform.DOLocalRotate(transform.eulerAngles + new Vector3(0, 0, Rotation), 0.15f, RotateMode.FastBeyond360)
-            .OnComplete(() => LevelController.CheckCompletionRate());
-        SoundManager.PlayDoneInteract();
+            .OnComplete(() => SingletonManager.LevelController.CheckCompletionRate());
     }
 
     private void OnDestroy()
