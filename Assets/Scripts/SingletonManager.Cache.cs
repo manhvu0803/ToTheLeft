@@ -39,7 +39,8 @@ public static partial class SingletonManager
         }
     }
 
-    private static void GetSingleton<T>(ref T target)
+    // Restrict T to Unity Object because we need the custom Unity null comparison
+    private static void GetSingleton<T>(ref T target) where T : Object
     {
         if (target != null)
         {

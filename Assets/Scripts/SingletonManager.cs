@@ -31,4 +31,15 @@ public static partial class SingletonManager
         Singletons.TryGetValue(typeof(T), out var value);
         return (T)value;
     }
+
+    public static void Remove(object singleton)
+    {
+        var type = singleton.GetType();
+
+        while (type != null && type != typeof(MonoBehaviour))
+        {
+            Singletons[type] = null;
+            type = type.BaseType;
+        }
+    }
 }

@@ -28,7 +28,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (GameController.Instance?.Progress >= LevelProgress)
         {
-            Destroy(this);
+            gameObject.SetActive(false);
             return;
         }
 
