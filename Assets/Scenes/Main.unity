@@ -639,22 +639,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6576031724675057838, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6576031724682269344, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 607677719}
+    - target: {fileID: 6576031724874598993, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6576031724874599006, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
       propertyPath: onEnableBehaviour
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6576031725297713957, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6576031725466748254, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 520
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576031725473068947, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6576031725614139475, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 607677719}
+    - target: {fileID: 6576031725614139477, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576031725614139478, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 247.3558
+      objectReference: {fileID: 0}
     - target: {fileID: 6576031725614346057, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
       propertyPath: m_Pivot.x
       value: 0

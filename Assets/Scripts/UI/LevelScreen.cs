@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +12,6 @@ public class LevelScreen : MonoBehaviour
 
     private void Start()
     {
-        gameObject.SetActive(false);
-
         var levels = GameController.Instance.Levels;
         GameController.Instance.OnLoadingNextLevel.AddListener(() => gameObject.SetActive(false));
 
@@ -22,6 +19,18 @@ public class LevelScreen : MonoBehaviour
         {
             CreateButton(i);
         }
+    }
+
+    private void CreateButton(int level)
+    {
+        var button = Instantiate(ButtonPrefab, _container);
+        button.Init($"Level {level + 1}", () => GameController.Instance.LoadLevel(level));
+#if TEST_BUILD
+        button.Button.interactable = true;
+#else
+        button.Button.interactable = level <= GameController.Instance.Progress;
+#endif
+        _buttons.Add(button);
     }
 
     private void OnEnable()
@@ -36,13 +45,5 @@ public class LevelScreen : MonoBehaviour
         {
             _buttons[i].Button.interactable = true;
         }
-    }
-
-    private void CreateButton(int level)
-    {
-        var button = Instantiate(ButtonPrefab, _container);
-        button.Init($"Level {level + 1}", () => GameController.Instance.LoadLevel(level));
-        button.Button.interactable = level <= GameController.Instance.Progress;
-        _buttons.Add(button);
     }
 }
