@@ -948,7 +948,7 @@ GameObject:
   - component: {fileID: 673795573}
   m_Layer: 0
   m_Name: LongShell (2)
-  m_TagString: Untagged
+  m_TagString: Object 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1357,7 +1357,7 @@ GameObject:
   - component: {fileID: 861579085}
   m_Layer: 0
   m_Name: Shell (6)
-  m_TagString: Untagged
+  m_TagString: Object 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1785,7 +1785,7 @@ GameObject:
   - component: {fileID: 1218042775}
   m_Layer: 0
   m_Name: Shell (7)
-  m_TagString: Untagged
+  m_TagString: Object 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1873,7 +1873,7 @@ GameObject:
   - component: {fileID: 1264784192}
   m_Layer: 0
   m_Name: RedShell (4)
-  m_TagString: Untagged
+  m_TagString: Object 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2289,7 +2289,7 @@ GameObject:
   - component: {fileID: 1498794957}
   m_Layer: 0
   m_Name: RedShell (5)
-  m_TagString: Untagged
+  m_TagString: Object 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2957,7 +2957,7 @@ GameObject:
   - component: {fileID: 2062940840}
   m_Layer: 0
   m_Name: LongShell (3)
-  m_TagString: Untagged
+  m_TagString: Object 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3371,7 +3371,7 @@ GameObject:
   - component: {fileID: 2120956460}
   - component: {fileID: 2120956461}
   m_Layer: 0
-  m_Name: Level2
+  m_Name: LevelController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3401,7 +3401,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2120956458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0560990d076990247adf0bb63edf0bac, type: 3}
+  m_Script: {fileID: 11500000, guid: cd650919161e420458f84c20f5691bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnCompletionRateChanged:
@@ -3423,3 +3423,11 @@ MonoBehaviour:
   InitialPairs: []
   Occs: []
   Slts: []
+  LeftSlots:
+  - {fileID: 84007369}
+  - {fileID: 365365821}
+  - {fileID: 2114326395}
+  RightSlots:
+  - {fileID: 1989061492}
+  - {fileID: 1877049583}
+  - {fileID: 1377452125}

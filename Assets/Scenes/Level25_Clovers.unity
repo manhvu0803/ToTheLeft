@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 369920725}
   m_Layer: 0
   m_Name: Clover4 (2)
-  m_TagString: Untagged
+  m_TagString: Object 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 529324370}
   m_Layer: 0
   m_Name: Clover4 (4)
-  m_TagString: Untagged
+  m_TagString: Object 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1200,7 +1200,7 @@ GameObject:
   - component: {fileID: 751649414}
   m_Layer: 0
   m_Name: Clover4 (6)
-  m_TagString: Untagged
+  m_TagString: Object 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1457,7 +1457,7 @@ GameObject:
   - component: {fileID: 1072726608}
   m_Layer: 0
   m_Name: Clover4 (5)
-  m_TagString: Untagged
+  m_TagString: Object 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1545,7 +1545,7 @@ GameObject:
   - component: {fileID: 1099234944}
   m_Layer: 0
   m_Name: Clover4 (3)
-  m_TagString: Untagged
+  m_TagString: Object 2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2461,7 +2461,7 @@ GameObject:
   - component: {fileID: 1690642027}
   m_Layer: 0
   m_Name: Clover4 (8)
-  m_TagString: Untagged
+  m_TagString: Object 5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2793,7 +2793,7 @@ GameObject:
   - component: {fileID: 1821121369}
   m_Layer: 0
   m_Name: Clover4 (1)
-  m_TagString: Untagged
+  m_TagString: Object 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3285,7 +3285,7 @@ GameObject:
   - component: {fileID: 2063272790}
   m_Layer: 0
   m_Name: Clover4 (7)
-  m_TagString: Untagged
+  m_TagString: Object 5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3375,7 +3375,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2120956460
 Transform:
@@ -3401,7 +3401,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2120956458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0560990d076990247adf0bb63edf0bac, type: 3}
+  m_Script: {fileID: 11500000, guid: cd650919161e420458f84c20f5691bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnCompletionRateChanged:
@@ -3423,3 +3423,13 @@ MonoBehaviour:
   InitialPairs: []
   Occs: []
   Slts: []
+  LeftSlots:
+  - {fileID: 84007369}
+  - {fileID: 365365821}
+  - {fileID: 1740485001}
+  - {fileID: 1260245403}
+  RightSlots:
+  - {fileID: 1989061492}
+  - {fileID: 1877049583}
+  - {fileID: 1448724023}
+  - {fileID: 301226531}

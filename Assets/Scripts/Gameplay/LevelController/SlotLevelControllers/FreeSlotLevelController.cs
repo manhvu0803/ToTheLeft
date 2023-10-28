@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
 public class FreeSlotLevelController : SlotLevelController
@@ -8,16 +7,37 @@ public class FreeSlotLevelController : SlotLevelController
     [Serializable]
     public struct Pair
     {
-        public Transform Slot;
+        public Slot Slot;
 
         public Transform Target;
     }
 
     public Pair[] InitialPairs;
 
+    /// <summary>
+    /// Slot to occupant map
+    /// </summary>
     protected readonly Dictionary<Transform, Transform> OccupantMap = new();
 
+    /// <summary>
+    /// Occupant to slot map
+    /// </summary>
     protected readonly Dictionary<Transform, Transform> SlotMap = new();
+
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+
+        for (int i = 0; i < InitialPairs.Length; ++i)
+        {
+            var pair = InitialPairs[i];
+
+            if (pair.Slot == null && pair.Slot is not null)
+            {
+                InitialPairs[i].Slot = pair.Slot.GetComponentInChildren<Slot>();
+            }
+        }
+    }
 
 #if DEBUG || UNITY_EDITOR
     [Header("Debug")]
@@ -55,7 +75,7 @@ public class FreeSlotLevelController : SlotLevelController
 
         foreach (var pair in InitialPairs)
         {
-            UpdateSlot(pair.Target, pair.Slot);
+            UpdateSlot(pair.Target, pair.Slot.transform);
         }
     }
 
