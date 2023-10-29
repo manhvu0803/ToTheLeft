@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,7 +24,14 @@ public abstract class LevelController : MonoBehaviour
 
         if (Mathf.Abs(completionRate - _lastCompletionRate) >= Epsilon)
         {
-            OnCompletionRateChanged?.Invoke(completionRate);
+            try
+            {
+                OnCompletionRateChanged?.Invoke(completionRate);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
         }
 
         _lastCompletionRate = completionRate;
@@ -34,7 +42,7 @@ public abstract class LevelController : MonoBehaviour
 
             if (GameController.Instance != null)
             {
-                GameController.Instance.CompleteLevel();
+                GameController.Instance.CompleteLevel(completionRate);
             }
         }
     }

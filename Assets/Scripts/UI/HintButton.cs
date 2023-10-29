@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.UI;
 
 public class HintButton : Button
@@ -5,6 +6,13 @@ public class HintButton : Button
     protected override void Start()
     {
         base.Start();
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+#endif
 
         if (GameController.Instance != null)
         {

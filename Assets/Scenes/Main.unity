@@ -331,21 +331,9 @@ MonoBehaviour:
   - Scenes/Level35_RockCollection
   - Scenes/Level36_Clocks
   - Scenes/Level37_Pens
-  OnLevelComplete:
+  OnLevelEnded:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1632291625}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   OnLoadingNextLevel:
     m_PersistentCalls:
       m_Calls:
@@ -655,21 +643,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: onEnableBehaviour
-      value: 1
+    - target: {fileID: 6576031724874599004, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: AppearanceDelay
+      value: 2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: autoPlay
-      value: 0
+    - target: {fileID: 6576031724874599004, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: _completionLevels.Array.data[1].Message
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 6576031724874599004, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: _completionLevels.Array.data[2].Message
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: autoGenerate
-      value: 0
+    - target: {fileID: 6576031724874599004, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
+      propertyPath: _completionLevels.Array.data[3].Message
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6576031725297713957, guid: 1e873357557256b49bee13b7cb11a40b, type: 3}
       propertyPath: m_fontStyle

@@ -21,19 +21,23 @@ public class GameController : MonoBehaviour
 
     public ReadOnlyCollection<string> Levels => _levels.AsReadOnly();
 
-    public UnityEvent OnLevelComplete;
+    public UnityEvent<float> OnLevelEnded;
 
     public UnityEvent OnLoadingNextLevel;
 
     public UnityEvent OnLoadingLevelComplete;
 
+    public UnityEvent OnTimeLimitReached;
+
     public int Progress { get; private set; }
 
     private int _levelIndex = -1;
 
-    private bool _isCurrentLevelComplete = false;
+    private bool _isCurrentLevelComplete = true;
 
     private LevelController _currentLevelController;
+
+    private float _timeLeft;
 
     [field: SerializeField]
     public ProgressBar ProgressBar { get; private set; }
@@ -69,6 +73,18 @@ public class GameController : MonoBehaviour
         _endLevelScreen.Init();
     }
 
+    private void Update()
+    {
+        _timeLeft -= Time.deltaTime;
+
+        if (!_isCurrentLevelComplete && _timeLeft <= 0)
+        {
+            _isCurrentLevelComplete = false;
+            CompleteLevel(CurrentLevelController.CompletionRate());
+            OnTimeLimitReached?.Invoke();
+        }
+    }
+
     public void LoadLevel(int level)
     {
         if (level < 0 || level >= _levels.Count)
@@ -80,7 +96,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(UnloadAndLoad(level));
     }
 
-    public void CompleteLevel()
+    public void CompleteLevel(float completionRate)
     {
         if (_isCurrentLevelComplete)
         {
@@ -89,9 +105,9 @@ public class GameController : MonoBehaviour
 
         print("Level complete");
         _isCurrentLevelComplete = true;
-        OnLevelComplete?.Invoke();
         Progress = Mathf.Max(_levelIndex + 1, Progress);
         PlayerPrefs.SetInt("progress", Progress);
+        OnLevelEnded?.Invoke(completionRate);
     }
 
     public void NextLevel()
@@ -112,22 +128,22 @@ public class GameController : MonoBehaviour
 
     private IEnumerator UnloadAndLoad(int level)
     {
-        OnLoadingNextLevel?.Invoke();
-
         if (_levelIndex >= 0 && _levelIndex < _levels.Count)
         {
             yield return SceneManager.UnloadSceneAsync(_levels[_levelIndex]);
-            yield return Resources.UnloadUnusedAssets();
         }
 
         _levelIndex = level;
         StartCoroutine(Load(_levels[level]));
+        OnLoadingNextLevel?.Invoke();
     }
 
     private IEnumerator Load(string levelName)
     {
         yield return SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
+        yield return Resources.UnloadUnusedAssets();
         _isCurrentLevelComplete = false;
+        _timeLeft = 60;
         OnLoadingLevelComplete?.Invoke();
     }
 
