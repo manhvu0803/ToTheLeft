@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Buttons
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: e90cf924062959944a970be00dfb9118, type: 3}
+    - {fileID: 2800000, guid: 11a8f9198ef8def4b9a7e221ce79a682, type: 3}
+    - {fileID: 2800000, guid: 7fa27778f91ee31448c3bf5a6d92ea68, type: 3}
+    - {fileID: 2800000, guid: 22214a55b5bf07446a2808926de18ea5, type: 3}
+    - {fileID: 2800000, guid: 65ec7e6023b965b4b98f5a03b74898b0, type: 3}
+    - {fileID: 2800000, guid: e2d7129ab1cbb9742a8d092f4fe1fb1c, type: 3}
+    - {fileID: 2800000, guid: aad28d27506ee5f448cc0fb2575ad67a, type: 3}
+    - {fileID: 2800000, guid: be89016290c72c542892076df0e67399, type: 3}
+    - {fileID: 2800000, guid: 1cba00985d66fa5438728e30eb50f3f7, type: 3}
+    - {fileID: 2800000, guid: befcbf60f533d7f499c4fdf71746460f, type: 3}
+    - {fileID: 2800000, guid: 2bd10cf284ed4f1419cb6f294285b04d, type: 3}
+    - {fileID: 2800000, guid: 4952c94613ebce4409f8ea9ce2c90c4c, type: 3}
+    - {fileID: 2800000, guid: d793e40c6c3cac944962932156112c74, type: 3}
+    - {fileID: 2800000, guid: d0409e6211349564d8b1d926bfc39478, type: 3}
+    - {fileID: 2800000, guid: d7bb44a8a098f9749aa895d583162478, type: 3}
+    - {fileID: 2800000, guid: 66435c62ad188a0419a1cbf4dddfcfdf, type: 3}
+    - {fileID: 2800000, guid: 2d2cfe69448e05948977808a0a945392, type: 3}
+    - {fileID: 2800000, guid: 4a8990a3bc3ca7741af369699dc3519f, type: 3}
+    - {fileID: 2800000, guid: 67ea8406f2b946d4a97e6911ed0ad981, type: 3}
+    - {fileID: 2800000, guid: d753db42e808ba34eb5cefbd19493072, type: 3}
+    - {fileID: 2800000, guid: 994d59b7839ef3643aa31b54efaaf3fe, type: 3}
+    - {fileID: 2800000, guid: 78c47a4a60a507c45a5cf5321caa14ba, type: 3}
+    - {fileID: 2800000, guid: 06101ff14164d14428b69d47faabd5e9, type: 3}
+    - {fileID: 2800000, guid: d63a02d858f231d4ea9f656ef55d9e7f, type: 3}
+    - {fileID: 2800000, guid: 66007191556b12a4b9a5ec0005b10df0, type: 3}
+    - {fileID: 2800000, guid: 0225f77077cdc11458fafa502c50ef4d, type: 3}
+    - {fileID: 2800000, guid: 14e3e69360943734fa8938d124679c18, type: 3}
+    - {fileID: 2800000, guid: 007a6549164de4049be3939ee6a3f39c, type: 3}
+    - {fileID: 2800000, guid: 198ce15a4023a7a49b9484cc33a7a7c7, type: 3}
+    - {fileID: 2800000, guid: fc0afdf79bf8c744daf2bda5ab47a5a9, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 65ec7e6023b965b4b98f5a03b74898b0, type: 3}
+  - {fileID: 21300000, guid: befcbf60f533d7f499c4fdf71746460f, type: 3}
+  - {fileID: 21300000, guid: 0225f77077cdc11458fafa502c50ef4d, type: 3}
+  - {fileID: 21300000, guid: 66007191556b12a4b9a5ec0005b10df0, type: 3}
+  - {fileID: 21300000, guid: 06101ff14164d14428b69d47faabd5e9, type: 3}
+  - {fileID: 21300000, guid: d753db42e808ba34eb5cefbd19493072, type: 3}
+  - {fileID: 21300000, guid: be89016290c72c542892076df0e67399, type: 3}
+  - {fileID: 21300000, guid: 66435c62ad188a0419a1cbf4dddfcfdf, type: 3}
+  - {fileID: 21300000, guid: d0409e6211349564d8b1d926bfc39478, type: 3}
+  - {fileID: 21300000, guid: 2bd10cf284ed4f1419cb6f294285b04d, type: 3}
+  - {fileID: 21300000, guid: 14e3e69360943734fa8938d124679c18, type: 3}
+  - {fileID: 21300000, guid: 4a8990a3bc3ca7741af369699dc3519f, type: 3}
+  - {fileID: 21300000, guid: e90cf924062959944a970be00dfb9118, type: 3}
+  - {fileID: 21300000, guid: 22214a55b5bf07446a2808926de18ea5, type: 3}
+  - {fileID: 21300000, guid: 67ea8406f2b946d4a97e6911ed0ad981, type: 3}
+  - {fileID: 21300000, guid: 4952c94613ebce4409f8ea9ce2c90c4c, type: 3}
+  - {fileID: 21300000, guid: aad28d27506ee5f448cc0fb2575ad67a, type: 3}
+  - {fileID: 21300000, guid: 994d59b7839ef3643aa31b54efaaf3fe, type: 3}
+  - {fileID: 21300000, guid: fc0afdf79bf8c744daf2bda5ab47a5a9, type: 3}
+  - {fileID: 21300000, guid: 7fa27778f91ee31448c3bf5a6d92ea68, type: 3}
+  - {fileID: 21300000, guid: 1cba00985d66fa5438728e30eb50f3f7, type: 3}
+  - {fileID: 21300000, guid: d7bb44a8a098f9749aa895d583162478, type: 3}
+  - {fileID: 21300000, guid: d63a02d858f231d4ea9f656ef55d9e7f, type: 3}
+  - {fileID: 21300000, guid: 11a8f9198ef8def4b9a7e221ce79a682, type: 3}
+  - {fileID: 21300000, guid: 007a6549164de4049be3939ee6a3f39c, type: 3}
+  - {fileID: 21300000, guid: 2d2cfe69448e05948977808a0a945392, type: 3}
+  - {fileID: 21300000, guid: 78c47a4a60a507c45a5cf5321caa14ba, type: 3}
+  - {fileID: 21300000, guid: 198ce15a4023a7a49b9484cc33a7a7c7, type: 3}
+  - {fileID: 21300000, guid: e2d7129ab1cbb9742a8d092f4fe1fb1c, type: 3}
+  - {fileID: 21300000, guid: d793e40c6c3cac944962932156112c74, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Button-0hole-Purple
+  - Button-1hole-Purple
+  - Button-4hole-Red
+  - Button-4hole-Purple
+  - Button-4hole-Black
+  - Button-3hole-Purple
+  - Button-1hole-Black
+  - Button-2hole-Red
+  - Button-2hole-Orange
+  - Button-1hole-Red
+  - Button-4hole-Yellow
+  - Button-3hole-Black
+  - BL
+  - Button-0hole-Orange
+  - Button-3hole-Orange
+  - Button-1hole-Yellow
+  - Button-0hole-Yellow
+  - Button-3hole-Red
+  - TR
+  - Button-0hole-Black
+  - Button-1hole-Orange
+  - Button-2hole-Purple
+  - Button-4hole-Orange
+  - BR
+  - C
+  - Button-2hole-Yellow
+  - Button-3hole-Yellow
+  - TL
+  - Button-0hole-Red
+  - Button-2hole-Black
+  m_RenderDataMap: {}
+  m_Tag: Buttons
+  m_IsVariant: 0

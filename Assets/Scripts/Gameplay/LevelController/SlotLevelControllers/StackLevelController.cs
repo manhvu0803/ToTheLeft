@@ -69,24 +69,26 @@ public class StackLevelController : SlotLevelController
         return true;
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        var correctCount = 0;
+        get {
+            var correctCount = 0;
 
-        if (IsInCorrectSlot(_targets[0]))
-        {
-            correctCount++;
-        }
-
-        for (int i = 1; i < _targets.Length; ++i)
-        {
-            if (IsInCorrectSlot(_targets[i]) && _targets[i].position.z < _targets[i - 1].position.z)
+            if (IsInCorrectSlot(_targets[0]))
             {
                 correctCount++;
             }
-        }
 
-        return (float)correctCount / _targets.Length;
+            for (int i = 1; i < _targets.Length; ++i)
+            {
+                if (IsInCorrectSlot(_targets[i]) && _targets[i].position.z < _targets[i - 1].position.z)
+                {
+                    correctCount++;
+                }
+            }
+
+            return (float)correctCount / _targets.Length;
+        }
     }
 
     private bool IsInCorrectSlot(Transform transform)

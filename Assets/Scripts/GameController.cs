@@ -35,8 +35,6 @@ public class GameController : MonoBehaviour
 
     private bool _isCurrentLevelComplete = true;
 
-    private LevelController _currentLevelController;
-
     private float _timeLeft;
 
     [field: SerializeField]
@@ -44,19 +42,6 @@ public class GameController : MonoBehaviour
 
     [field: SerializeField]
     private EndLevelScreen _endLevelScreen;
-
-    public LevelController CurrentLevelController
-    {
-        get
-        {
-            if (_currentLevelController == null)
-            {
-                _currentLevelController = SingletonManager.Get<LevelController>();
-            }
-
-            return _currentLevelController;
-        }
-    }
 
     private void OnValidate()
     {
@@ -80,7 +65,7 @@ public class GameController : MonoBehaviour
         if (!_isCurrentLevelComplete && _timeLeft <= 0)
         {
             _isCurrentLevelComplete = false;
-            CompleteLevel(CurrentLevelController.CompletionRate());
+            CompleteLevel(SingletonManager.LevelController.CompletionRate);
             OnTimeLimitReached?.Invoke();
         }
     }
@@ -160,7 +145,7 @@ public class GameController : MonoBehaviour
 
     public void ShowHint()
     {
-        CurrentLevelController.Hint();
+        SingletonManager.LevelController.Hint();
     }
 
     public void ShowProgressBar()

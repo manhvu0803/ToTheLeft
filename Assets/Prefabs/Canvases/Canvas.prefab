@@ -278,7 +278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6576031724675057837
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1176,7 +1176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6576031724874598992
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1232,15 +1232,15 @@ MonoBehaviour:
   - Star: {fileID: 0}
     Message: Maybe try again later?
   - Star: {fileID: 6576031725460818691}
-    Message: OK
+    Message: 
   - Star: {fileID: 3608580940248536503}
-    Message: Not bad!
+    Message: 
   - Star: {fileID: 5364622530674986793}
-    Message: Well done!
+    Message: 
   _canvasGroup: {fileID: 6576031724874599005}
   _continueButton: {fileID: 6576031724682269344}
   _completeMessage: {fileID: 446179073588788941}
-  AppearanceDelay: 3
+  AppearanceDelay: 2.5
 --- !u!1 &6576031725120394478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,7 +1677,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1893,7 +1893,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 520}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6576031725466748253
 MonoBehaviour:
@@ -1954,7 +1954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6576031725473068946
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2076,7 +2076,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 160.3641}
+  m_SizeDelta: {x: 247.3558, y: 160.3641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6576031725614139476
 CanvasRenderer:
@@ -2139,7 +2139,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

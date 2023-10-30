@@ -82,18 +82,20 @@ public class OrderedSlotLevelController : SlotLevelController
         }
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        int completeSlotCount = 0;
-        for (int i = 0; i < Slots.Length; ++i)
-        {
-            if (Slots[i].IsTarget(_targets[i]))
+        get {
+            int completeSlotCount = 0;
+            for (int i = 0; i < Slots.Length; ++i)
             {
-                completeSlotCount++;
+                if (Slots[i].IsTarget(_targets[i]))
+                {
+                    completeSlotCount++;
+                }
             }
-        }
 
-        return (float)completeSlotCount / Slots.Length;
+            return (float)completeSlotCount / Slots.Length;
+        }
     }
 
     public override void Hint()

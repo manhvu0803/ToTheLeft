@@ -24,27 +24,29 @@ public class FakeRotateLevelController : LevelController
         }
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        var completedCount = 0;
+        get {
+            var completedCount = 0;
 
-        try
-        {
-            foreach (var rotatable in _rotatables)
+            try
             {
-                if (Mathf.Abs(rotatable.Offset) <= 0.1f)
+                foreach (var rotatable in _rotatables)
                 {
-                    completedCount++;
+                    if (Mathf.Abs(rotatable.Offset) <= 0.1f)
+                    {
+                        completedCount++;
+                    }
                 }
             }
-        }
-        // In case the rotatables aren't ready
-        catch (NullReferenceException)
-        {
-            return 0;
-        }
+            // In case the rotatables aren't ready
+            catch (NullReferenceException)
+            {
+                return 0;
+            }
 
-        return (float)completedCount / _rotatables.Length;
+            return (float)completedCount / _rotatables.Length;
+        }
     }
 
     public override void Hint()

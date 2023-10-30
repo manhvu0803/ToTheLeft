@@ -12,6 +12,9 @@ public class EndLevelScreen : MonoBehaviour
         public Image Star;
 
         public string Message;
+
+        [HideInInspector]
+        public Vector3 StarPosition;
     }
 
     [SerializeField]
@@ -33,6 +36,16 @@ public class EndLevelScreen : MonoBehaviour
     {
         this.Fill(ref _canvasGroup);
         this.FillFromChildren(ref _continueButton);
+
+        for (int i = 0; i < _completionLevels.Length; ++i)
+        {
+            var level = _completionLevels[i];
+
+            if (level.Star != null)
+            {
+                _completionLevels[i].StarPosition = level.Star.transform.localPosition;
+            }
+        }
     }
 
     public void Init()
@@ -82,8 +95,9 @@ public class EndLevelScreen : MonoBehaviour
             if (i < completeLevel)
             {
                 star.localScale = Vector3.zero;
+                star.transform.localPosition = _completionLevels[i].StarPosition;
                 sequence.Insert(0.25f + i * 0.5f, star.DOScale(1, 0.75f).SetEase(Ease.OutBack));
-                sequence.Insert(0.1f, star.DOMoveY(star.position.y + 200, 0.75f));
+                sequence.Insert(0.15f + i * 0.5f, star.DOMoveY(star.position.y + 400, 0.75f));
                 star.gameObject.SetActive(true);
                 continue;
             }

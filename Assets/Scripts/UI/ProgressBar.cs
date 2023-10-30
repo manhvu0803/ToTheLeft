@@ -31,7 +31,7 @@ public class ProgressBar : MonoBehaviour
         gameObject.SetActive(GameController.Instance == null);
         var levelController = SingletonManager.Get<LevelController>();
         levelController.OnCompletionRateChanged.AddListener(UpdateProgress);
-        UpdateProgress(levelController.CompletionRate());
+        UpdateProgress(levelController.CompletionRate);
     }
 
     public void UpdateProgress(float progress)

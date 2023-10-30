@@ -31,16 +31,19 @@ public class Level1Controller : FreeSlotLevelController
         return result;
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        if (_target == null)
+        get
         {
-            return 0;
-        }
+            if (_target == null)
+            {
+                return 0;
+            }
 
-        // _target != null means the picture is in the right place, hence at least 50% complete (0.5f)
-        // The other half is just how much farther from 0 degree the picture is
-        return 0.5f + (1 - Vector3.Angle(_target.up, Vector3.up) / 180) / 2;
+            // _target != null means the picture is in the right place, hence at least 50% complete (0.5f)
+            // The other half is just how much farther from 0 degree the picture is
+            return 0.5f + (1 - Vector3.Angle(_target.up, Vector3.up) / 180) / 2;
+        }
     }
 
     public override void Hint()

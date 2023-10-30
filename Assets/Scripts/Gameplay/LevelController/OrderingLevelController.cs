@@ -228,24 +228,26 @@ public class OrderingLevelController : LevelController
         }
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        if (_correctOrderedTargets == null)
-        {
-            return 0;
-        }
-
-        var correctCount = 0;
-
-        for (int i = 0; i < _targets.Length; ++i)
-        {
-            if (_correctOrderedTargets[i] == _targets[i])
+        get {
+            if (_correctOrderedTargets == null)
             {
-                correctCount++;
+                return 0;
             }
-        }
 
-        return (float)correctCount / _targets.Length;
+            var correctCount = 0;
+
+            for (int i = 0; i < _targets.Length; ++i)
+            {
+                if (_correctOrderedTargets[i] == _targets[i])
+                {
+                    correctCount++;
+                }
+            }
+
+            return (float)correctCount / _targets.Length;
+        }
     }
 
     public override void Hint()

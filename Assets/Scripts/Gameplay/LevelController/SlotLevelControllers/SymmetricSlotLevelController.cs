@@ -18,31 +18,33 @@ public class SymmetricSlotLevelController : FreeSlotLevelController
         }
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        var correctCount = 0;
-        var limit = Math.Min(LeftSlots.Length, RightSlots.Length);
+        get {
+            var correctCount = 0;
+            var limit = Math.Min(LeftSlots.Length, RightSlots.Length);
 
-        for (int i = 0; i < limit; ++i)
-        {
-            if (OccupantMap.TryGetValue(LeftSlots[i].transform, out var left)
-                && left != null
-                && OccupantMap.TryGetValue(RightSlots[i].transform, out var right)
-                && right != null
-                && left.CompareTag(right.tag))
+            for (int i = 0; i < limit; ++i)
             {
-                correctCount++;
+                if (OccupantMap.TryGetValue(LeftSlots[i].transform, out var left)
+                    && left != null
+                    && OccupantMap.TryGetValue(RightSlots[i].transform, out var right)
+                    && right != null
+                    && left.CompareTag(right.tag))
+                {
+                    correctCount++;
+                }
             }
-        }
 
-        foreach (var slot in Slots)
-        {
-            if (OccupantMap.TryGetValue(slot.transform, out var occupant) && occupant != null)
+            foreach (var slot in Slots)
             {
-                correctCount++;
+                if (OccupantMap.TryGetValue(slot.transform, out var occupant) && occupant != null)
+                {
+                    correctCount++;
+                }
             }
-        }
 
-        return (float)correctCount / (RightSlots.Length + Slots.Length);
+            return (float)correctCount / (RightSlots.Length + Slots.Length);
+        }
     }
 }

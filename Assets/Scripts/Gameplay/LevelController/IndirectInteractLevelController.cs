@@ -10,16 +10,18 @@ public class IndirectInteractLevelController : LevelController
         Utils.Fill(ref _interactables);
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        float totalRate = 0;
+        get {
+            float totalRate = 0;
 
-        foreach (var interactable in _interactables)
-        {
-            totalRate += interactable.CompletionRate;
+            foreach (var interactable in _interactables)
+            {
+                totalRate += interactable.CompletionRate;
+            }
+
+            return totalRate / _interactables.Length;
         }
-
-        return totalRate / _interactables.Length;
     }
 
     public override void Hint()

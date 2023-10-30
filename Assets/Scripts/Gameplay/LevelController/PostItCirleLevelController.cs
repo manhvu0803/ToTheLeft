@@ -2,24 +2,26 @@ using UnityEngine;
 
 public class PostItCirleLevelController : FreeSlotLevelController
 {
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        var correctSlotCount = 0;
-        var correctRotationCount = 0;
+        get {
+            var correctSlotCount = 0;
+            var correctRotationCount = 0;
 
-        foreach (var slot in Slots)
-        {
-            if (OccupantMap.TryGetValue(slot.transform, out var occupant) && slot.IsTarget(occupant))
+            foreach (var slot in Slots)
             {
-                correctSlotCount++;
-
-                if (Mathf.Abs(occupant.transform.eulerAngles.z - slot.transform.eulerAngles.z) <= 0.01f)
+                if (OccupantMap.TryGetValue(slot.transform, out var occupant) && slot.IsTarget(occupant))
                 {
-                    correctRotationCount++;
+                    correctSlotCount++;
+
+                    if (Mathf.Abs(occupant.transform.eulerAngles.z - slot.transform.eulerAngles.z) <= 0.01f)
+                    {
+                        correctRotationCount++;
+                    }
                 }
             }
-        }
 
-        return (float)(correctSlotCount + correctRotationCount) / (Slots.Length * 2);
+            return (float)(correctSlotCount + correctRotationCount) / (Slots.Length * 2);
+        }
     }
 }

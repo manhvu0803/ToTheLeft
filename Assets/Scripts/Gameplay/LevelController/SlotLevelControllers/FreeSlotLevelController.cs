@@ -118,19 +118,22 @@ public class FreeSlotLevelController : SlotLevelController
         return true;
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        var correctSlotCount = 0;
-
-        foreach (var slot in Slots)
+        get
         {
-            if (OccupantMap.TryGetValue(slot.transform, out var occupant) && slot.IsTarget(occupant))
-            {
-                correctSlotCount++;
-            }
-        }
+            var correctSlotCount = 0;
 
-        return (float)correctSlotCount / Slots.Length;
+            foreach (var slot in Slots)
+            {
+                if (OccupantMap.TryGetValue(slot.transform, out var occupant) && slot.IsTarget(occupant))
+                {
+                    correctSlotCount++;
+                }
+            }
+
+            return (float)correctSlotCount / Slots.Length;
+        }
     }
 
     public override void Hint()

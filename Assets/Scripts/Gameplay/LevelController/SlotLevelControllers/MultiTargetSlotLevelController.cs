@@ -55,19 +55,21 @@ public class MultiTargetSlotLevelController : SlotLevelController
         return true;
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        var correctCount = 0;
+        get {
+            var correctCount = 0;
 
-        for (int i = 0; i < _targets.Length; ++i)
-        {
-            if (IsInCorrectSlot(_targets[i]))
+            for (int i = 0; i < _targets.Length; ++i)
             {
-                correctCount++;
+                if (IsInCorrectSlot(_targets[i]))
+                {
+                    correctCount++;
+                }
             }
-        }
 
-        return (float)correctCount / _targets.Length;
+            return (float)correctCount / _targets.Length;
+        }
     }
 
     private bool IsInCorrectSlot(Interactable target)

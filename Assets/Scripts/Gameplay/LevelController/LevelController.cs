@@ -17,7 +17,7 @@ public abstract class LevelController : MonoBehaviour
 
     public void CheckCompletionRate()
     {
-        var completionRate = CompletionRate();
+        var completionRate = CompletionRate;
 #if UNITY_EDITOR || DEBUG
         print("Completion rate: " + completionRate);
 #endif
@@ -47,7 +47,7 @@ public abstract class LevelController : MonoBehaviour
         }
     }
 
-    public abstract float CompletionRate();
+    public abstract float CompletionRate { get; }
 
     public abstract void Hint();
 

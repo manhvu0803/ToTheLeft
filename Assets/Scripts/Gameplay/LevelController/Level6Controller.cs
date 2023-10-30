@@ -22,19 +22,21 @@ public class Level6Controller : LevelController
         }
     }
 
-    public override float CompletionRate()
+    public override float CompletionRate
     {
-        var correctCount = 0;
+        get {
+            var correctCount = 0;
 
-        foreach (var target in _targets)
-        {
-            if (IsCorrect(target))
+            foreach (var target in _targets)
             {
-                correctCount++;
+                if (IsCorrect(target))
+                {
+                    correctCount++;
+                }
             }
-        }
 
-        return (float)correctCount / _targets.Length;
+            return (float)correctCount / _targets.Length;
+        }
     }
 
     public override void Hint()
