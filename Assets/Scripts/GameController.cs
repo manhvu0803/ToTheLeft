@@ -10,9 +10,7 @@ using UnityEditor;
 
 public class GameController : MonoBehaviour
 {
-    private static GameController _instance;
-
-    public static GameController Instance => _instance;
+    public static GameController Instance { get; private set; }
 
     public GameObject FirstScreen;
 
@@ -40,8 +38,10 @@ public class GameController : MonoBehaviour
     [field: SerializeField]
     public ProgressBar ProgressBar { get; private set; }
 
-    [field: SerializeField]
+    [SerializeField]
     private EndLevelScreen _endLevelScreen;
+
+    private float[] _levelTimeLimits;
 
     private void OnValidate()
     {
@@ -51,11 +51,19 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
+        Instance = this;
         Progress = PlayerPrefs.GetInt("progress", 0);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         _endLevelScreen.Init();
+        StartCoroutine(ReadRemoteConfig());
+    }
+
+    private IEnumerator ReadRemoteConfig()
+    {
+        yield return new WaitUntil(() => FirebaseManager.IsRemoteConfigReady);
+        var timeLimitConfig = FirebaseManager.RemoteConfig.GetValue("LevelTimeLimit");
+        _levelTimeLimits = JsonUtility.FromJson<float[]>(timeLimitConfig.StringValue);
     }
 
     private void Update()
@@ -128,7 +136,16 @@ public class GameController : MonoBehaviour
         yield return SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
         yield return Resources.UnloadUnusedAssets();
         _isCurrentLevelComplete = false;
-        _timeLeft = 60;
+
+        if (_levelTimeLimits != null && _levelIndex < _levelTimeLimits.Length)
+        {
+            _timeLeft = _levelTimeLimits[_levelIndex];
+        }
+        else
+        {
+            _timeLeft = 60;
+        }
+
         OnLoadingLevelComplete?.Invoke();
     }
 
@@ -145,7 +162,7 @@ public class GameController : MonoBehaviour
 
     public void ShowHint()
     {
-        SingletonManager.LevelController.Hint();
+        AdsManager.ShowRewardedAd(SingletonManager.LevelController.Hint);
     }
 
     public void ShowProgressBar()
