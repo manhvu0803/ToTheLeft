@@ -43,6 +43,8 @@ public class GameController : MonoBehaviour
 
     private float[] _levelTimeLimits;
 
+    public int HintAmount { get; private set; }
+
     private void OnValidate()
     {
         ProgressBar = Utils.FindIfNull(ProgressBar);
@@ -53,6 +55,7 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         Progress = PlayerPrefs.GetInt("progress", 0);
+        HintAmount = PlayerPrefs.GetInt("hintAmount", 3);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         _endLevelScreen.Init();
@@ -98,7 +101,13 @@ public class GameController : MonoBehaviour
 
         print("Level complete");
         _isCurrentLevelComplete = true;
-        Progress = Mathf.Max(_levelIndex + 1, Progress);
+
+        if (_levelIndex >= Progress)
+        {
+            HintAmount++;
+            Progress = _levelIndex + 1;
+        }
+
         PlayerPrefs.SetInt("progress", Progress);
         OnLevelEnded?.Invoke(completionRate);
     }
@@ -162,7 +171,14 @@ public class GameController : MonoBehaviour
 
     public void ShowHint()
     {
-        AdsManager.ShowRewardedAd(SingletonManager.LevelController.Hint);
+        if (HintAmount > 0)
+        {
+            HintAmount--;
+            SingletonManager.LevelController.Hint();
+            return;
+        }
+
+        AdsManager.ShowRewardedAd(() => HintAmount++, () => HintAmount++);
     }
 
     public void ShowProgressBar()

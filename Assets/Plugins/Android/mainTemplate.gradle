@@ -1,15 +1,12 @@
 // Android Resolver Repos Start
-([rootProject] + (rootProject.subprojects as List)).each {
-    ext {
-        it.setProperty("android.useAndroidX", true)
-        it.setProperty("android.enableJetifier", true)
-    }
-}
 ([rootProject] + (rootProject.subprojects as List)).each { project ->
     project.repositories {
         def unityProjectPath = $/file:///**DIR_UNITYPROJECT**/$.replace("\\", "/")
         maven {
             url "https://maven.google.com"
+        }
+        maven {
+            url (unityProjectPath + "/Assets/GeneratedLocalRepo/Firebase/m2repository") // Assets/Firebase/Editor/AppDependencies.xml:22, Assets/Firebase/Editor/InstallationsDependencies.xml:20, Assets/Firebase/Editor/RemoteConfigDependencies.xml:20
         }
         maven {
             url "https://android-sdk.is.com/" // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:9
@@ -18,7 +15,6 @@
             url "https://maven.google.com/" // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:17, Assets/IronSource/Editor/IronSourceSDKDependencies.xml:25
         }
         mavenLocal()
-        jcenter()
         mavenCentral()
     }
 }
@@ -30,7 +26,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1' // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:17
+    implementation 'com.google.android.gms:play-services-base:18.2.0' // Assets/Firebase/Editor/AppDependencies.xml:17
     implementation 'com.google.android.gms:play-services-basement:18.1.0' // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:25
+    implementation 'com.google.firebase:firebase-analytics:21.3.0' // Assets/Firebase/Editor/RemoteConfigDependencies.xml:15
+    implementation 'com.google.firebase:firebase-app-unity:11.6.0' // Assets/Firebase/Editor/AppDependencies.xml:22
+    implementation 'com.google.firebase:firebase-common:20.3.3' // Assets/Firebase/Editor/AppDependencies.xml:13
+    implementation 'com.google.firebase:firebase-config:21.4.1' // Assets/Firebase/Editor/RemoteConfigDependencies.xml:13
+    implementation 'com.google.firebase:firebase-config-unity:11.6.0' // Assets/Firebase/Editor/RemoteConfigDependencies.xml:20
+    implementation 'com.google.firebase:firebase-installations:17.1.4' // Assets/Firebase/Editor/InstallationsDependencies.xml:13
+    implementation 'com.google.firebase:firebase-installations-unity:11.6.0' // Assets/Firebase/Editor/InstallationsDependencies.xml:20
     implementation 'com.ironsource.sdk:mediationsdk:7.5.2' // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:9
 // Android Resolver Dependencies End
 **DEPS**}
