@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 699597735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -345,7 +345,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   SnapDistance: 0.6
-  InitialOffset: -3.2498655
+  InitialOffset: -2.6271286
   _spritePrefab: {fileID: 4417805254856872438, guid: 90f39ec16362d5d46bea6e2608385d16, type: 3}
 --- !u!61 &847433985
 BoxCollider2D:
@@ -511,7 +511,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   SnapDistance: 0.6
-  InitialOffset: -2.2442665
+  InitialOffset: 3.2416282
   _spritePrefab: {fileID: 4417805254856872438, guid: d723d3e733fcd4c4f8535221fdb3b55a, type: 3}
 --- !u!61 &1117923919
 BoxCollider2D:
@@ -786,7 +786,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   SnapDistance: 0.6
-  InitialOffset: -4.399633
+  InitialOffset: -3.5885544
   _spritePrefab: {fileID: 3914082566954832056, guid: 9de880b33c52ab04fa61aace3e198c4b, type: 3}
 --- !u!1 &1393479811
 GameObject:
@@ -1240,7 +1240,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   SnapDistance: 0.6
-  InitialOffset: 2.263309
+  InitialOffset: 3.4518132
   _spritePrefab: {fileID: 4417805254856872438, guid: 1796845efbbf5684c96c84a243daf5a3, type: 3}
 --- !u!61 &2002093890
 BoxCollider2D:

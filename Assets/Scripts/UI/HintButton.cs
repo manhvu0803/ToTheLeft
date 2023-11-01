@@ -7,10 +7,22 @@ public class HintButton : Button
     [SerializeField]
     private TMP_Text _amountText;
 
+#if UNITY_EDITOR
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        this.FillFromChildren(ref _amountText);
+    }
+#endif
+
     protected override void Start()
     {
         base.Start();
-        _amountText.text = GameController.Instance.HintAmount.ToString();
+
+        if (_amountText != null)
+        {
+            _amountText.text = GameController.Instance?.HintAmount.ToString();
+        }
 
 #if UNITY_EDITOR
         if (!Application.isPlaying)
@@ -32,7 +44,11 @@ public class HintButton : Button
     private void ShowHint()
     {
         GameController.Instance.ShowHint();
-        _amountText.text = GameController.Instance.HintAmount.ToString();
+
+        if (_amountText != null)
+        {
+            _amountText.text = GameController.Instance?.HintAmount.ToString();
+        }
     }
 
     protected override void OnDestroy()

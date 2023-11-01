@@ -120,6 +120,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level37_Pens.unity
     guid: f10178d728b01eb4d9d23ee08918bdde
   - enabled: 1
+    path: Assets/Scenes/Level38_PaintCans.unity
+    guid: 9fc2cbe70551f9a479b674c78963e2e7
+  - enabled: 1
     path: Assets/Scenes/Level39_Sticker.unity
     guid: 7fc277d2510c4354ca1cde66af5d3dd9
   - enabled: 1

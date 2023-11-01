@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using UnityEngine.UI;
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -41,9 +44,35 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private EndLevelScreen _endLevelScreen;
 
+    [SerializeField]
+    private Image _timerCircle;
+
     private float[] _levelTimeLimits;
 
-    public int HintAmount { get; private set; }
+    private int _hintAmount = 3;
+
+    public int HintAmount
+    {
+        get => _hintAmount;
+        private set
+        {
+            _hintAmount = value;
+            PlayerPrefs.SetInt("hintAmount", _hintAmount);
+        }
+    }
+
+    private float CurrentTimeLimit
+    {
+        get
+        {
+            if (_levelTimeLimits != null && _levelIndex < _levelTimeLimits.Length)
+            {
+                return _levelTimeLimits[_levelIndex];
+            }
+
+            return 60;
+        }
+    }
 
     private void OnValidate()
     {
@@ -55,7 +84,7 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         Progress = PlayerPrefs.GetInt("progress", 0);
-        HintAmount = PlayerPrefs.GetInt("hintAmount", 3);
+        _hintAmount = PlayerPrefs.GetInt("hintAmount", 3);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         _endLevelScreen.Init();
@@ -71,13 +100,37 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        if (CurrentTimeLimit < 0 || _isCurrentLevelComplete)
+        {
+            _timerCircle.gameObject.SetActive(false);
+            return;
+        }
+
         _timeLeft -= Time.deltaTime;
 
-        if (!_isCurrentLevelComplete && _timeLeft <= 0)
+        if (_timeLeft <= 0)
         {
-            _isCurrentLevelComplete = false;
             CompleteLevel(SingletonManager.LevelController.CompletionRate);
             OnTimeLimitReached?.Invoke();
+        }
+        else
+        {
+            _timerCircle.gameObject.SetActive(true);
+            var ratio = _timeLeft / CurrentTimeLimit;
+            _timerCircle.fillAmount = ratio;
+
+            if (ratio > 0.5f)
+            {
+                _timerCircle.color = Color.green;
+            }
+            else if (ratio > 0.25f)
+            {
+                _timerCircle.color = Color.yellow;
+            }
+            else
+            {
+                _timerCircle.color = Color.red;
+            }
         }
     }
 
