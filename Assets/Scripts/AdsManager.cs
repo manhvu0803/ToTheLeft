@@ -20,6 +20,7 @@ public class AdsManager : MonoBehaviour
             return;
         }
 
+        IronSource.Agent.showRewardedVideo();
         _onCompleteAction = onComplete;
         _onErrorAction = onError;
     }

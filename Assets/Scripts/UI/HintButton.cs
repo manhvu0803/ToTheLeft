@@ -4,8 +4,20 @@ using UnityEngine.UI;
 
 public class HintButton : Button
 {
+    private int _hintAmount = 3;
+
     [SerializeField]
     private TMP_Text _amountText;
+
+    public int HintAmount
+    {
+        get => _hintAmount;
+        private set
+        {
+            _hintAmount = value;
+            PlayerPrefs.SetInt("hintAmount", _hintAmount);
+        }
+    }
 
 #if UNITY_EDITOR
     protected override void OnValidate()
@@ -17,12 +29,8 @@ public class HintButton : Button
 
     protected override void Start()
     {
+        _hintAmount = PlayerPrefs.GetInt("hintAmount", 3);
         base.Start();
-
-        if (_amountText != null)
-        {
-            _amountText.text = GameController.Instance?.HintAmount.ToString();
-        }
 
 #if UNITY_EDITOR
         if (!Application.isPlaying)
@@ -31,24 +39,34 @@ public class HintButton : Button
         }
 #endif
 
+        onClick.AddListener(ShowHint);
+
         if (GameController.Instance != null)
         {
-            onClick.AddListener(ShowHint);
+            GameController.Instance.OnNewLevelComplete.AddListener(level => UpdateHintAmount(HintAmount + 1));
         }
-        else
+    }
+
+    private void UpdateHintAmount(int amount)
+    {
+        HintAmount = Mathf.Max(0, amount);
+
+        if (_amountText != null)
         {
-            onClick.AddListener(SingletonManager.Get<LevelController>().Hint);
+            _amountText.text = HintAmount.ToString();
         }
     }
 
     private void ShowHint()
     {
-        GameController.Instance.ShowHint();
-
-        if (_amountText != null)
+        if (HintAmount > 0)
         {
-            _amountText.text = GameController.Instance?.HintAmount.ToString();
+            UpdateHintAmount(HintAmount - 1);
+            SingletonManager.LevelController.Hint();
+            return;
         }
+
+        AdsManager.ShowRewardedAd(() => UpdateHintAmount(HintAmount + 1));
     }
 
     protected override void OnDestroy()

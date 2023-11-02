@@ -6,7 +6,7 @@
             url "https://maven.google.com"
         }
         maven {
-            url (unityProjectPath + "/Assets/GeneratedLocalRepo/Firebase/m2repository") // Assets/Firebase/Editor/AppDependencies.xml:22, Assets/Firebase/Editor/InstallationsDependencies.xml:20, Assets/Firebase/Editor/RemoteConfigDependencies.xml:20
+            url (unityProjectPath + "/Assets/GeneratedLocalRepo/Firebase/m2repository") // Assets/Firebase/Editor/AppDependencies.xml:22, Assets/Firebase/Editor/CrashlyticsDependencies.xml:20, Assets/Firebase/Editor/InstallationsDependencies.xml:20, Assets/Firebase/Editor/RemoteConfigDependencies.xml:20
         }
         maven {
             url "https://android-sdk.is.com/" // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:9
@@ -33,6 +33,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-common:20.3.3' // Assets/Firebase/Editor/AppDependencies.xml:13
     implementation 'com.google.firebase:firebase-config:21.4.1' // Assets/Firebase/Editor/RemoteConfigDependencies.xml:13
     implementation 'com.google.firebase:firebase-config-unity:11.6.0' // Assets/Firebase/Editor/RemoteConfigDependencies.xml:20
+    implementation 'com.google.firebase:firebase-crashlytics-ndk:18.4.3' // Assets/Firebase/Editor/CrashlyticsDependencies.xml:13
+    implementation 'com.google.firebase:firebase-crashlytics-unity:11.6.0' // Assets/Firebase/Editor/CrashlyticsDependencies.xml:20
     implementation 'com.google.firebase:firebase-installations:17.1.4' // Assets/Firebase/Editor/InstallationsDependencies.xml:13
     implementation 'com.google.firebase:firebase-installations-unity:11.6.0' // Assets/Firebase/Editor/InstallationsDependencies.xml:20
     implementation 'com.ironsource.sdk:mediationsdk:7.5.2' // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:9

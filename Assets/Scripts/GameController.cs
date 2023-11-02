@@ -5,8 +5,7 @@ using UnityEngine.Events;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using UnityEngine.UI;
-
-
+using System;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -30,9 +29,11 @@ public class GameController : MonoBehaviour
 
     public UnityEvent OnTimeLimitReached;
 
+    public UnityEvent<int> OnNewLevelComplete;
+
     public int Progress { get; private set; }
 
-    private int _levelIndex = -1;
+    public int LevelIndex { get; private set; } = -1;
 
     private bool _isCurrentLevelComplete = true;
 
@@ -49,25 +50,18 @@ public class GameController : MonoBehaviour
 
     private float[] _levelTimeLimits;
 
-    private int _hintAmount = 3;
-
-    public int HintAmount
-    {
-        get => _hintAmount;
-        private set
-        {
-            _hintAmount = value;
-            PlayerPrefs.SetInt("hintAmount", _hintAmount);
-        }
-    }
-
     private float CurrentTimeLimit
     {
         get
         {
-            if (_levelTimeLimits != null && _levelIndex < _levelTimeLimits.Length)
+            if (LevelIndex < 0)
             {
-                return _levelTimeLimits[_levelIndex];
+                return -1;
+            }
+
+            if (_levelTimeLimits != null && LevelIndex < _levelTimeLimits.Length)
+            {
+                return _levelTimeLimits[LevelIndex];
             }
 
             return 60;
@@ -84,10 +78,10 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
         Progress = PlayerPrefs.GetInt("progress", 0);
-        _hintAmount = PlayerPrefs.GetInt("hintAmount", 3);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
         _endLevelScreen.Init();
+        _timerCircle.fillAmount = 0;
         StartCoroutine(ReadRemoteConfig());
     }
 
@@ -95,14 +89,13 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitUntil(() => FirebaseManager.IsRemoteConfigReady);
         var timeLimitConfig = FirebaseManager.RemoteConfig.GetValue("LevelTimeLimit");
-        _levelTimeLimits = JsonUtility.FromJson<float[]>(timeLimitConfig.StringValue);
+        _levelTimeLimits = Utils.FromJson<float>(timeLimitConfig.StringValue);
     }
 
     private void Update()
     {
-        if (CurrentTimeLimit < 0 || _isCurrentLevelComplete)
+        if (CurrentTimeLimit <= 0 || _isCurrentLevelComplete || SingletonManager.LevelController == null)
         {
-            _timerCircle.gameObject.SetActive(false);
             return;
         }
 
@@ -111,11 +104,9 @@ public class GameController : MonoBehaviour
         if (_timeLeft <= 0)
         {
             CompleteLevel(SingletonManager.LevelController.CompletionRate);
-            OnTimeLimitReached?.Invoke();
         }
         else
         {
-            _timerCircle.gameObject.SetActive(true);
             var ratio = _timeLeft / CurrentTimeLimit;
             _timerCircle.fillAmount = ratio;
 
@@ -155,40 +146,59 @@ public class GameController : MonoBehaviour
         print("Level complete");
         _isCurrentLevelComplete = true;
 
-        if (_levelIndex >= Progress)
+        if (LevelIndex >= Progress)
         {
-            HintAmount++;
-            Progress = _levelIndex + 1;
+            Progress = LevelIndex + 1;
+
+            try
+            {
+                OnNewLevelComplete?.Invoke(Progress);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
         }
 
         PlayerPrefs.SetInt("progress", Progress);
         OnLevelEnded?.Invoke(completionRate);
     }
 
+    public void AddMoreTime()
+    {
+        _timeLeft = 15;
+        _isCurrentLevelComplete = false;
+    }
+
+    public void Retry()
+    {
+        StartCoroutine(UnloadAndLoad(LevelIndex));
+    }
+
     public void NextLevel()
     {
-        if (_levelIndex + 1 >= _levels.Count)
+        if (LevelIndex + 1 >= _levels.Count)
         {
             return;
         }
 
-        if (_levelIndex < 0)
+        if (LevelIndex < 0)
         {
             StartCoroutine(UnloadAndLoad(Mathf.Min(Progress, _levels.Count - 1)));
             return;
         }
 
-        StartCoroutine(UnloadAndLoad(_levelIndex + 1));
+        StartCoroutine(UnloadAndLoad(LevelIndex + 1));
     }
 
     private IEnumerator UnloadAndLoad(int level)
     {
-        if (_levelIndex >= 0 && _levelIndex < _levels.Count)
+        if (LevelIndex >= 0 && LevelIndex < _levels.Count)
         {
-            yield return SceneManager.UnloadSceneAsync(_levels[_levelIndex]);
+            yield return SceneManager.UnloadSceneAsync(_levels[LevelIndex]);
         }
 
-        _levelIndex = level;
+        LevelIndex = level;
         StartCoroutine(Load(_levels[level]));
         OnLoadingNextLevel?.Invoke();
     }
@@ -196,42 +206,26 @@ public class GameController : MonoBehaviour
     private IEnumerator Load(string levelName)
     {
         yield return SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
-        yield return Resources.UnloadUnusedAssets();
-        _isCurrentLevelComplete = false;
 
-        if (_levelTimeLimits != null && _levelIndex < _levelTimeLimits.Length)
-        {
-            _timeLeft = _levelTimeLimits[_levelIndex];
-        }
-        else
-        {
-            _timeLeft = 60;
-        }
+        _timeLeft = CurrentTimeLimit;
+        _isCurrentLevelComplete = false;
+        _timerCircle.fillAmount = 1;
+        _timerCircle.color = Color.green;
+
+        yield return Resources.UnloadUnusedAssets();
 
         OnLoadingLevelComplete?.Invoke();
     }
 
     public void ReturnToMainMenu()
     {
-        if (_levelIndex >= 0 && _levelIndex < _levels.Count)
+        if (LevelIndex >= 0 && LevelIndex < _levels.Count)
         {
-            SceneManager.UnloadSceneAsync(_levels[_levelIndex]);
+            SceneManager.UnloadSceneAsync(_levels[LevelIndex]);
         }
 
-        _levelIndex = -1;
+        LevelIndex = -1;
         FirstScreen.SetActive(true);
-    }
-
-    public void ShowHint()
-    {
-        if (HintAmount > 0)
-        {
-            HintAmount--;
-            SingletonManager.LevelController.Hint();
-            return;
-        }
-
-        AdsManager.ShowRewardedAd(() => HintAmount++, () => HintAmount++);
     }
 
     public void ShowProgressBar()

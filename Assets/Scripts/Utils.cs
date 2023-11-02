@@ -129,4 +129,15 @@ public static class Utils
         color.a = alpha;
         renderer.color = color;
     }
+
+    private struct Wrapper<T>
+    {
+        public T[] Value;
+    }
+
+    public static T[] FromJson<T>(string json)
+    {
+        var wrapper = JsonUtility.FromJson<Wrapper<T>>($"{{\"Value\":{json}}}");
+        return wrapper.Value;
+    }
 }

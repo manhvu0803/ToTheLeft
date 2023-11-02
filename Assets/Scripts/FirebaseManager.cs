@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Firebase;
 using Firebase.Extensions;
 using Firebase.RemoteConfig;
+using Firebase.Crashlytics;
 using UnityEngine;
 
 public class FirebaseManager : MonoBehaviour
@@ -28,6 +29,7 @@ public class FirebaseManager : MonoBehaviour
             if (task.Result == DependencyStatus.Available)
             {
                 App = FirebaseApp.DefaultInstance;
+                Crashlytics.ReportUncaughtExceptionsAsFatal = true;
                 InitRemoteConfig();
             }
             else

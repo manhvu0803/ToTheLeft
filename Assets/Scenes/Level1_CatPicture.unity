@@ -410,7 +410,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -374}
-  m_SizeDelta: {x: 632.401, y: 283.9772}
+  m_SizeDelta: {x: 536.7565, y: 283.9772}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &567920501
 MonoBehaviour:
@@ -432,7 +432,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap and hold to move the picture
+  m_text: 'Tap and hold
+
+    to move the picture'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b52db2135912fbf43996a29e1b0aef1f, type: 2}
   m_sharedMaterial: {fileID: -391149819685035286, guid: b52db2135912fbf43996a29e1b0aef1f, type: 2}
@@ -459,8 +461,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 94.2
-  m_fontSizeBase: 94.2
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -784,7 +786,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap picture to move it
+  m_text: 'Tap picture
+
+    to rotate it'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b52db2135912fbf43996a29e1b0aef1f, type: 2}
   m_sharedMaterial: {fileID: -391149819685035286, guid: b52db2135912fbf43996a29e1b0aef1f, type: 2}
@@ -811,8 +815,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 94.2
-  m_fontSizeBase: 94.2
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1120,7 +1124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.005861759, y: -0.02930963}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1131,7 +1135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.83, y: 2.81}
+  m_Size: {x: 3.1230965, y: 3.0796483}
   m_EdgeRadius: 0
 --- !u!114 &1010515494
 MonoBehaviour:

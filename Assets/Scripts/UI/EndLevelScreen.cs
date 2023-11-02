@@ -29,6 +29,18 @@ public class EndLevelScreen : MonoBehaviour
     [SerializeField]
     private TMP_Text _completeMessage;
 
+    [SerializeField]
+    private Button _moreTimeButton;
+
+    [SerializeField]
+    private Button _tryAgainButton;
+
+    [SerializeField]
+    private TMP_Text _nextLevelText;
+
+    [SerializeField]
+    private GameObject _addHintVFX;
+
     [Range(0, 5)]
     public float AppearanceDelay = 3;
 
@@ -57,6 +69,11 @@ public class EndLevelScreen : MonoBehaviour
 
     public void DelayedAppear(float completionRate)
     {
+        _moreTimeButton.gameObject.SetActive(completionRate < 1);
+        _tryAgainButton.gameObject.SetActive(completionRate < 1);
+        _nextLevelText.gameObject.SetActive(completionRate >= 1);
+        _continueButton.interactable = completionRate >= 1;
+
         if (completionRate < 1)
         {
             Appear(completionRate);
@@ -70,6 +87,11 @@ public class EndLevelScreen : MonoBehaviour
 
     public void Appear(float completionRate)
     {
+        if (_addHintVFX != null && GameController.Instance.Progress <= GameController.Instance.LevelIndex)
+        {
+            _addHintVFX.SetActive(true);
+        }
+
         completionRate = Mathf.Clamp01(completionRate);
         var completeLevel = Mathf.RoundToInt(completionRate * _completionLevels.Length);
         print(completeLevel);
@@ -95,7 +117,7 @@ public class EndLevelScreen : MonoBehaviour
             if (i < completeLevel)
             {
                 star.localScale = Vector3.zero;
-                star.transform.localPosition = _completionLevels[i].StarPosition;
+                star.transform.localPosition = _completionLevels[i].StarPosition - new Vector3(0, 400, 0);
                 sequence.Insert(0.25f + i * 0.5f, star.DOScale(1, 0.75f).SetEase(Ease.OutBack));
                 sequence.Insert(0.15f + i * 0.5f, star.DOMoveY(star.position.y + 400, 0.75f));
                 star.gameObject.SetActive(true);
