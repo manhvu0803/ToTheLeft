@@ -4,6 +4,7 @@ using Firebase.Extensions;
 using Firebase.RemoteConfig;
 using Firebase.Crashlytics;
 using UnityEngine;
+using System;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -44,13 +45,21 @@ public class FirebaseManager : MonoBehaviour
 
     private static void ReadRemoteConfig()
     {
-        var timeLimitConfig = RemoteConfig.GetValue("LevelTimeLimit");
-        LevelTimeLimits = Utils.ArrayFromJson<float>(timeLimitConfig.StringValue);
-        AdsExtraTime = (float)RemoteConfig.GetValue("AdsExtraTime").DoubleValue;
-        AdsExtraHintCount = (int)RemoteConfig.GetValue("AdsExtraHintCount").LongValue;
-        AllowProgressBar = RemoteConfig.GetValue("AllowProgressBar").BooleanValue;
-        InterstitalAdsLevelPacing = (int)RemoteConfig.GetValue("InterstitalAdsPacing").LongValue;
-        InterstitalAdsTimePacing = (float)RemoteConfig.GetValue("InterstitalAdsPacing").DoubleValue;
+        try
+        {
+            var timeLimitConfig = RemoteConfig.GetValue("LevelTimeLimit");
+            LevelTimeLimits = Utils.ArrayFromJson<float>(timeLimitConfig.StringValue);
+            AdsExtraTime = (float)RemoteConfig.GetValue("AdsExtraTime").DoubleValue;
+            AdsExtraHintCount = (int)RemoteConfig.GetValue("AdsExtraHintCount").LongValue;
+            AllowProgressBar = RemoteConfig.GetValue("AllowProgressBar").BooleanValue;
+            InterstitalAdsLevelPacing = (int)RemoteConfig.GetValue("InterstitalAdsLevelPacing").LongValue;
+            InterstitalAdsTimePacing = (float)RemoteConfig.GetValue("InterstitalAdsTimePacing").DoubleValue;
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+
         IsRemoteConfigReady = true;
     }
 
@@ -66,6 +75,7 @@ public class FirebaseManager : MonoBehaviour
             else
             {
                 Debug.LogError($"Could not resolve all Firebase dependencies: {task.Result}");
+                IsRemoteConfigReady = true;
             }
         });
     }

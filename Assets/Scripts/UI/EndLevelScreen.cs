@@ -61,9 +61,8 @@ public class EndLevelScreen : MonoBehaviour
         }
     }
 
-    protected IEnumerator Start()
+    public void Init()
     {
-        yield return new WaitUntil(() => GameController.Instance != null);
         var controller = GameController.Instance;
         controller.OnLevelEnded.AddListener(DelayedAppear);
         controller.OnLoadingNextLevel.AddListener(Disappear);

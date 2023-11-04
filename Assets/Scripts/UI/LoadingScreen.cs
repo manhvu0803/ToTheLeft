@@ -15,7 +15,6 @@ public class LoadingScreen : MonoBehaviour
     {
         GameController.Instance.OnLoadingNextLevel.AddListener(Appear);
         GameController.Instance.OnLoadingLevelComplete.AddListener(Disappear);
-        gameObject.SetActive(false);
     }
 
     private void Appear()
