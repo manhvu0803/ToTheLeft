@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Collections;
 
 public class EndLevelScreen : MonoBehaviour
 {
@@ -60,34 +61,39 @@ public class EndLevelScreen : MonoBehaviour
         }
     }
 
-    public void Init()
+    protected IEnumerator Start()
     {
+        yield return new WaitUntil(() => GameController.Instance != null);
         var controller = GameController.Instance;
         controller.OnLevelEnded.AddListener(DelayedAppear);
         controller.OnLoadingNextLevel.AddListener(Disappear);
     }
 
-    public void DelayedAppear(float completionRate)
+    public void DelayedAppear(float completionRate, int levelIndex)
     {
         _moreTimeButton.gameObject.SetActive(completionRate < 1);
         _tryAgainButton.gameObject.SetActive(completionRate < 1);
-        _nextLevelText.gameObject.SetActive(completionRate >= 1);
+        _nextLevelText.gameObject.SetActive(completionRate > 0);
         _continueButton.interactable = completionRate >= 1;
+        _addHintVFX.SetActive(false);
 
         if (completionRate < 1)
         {
-            Appear(completionRate);
+            Appear(completionRate, levelIndex);
             return;
         }
 
-        DOVirtual.DelayedCall(AppearanceDelay, () => Appear(completionRate), ignoreTimeScale: true)
+        DOVirtual.DelayedCall(AppearanceDelay, () => Appear(completionRate, levelIndex), ignoreTimeScale: true)
             .SetRecyclable(true)
             .target = this;
     }
 
-    public void Appear(float completionRate)
+    public void Appear(float completionRate, int levelIndex)
     {
-        if (_addHintVFX != null && GameController.Instance.Progress <= GameController.Instance.LevelIndex)
+        if (_addHintVFX != null
+            && completionRate >= 1
+            && FirebaseManager.AdsExtraHintCount > 0
+            && GameController.Progress <= levelIndex + 1)
         {
             _addHintVFX.SetActive(true);
         }
@@ -117,9 +123,9 @@ public class EndLevelScreen : MonoBehaviour
             if (i < completeLevel)
             {
                 star.localScale = Vector3.zero;
-                star.transform.localPosition = _completionLevels[i].StarPosition - new Vector3(0, 400, 0);
+                star.transform.localPosition = _completionLevels[i].StarPosition - new Vector3(0, 200, 0);
                 sequence.Insert(0.25f + i * 0.5f, star.DOScale(1, 0.75f).SetEase(Ease.OutBack));
-                sequence.Insert(0.15f + i * 0.5f, star.DOMoveY(star.position.y + 400, 0.75f));
+                sequence.Insert(0.15f + i * 0.5f, star.DOLocalMoveY(star.localPosition.y + 200, 0.75f));
                 star.gameObject.SetActive(true);
                 continue;
             }

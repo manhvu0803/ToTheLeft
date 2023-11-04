@@ -26,7 +26,7 @@ public class TutorialManager : MonoBehaviour
 
     protected virtual void Start()
     {
-        if (GameController.Instance?.Progress >= LevelProgress)
+        if (GameController.Progress >= LevelProgress)
         {
             gameObject.SetActive(false);
             return;

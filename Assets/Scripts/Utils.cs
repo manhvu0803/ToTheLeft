@@ -135,7 +135,7 @@ public static class Utils
         public T[] Value;
     }
 
-    public static T[] FromJson<T>(string json)
+    public static T[] ArrayFromJson<T>(string json)
     {
         var wrapper = JsonUtility.FromJson<Wrapper<T>>($"{{\"Value\":{json}}}");
         return wrapper.Value;

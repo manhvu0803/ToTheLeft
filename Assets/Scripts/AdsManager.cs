@@ -1,70 +1,122 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
+    #region Static
     public static readonly string IronSourceKey = "1c438d4bd";
 
-    private static Action _onCompleteAction;
+    private static Action OnCompleteAction;
 
-    private static Action _onErrorAction;
+    private static Action<IronSourceError> OnErrorAction;
 
     public static AdsManager Instance { get; private set; }
+    public static bool IsReady { get; private set; } = false;
 
-    public static void ShowRewardedAd(Action onComplete, Action onError = null)
+    private static int NextLevelCount = 0;
+
+    private static float LastAdsShowTime;
+
+    private static void OnLoadingLevelComplete()
     {
-        if (!IronSource.Agent.isRewardedVideoAvailable())
+        NextLevelCount++;
+
+        if (NextLevelCount >= FirebaseManager.InterstitalAdsLevelPacing
+            && Time.realtimeSinceStartup - LastAdsShowTime >= FirebaseManager.InterstitalAdsTimePacing)
+        {
+            ShowInterstitalAd();
+        }
+    }
+
+    public static void ShowRewardedAd(Action onComplete, Action<IronSourceError> onError = null)
+    {
+        if (!IronSource.Agent.isRewardedVideoAvailable() || !IsReady)
         {
             Debug.Log("No ads available");
-            onError?.Invoke();
+            onError?.Invoke(new IronSourceError(-1, "No ads available"));
             return;
         }
 
+        OnCompleteAction = onComplete;
+        OnErrorAction = onError;
         IronSource.Agent.showRewardedVideo();
-        _onCompleteAction = onComplete;
-        _onErrorAction = onError;
     }
 
-    protected void Awake()
+    public static void ShowInterstitalAd(Action onComplete = null, Action<IronSourceError> onError = null)
     {
-        Instance = this;
-        IronSourceEvents.onSdkInitializationCompletedEvent += OnSdkInitializationCompletedEvent;
-        IronSourceRewardedVideoEvents.onAdShowFailedEvent += RewardedVideoOnAdShowFailedEvent;
-        IronSourceRewardedVideoEvents.onAdRewardedEvent += RewardedVideoOnAdRewardedEvent;
-        IronSourceRewardedVideoEvents.onAdClickedEvent += RewardedVideoOnAdClickedEvent;
-        IronSource.Agent.init(IronSourceKey, IronSourceAdUnits.REWARDED_VIDEO);
+        if (!IronSource.Agent.isInterstitialReady() || !IsReady)
+        {
+            Debug.Log("Interstitial ads isn't ready");
+            IronSource.Agent.loadInterstitial();
+            onError?.Invoke(new IronSourceError(-1, "Interstitial ads isn't ready"));
+            return;
+        }
+
+        OnCompleteAction = onComplete;
+        OnErrorAction = onError;
+        IronSource.Agent.showInterstitial();
+
     }
 
-    private void RewardedVideoOnAdClickedEvent(IronSourcePlacement placement, IronSourceAdInfo info)
+    private static void InvokeSuccess(IronSourceAdInfo info)
     {
-        print(placement);
-        print(info);
+        LastAdsShowTime = Time.realtimeSinceStartup;
+        OnCompleteAction?.Invoke();
+        ClearCallbacks();
     }
 
-    private void RewardedVideoOnAdRewardedEvent(IronSourcePlacement placement, IronSourceAdInfo info)
-    {
-        _onCompleteAction?.Invoke();
-        _onCompleteAction = null;
-        _onErrorAction = null;
-    }
-
-    private void RewardedVideoOnAdShowFailedEvent(IronSourceError error, IronSourceAdInfo info)
+    private static void InvokeError(IronSourceError error, IronSourceAdInfo info)
     {
         print(error);
         print(info);
-        _onErrorAction?.Invoke();
-        _onCompleteAction = null;
-        _onErrorAction = null;
+        OnErrorAction?.Invoke(error);
+        ClearCallbacks();
     }
 
-    private void OnSdkInitializationCompletedEvent()
+    private static void ClearCallbacks()
+    {
+        OnCompleteAction = null;
+        OnErrorAction = null;
+    }
+
+    private static void OnSdkInitializationCompleted()
     {
         print("IronSource init completed");
         IronSource.Agent.validateIntegration();
+        IronSource.Agent.loadInterstitial();
+        IsReady = true;
+    }
+    #endregion
+
+    #region Unity callbacks
+    protected void Awake()
+    {
+        Instance = this;
+    }
+
+    protected IEnumerator Start()
+    {
+        IronSourceEvents.onSdkInitializationCompletedEvent += OnSdkInitializationCompleted;
+
+        // Rewarded
+        IronSourceRewardedVideoEvents.onAdRewardedEvent += (placement, info) => InvokeSuccess(info);
+        IronSourceRewardedVideoEvents.onAdShowFailedEvent += InvokeError;
+
+        // Interstital
+        IronSourceInterstitialEvents.onAdShowSucceededEvent += InvokeSuccess;
+        IronSourceInterstitialEvents.onAdShowFailedEvent += InvokeError;
+
+        IronSource.Agent.init(IronSourceKey, IronSourceAdUnits.REWARDED_VIDEO, IronSourceAdUnits.INTERSTITIAL);
+
+        yield return new WaitUntil(() => GameController.Instance != null);
+
+        GameController.Instance.OnLoadingLevelComplete.AddListener(OnLoadingLevelComplete);
     }
 
     protected void OnApplicationPause(bool isPaused)
     {
         IronSource.Agent.onApplicationPause(isPaused);
     }
+    #endregion
 }

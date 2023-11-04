@@ -28,7 +28,7 @@ public class LevelScreen : MonoBehaviour
 #if TEST_BUILD
         button.Button.interactable = true;
 #else
-        button.Button.interactable = level <= GameController.Instance.Progress;
+        button.Button.interactable = level <= GameController.Progress;
 #endif
         _buttons.Add(button);
     }
@@ -38,7 +38,7 @@ public class LevelScreen : MonoBehaviour
 #if TEST_BUILD
         var limit = _buttons.Count;
 #else
-        var limit = Math.Min(GameController.Instance.Progress + 1, _buttons.Count);
+        var limit = Math.Min(GameController.Progress + 1, _buttons.Count);
 #endif
 
         for (int i = 0; i < limit; ++i)

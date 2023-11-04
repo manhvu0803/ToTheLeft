@@ -5,7 +5,6 @@ using UnityEngine.Events;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using System;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -21,7 +20,9 @@ public class GameController : MonoBehaviour
 
     public ReadOnlyCollection<string> Levels => _levels.AsReadOnly();
 
-    public UnityEvent<float> OnLevelEnded;
+    public UnityEvent OnFirstLoadingComplete;
+
+    public UnityEvent<float, int> OnLevelEnded;
 
     public UnityEvent OnLoadingNextLevel;
 
@@ -31,9 +32,9 @@ public class GameController : MonoBehaviour
 
     public UnityEvent<int> OnNewLevelComplete;
 
-    public int Progress { get; private set; }
+    public static int Progress { get; private set; }
 
-    public int LevelIndex { get; private set; } = -1;
+    public static int LevelIndex { get; private set; } = -1;
 
     private bool _isCurrentLevelComplete = true;
 
@@ -43,12 +44,7 @@ public class GameController : MonoBehaviour
     public ProgressBar ProgressBar { get; private set; }
 
     [SerializeField]
-    private EndLevelScreen _endLevelScreen;
-
-    [SerializeField]
     private Image _timerCircle;
-
-    private float[] _levelTimeLimits;
 
     private float CurrentTimeLimit
     {
@@ -59,9 +55,11 @@ public class GameController : MonoBehaviour
                 return -1;
             }
 
-            if (_levelTimeLimits != null && LevelIndex < _levelTimeLimits.Length)
+            var timeLimits = FirebaseManager.LevelTimeLimits;
+
+            if (timeLimits != null && LevelIndex < timeLimits.Length)
             {
-                return _levelTimeLimits[LevelIndex];
+                return timeLimits[LevelIndex];
             }
 
             return 60;
@@ -71,7 +69,6 @@ public class GameController : MonoBehaviour
     private void OnValidate()
     {
         ProgressBar = Utils.FindIfNull(ProgressBar);
-        Utils.Find(ref _endLevelScreen);
     }
 
     private void Awake()
@@ -80,16 +77,14 @@ public class GameController : MonoBehaviour
         Progress = PlayerPrefs.GetInt("progress", 0);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-        _endLevelScreen.Init();
         _timerCircle.fillAmount = 0;
-        StartCoroutine(ReadRemoteConfig());
+        StartCoroutine(FirstLoading());
     }
 
-    private IEnumerator ReadRemoteConfig()
+    private IEnumerator FirstLoading()
     {
         yield return new WaitUntil(() => FirebaseManager.IsRemoteConfigReady);
-        var timeLimitConfig = FirebaseManager.RemoteConfig.GetValue("LevelTimeLimit");
-        _levelTimeLimits = Utils.FromJson<float>(timeLimitConfig.StringValue);
+        OnFirstLoadingComplete?.Invoke();
     }
 
     private void Update()
@@ -149,24 +144,15 @@ public class GameController : MonoBehaviour
         if (LevelIndex >= Progress)
         {
             Progress = LevelIndex + 1;
-
-            try
-            {
-                OnNewLevelComplete?.Invoke(Progress);
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e.Message);
-            }
         }
 
         PlayerPrefs.SetInt("progress", Progress);
-        OnLevelEnded?.Invoke(completionRate);
+        OnLevelEnded?.Invoke(completionRate, LevelIndex);
     }
 
     public void AddMoreTime()
     {
-        _timeLeft = 15;
+        _timeLeft = FirebaseManager.AdsExtraTime;
         _isCurrentLevelComplete = false;
     }
 
