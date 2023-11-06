@@ -5,6 +5,24 @@ public class PictureLevelController : LevelController
     [SerializeField]
     private Transform[] _pictures;
 
+    protected void Start()
+    {
+        OnCompletionRateChanged.AddListener(Check);
+    }
+
+    private void Check(float completionRate)
+    {
+        if (completionRate < 1)
+        {
+            return;
+        }
+
+        foreach (var picture in _pictures)
+        {
+            picture.GetComponent<Collider2D>().enabled = false;
+        }
+    }
+
     public override float CompletionRate
     {
         get {

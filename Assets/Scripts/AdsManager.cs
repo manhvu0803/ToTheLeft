@@ -31,6 +31,10 @@ public class AdsManager : MonoBehaviour
 
     public static void ShowRewardedAd(Action onComplete, Action<IronSourceError> onError = null)
     {
+#if UNITY_EDITOR
+        Debug.Log("Editor no ads");
+        onComplete?.Invoke();
+#else
         if (!IronSource.Agent.isRewardedVideoAvailable() || !IsReady)
         {
             Debug.Log("No ads available");
@@ -41,6 +45,7 @@ public class AdsManager : MonoBehaviour
         OnCompleteAction = onComplete;
         OnErrorAction = onError;
         IronSource.Agent.showRewardedVideo();
+#endif
     }
 
     public static void ShowInterstitalAd(Action onComplete = null, Action<IronSourceError> onError = null)

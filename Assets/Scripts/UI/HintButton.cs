@@ -29,7 +29,6 @@ public class HintButton : Button
 
     protected override void Start()
     {
-        _hintAmount = PlayerPrefs.GetInt("hintAmount", 3);
         base.Start();
 
 #if UNITY_EDITOR
@@ -39,6 +38,7 @@ public class HintButton : Button
         }
 #endif
 
+        UpdateHintAmount(PlayerPrefs.GetInt("hintAmount", 3));
         onClick.AddListener(ShowHint);
 
         if (GameController.Instance != null)
@@ -66,7 +66,7 @@ public class HintButton : Button
             return;
         }
 
-        AdsManager.ShowRewardedAd(() => UpdateHintAmount(HintAmount + 1));
+        AdsManager.ShowRewardedAd(() => UpdateHintAmount(HintAmount + FirebaseManager.AdsExtraHintCount));
     }
 
     protected override void OnDestroy()

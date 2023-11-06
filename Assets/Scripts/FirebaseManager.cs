@@ -48,6 +48,7 @@ public class FirebaseManager : MonoBehaviour
         try
         {
             var timeLimitConfig = RemoteConfig.GetValue("LevelTimeLimit");
+            Debug.Log($"Firebase source: {timeLimitConfig.Source}");
             LevelTimeLimits = Utils.ArrayFromJson<float>(timeLimitConfig.StringValue);
             AdsExtraTime = (float)RemoteConfig.GetValue("AdsExtraTime").DoubleValue;
             AdsExtraHintCount = (int)RemoteConfig.GetValue("AdsExtraHintCount").LongValue;

@@ -3,7 +3,6 @@ using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
 using System;
-using System.Collections;
 
 public class EndLevelScreen : MonoBehaviour
 {
@@ -72,9 +71,9 @@ public class EndLevelScreen : MonoBehaviour
     {
         _moreTimeButton.gameObject.SetActive(completionRate < 1);
         _tryAgainButton.gameObject.SetActive(completionRate < 1);
-        _nextLevelText.gameObject.SetActive(completionRate > 0);
+        _nextLevelText.gameObject.SetActive(completionRate >= 1);
         _continueButton.interactable = completionRate >= 1;
-        _addHintVFX.SetActive(false);
+        _addHintVFX.TrySetActive(false);
 
         if (completionRate < 1)
         {
@@ -95,6 +94,7 @@ public class EndLevelScreen : MonoBehaviour
             && GameController.Progress <= levelIndex + 1)
         {
             _addHintVFX.SetActive(true);
+            _addHintVFX.GetComponentInChildren<TMP_Text>().text = $"+{FirebaseManager.AdsExtraHintCount}";
         }
 
         completionRate = Mathf.Clamp01(completionRate);
@@ -134,7 +134,6 @@ public class EndLevelScreen : MonoBehaviour
 
         gameObject.SetActive(true);
         _canvasGroup.alpha = 1;
-        _continueButton.interactable = true;
     }
 
     private void Disappear()

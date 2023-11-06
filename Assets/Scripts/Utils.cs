@@ -140,4 +140,20 @@ public static class Utils
         var wrapper = JsonUtility.FromJson<Wrapper<T>>($"{{\"Value\":{json}}}");
         return wrapper.Value;
     }
+
+    public static void TrySetActive(this GameObject gameObject, bool value)
+    {
+        if (gameObject != null)
+        {
+            gameObject.SetActive(value);
+        }
+    }
+
+    public static void TrySetActive(this Component component, bool value)
+    {
+        if (component != null)
+        {
+            component.gameObject.SetActive(value);
+        }
+    }
 }

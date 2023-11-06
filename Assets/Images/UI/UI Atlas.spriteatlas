@@ -53,6 +53,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 48df2e406477cd7459fcac32ea775b28, type: 3}
   - {fileID: 21300000, guid: 416207902c57c3646806d4de5cb8c52d, type: 3}
   - {fileID: 21300000, guid: d51bd9f0885f2b943bd0ee52cdae0260, type: 3}
+  - {fileID: 21300000, guid: ef711e1202c6e034eb6c98b307c02984, type: 3}
   - {fileID: 21300000, guid: 0d75483398b489a41ae033fd02f7ca8e, type: 3}
   - {fileID: 21300000, guid: 1a5683e458e6a0845a2fac3752f85786, type: 3}
   - {fileID: 21300000, guid: 387e48f487af364469b75c63f742118b, type: 3}
@@ -70,6 +71,7 @@ SpriteAtlas:
   - LTL-LevelSelect-Icon-square_empty
   - settings
   - LTL-UI-pill
+  - star_broken
   - LTL-LevelSelect-Overview-Default-Square-01
   - LTL-UI-closeX
   - LTL-LevelSelect-Chapter-background

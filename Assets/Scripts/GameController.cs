@@ -152,8 +152,11 @@ public class GameController : MonoBehaviour
 
     public void AddMoreTime()
     {
-        _timeLeft = FirebaseManager.AdsExtraTime;
-        _isCurrentLevelComplete = false;
+        AdsManager.ShowRewardedAd(() =>
+        {
+            _timeLeft = FirebaseManager.AdsExtraTime;
+            _isCurrentLevelComplete = false;
+        });
     }
 
     public void Retry()
