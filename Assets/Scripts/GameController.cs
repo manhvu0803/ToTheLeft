@@ -30,8 +30,6 @@ public class GameController : MonoBehaviour
 
     public UnityEvent OnTimeLimitReached;
 
-    public UnityEvent<int> OnNewLevelComplete;
-
     public static int Progress { get; private set; }
 
     public static int LevelIndex { get; private set; } = -1;
@@ -185,6 +183,9 @@ public class GameController : MonoBehaviour
         if (LevelIndex >= 0 && LevelIndex < _levels.Count)
         {
             yield return SceneManager.UnloadSceneAsync(_levels[LevelIndex]);
+            yield return SceneManager.LoadSceneAsync("Empty", LoadSceneMode.Additive);
+            yield return Resources.UnloadUnusedAssets();
+            yield return SceneManager.UnloadSceneAsync("Empty");
         }
 
         LevelIndex = level;
@@ -200,9 +201,6 @@ public class GameController : MonoBehaviour
         _isCurrentLevelComplete = false;
         _timerCircle.fillAmount = 1;
         _timerCircle.color = Color.green;
-
-        yield return Resources.UnloadUnusedAssets();
-
         OnLoadingLevelComplete?.Invoke();
     }
 
@@ -230,7 +228,7 @@ public class GameController : MonoBehaviour
 
         foreach(var scene in EditorBuildSettings.scenes)
         {
-            if (!scene.enabled || scene.path.Contains("Main"))
+            if (!scene.enabled || !scene.path.Contains("Levels"))
             {
                 continue;
             }

@@ -18,6 +18,7 @@ public class FirebaseManager : MonoBehaviour
     {
         { "AdsExtraTime", 15 },
         { "AdsExtraHintCount", 1 },
+        { "NewLevelConmpletedBonusHintCount", 1 },
         { "AllowProgressBar", true },
         { "InterstitalAdsLevelPacing", 1 },
         { "InterstitalAdsTimePacing", 30 }
@@ -28,6 +29,8 @@ public class FirebaseManager : MonoBehaviour
     public static float AdsExtraTime { get; private set; }
 
     public static int AdsExtraHintCount { get; private set; }
+
+    public static int NewLevelConmpletedBonusHintCount { get; private set; }
 
     public static bool AllowProgressBar { get; private set; }
 
@@ -52,6 +55,7 @@ public class FirebaseManager : MonoBehaviour
             LevelTimeLimits = Utils.ArrayFromJson<float>(timeLimitConfig.StringValue);
             AdsExtraTime = (float)RemoteConfig.GetValue("AdsExtraTime").DoubleValue;
             AdsExtraHintCount = (int)RemoteConfig.GetValue("AdsExtraHintCount").LongValue;
+            NewLevelConmpletedBonusHintCount = (int)RemoteConfig.GetValue("NewLevelConmpletedBonusHintCount").LongValue;
             AllowProgressBar = RemoteConfig.GetValue("AllowProgressBar").BooleanValue;
             InterstitalAdsLevelPacing = (int)RemoteConfig.GetValue("InterstitalAdsLevelPacing").LongValue;
             InterstitalAdsTimePacing = (float)RemoteConfig.GetValue("InterstitalAdsTimePacing").DoubleValue;

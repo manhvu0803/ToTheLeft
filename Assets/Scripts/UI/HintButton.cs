@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,11 @@ public class HintButton : Button
 
     [SerializeField]
     private TMP_Text _amountText;
+
+    [SerializeField]
+    private GameObject _addHintVFX;
+
+    private bool _hintAddedLastLevel;
 
     public int HintAmount
     {
@@ -43,8 +49,47 @@ public class HintButton : Button
 
         if (GameController.Instance != null)
         {
-            GameController.Instance.OnNewLevelComplete.AddListener(level => UpdateHintAmount(HintAmount + 1));
+            GameController.Instance.OnLevelEnded.AddListener(OnLevelEnded);
+            GameController.Instance.OnLoadingLevelComplete.AddListener(OnLoadingComplete);
         }
+    }
+
+    private void OnLevelEnded(float completionRate, int levelIndex)
+    {
+        _addHintVFX.SetActive(false);
+
+        if (completionRate >= 1 && levelIndex >= GameController.Progress - 1)
+        {
+            _hintAddedLastLevel = true;
+            HintAmount += FirebaseManager.NewLevelConmpletedBonusHintCount;
+        }
+    }
+
+    private void OnLoadingComplete()
+    {
+        if (!_hintAddedLastLevel)
+        {
+            return;
+        }
+
+        var hintAmountText = _addHintVFX.GetComponentInChildren<TMP_Text>();
+
+        if (hintAmountText != null)
+        {
+            hintAmountText.text = $"+{FirebaseManager.AdsExtraHintCount}";
+        }
+
+        _hintAddedLastLevel = false;
+        _addHintVFX.SetActive(true);
+        _addHintVFX.transform.localPosition = -transform.position;
+
+        DOTween.Sequence()
+            .Append(_addHintVFX.transform.DOLocalMove(Vector3.zero, 0.75f))
+            .AppendCallback(() => _addHintVFX.SetActive(false))
+            .AppendCallback(() => UpdateHintAmount(HintAmount))
+            .Append(transform.DOScale(1.25f, 0.25f).SetLoops(2, LoopType.Yoyo))
+            .SetRecyclable(true)
+            .target = this;
     }
 
     private void UpdateHintAmount(int amount)

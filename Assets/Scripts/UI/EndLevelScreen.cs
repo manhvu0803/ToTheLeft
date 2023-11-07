@@ -41,6 +41,9 @@ public class EndLevelScreen : MonoBehaviour
     [SerializeField]
     private GameObject _addHintVFX;
 
+    [SerializeField]
+    private GameObject _noCompletionVFX;
+
     [Range(0, 5)]
     public float AppearanceDelay = 3;
 
@@ -48,6 +51,14 @@ public class EndLevelScreen : MonoBehaviour
     {
         this.Fill(ref _canvasGroup);
         this.FillFromChildren(ref _continueButton);
+    }
+
+    public void Init()
+    {
+        var controller = GameController.Instance;
+        controller.OnLevelEnded.AddListener(DelayedAppear);
+        controller.OnLoadingNextLevel.AddListener(Disappear);
+        _noCompletionVFX.TrySetActive(false);
 
         for (int i = 0; i < _completionLevels.Length; ++i)
         {
@@ -60,11 +71,9 @@ public class EndLevelScreen : MonoBehaviour
         }
     }
 
-    public void Init()
+    public void Appear(float completionRate)
     {
-        var controller = GameController.Instance;
-        controller.OnLevelEnded.AddListener(DelayedAppear);
-        controller.OnLoadingNextLevel.AddListener(Disappear);
+        DelayedAppear(completionRate, 0);
     }
 
     public void DelayedAppear(float completionRate, int levelIndex)
@@ -74,6 +83,7 @@ public class EndLevelScreen : MonoBehaviour
         _nextLevelText.gameObject.SetActive(completionRate >= 1);
         _continueButton.interactable = completionRate >= 1;
         _addHintVFX.TrySetActive(false);
+        _noCompletionVFX.TrySetActive(completionRate <= 0);
 
         if (completionRate < 1)
         {
@@ -99,7 +109,7 @@ public class EndLevelScreen : MonoBehaviour
 
         completionRate = Mathf.Clamp01(completionRate);
         var completeLevel = Mathf.RoundToInt(completionRate * _completionLevels.Length);
-        print(completeLevel);
+        print("Complete level: " + completeLevel);
 
         if (_completeMessage != null)
         {

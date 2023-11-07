@@ -547,7 +547,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Progress
+  m_text: Show level progress
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0da6c91fd886add4ea9e1a5497043a07, type: 2}
   m_sharedMaterial: {fileID: -391149819685035286, guid: 0da6c91fd886add4ea9e1a5497043a07, type: 2}
@@ -574,8 +574,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 126.1
-  m_fontSizeBase: 126.1
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

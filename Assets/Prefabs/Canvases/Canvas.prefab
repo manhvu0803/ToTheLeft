@@ -1715,22 +1715,6 @@ PrefabInstance:
       propertyPath: _completionLevels.Array.data[0].Message
       value: Maybe try again?
       objectReference: {fileID: 0}
-    - target: {fileID: 1844643459931711190, guid: 6335cf24815998e478a7f6265a47db0c, type: 3}
-      propertyPath: _completionLevels.Array.data[0].StarPosition.y
-      value: 76.000015
-      objectReference: {fileID: 0}
-    - target: {fileID: 1844643459931711190, guid: 6335cf24815998e478a7f6265a47db0c, type: 3}
-      propertyPath: _completionLevels.Array.data[1].StarPosition.x
-      value: -148
-      objectReference: {fileID: 0}
-    - target: {fileID: 1844643459931711190, guid: 6335cf24815998e478a7f6265a47db0c, type: 3}
-      propertyPath: _completionLevels.Array.data[1].StarPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1844643459931711190, guid: 6335cf24815998e478a7f6265a47db0c, type: 3}
-      propertyPath: _completionLevels.Array.data[2].StarPosition.x
-      value: 148
-      objectReference: {fileID: 0}
     - target: {fileID: 1844643459931711194, guid: 6335cf24815998e478a7f6265a47db0c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
