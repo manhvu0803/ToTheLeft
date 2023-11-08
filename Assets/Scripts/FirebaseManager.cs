@@ -5,6 +5,7 @@ using Firebase.RemoteConfig;
 using Firebase.Crashlytics;
 using UnityEngine;
 using System;
+using System.Threading.Tasks;
 
 public class FirebaseManager : MonoBehaviour
 {
@@ -43,11 +44,13 @@ public class FirebaseManager : MonoBehaviour
         RemoteConfig = FirebaseRemoteConfig.DefaultInstance;
         RemoteConfig.SetDefaultsAsync(Defaults);
         RemoteConfig.FetchAndActivateAsync()
-            .ContinueWithOnMainThread(task => ReadRemoteConfig());
+            .ContinueWithOnMainThread(ReadRemoteConfig);
     }
 
-    private static void ReadRemoteConfig()
+    private static void ReadRemoteConfig(Task<bool> task)
     {
+        Debug.Log("Fetch and activate: " + task.Result);
+
         try
         {
             var timeLimitConfig = RemoteConfig.GetValue("LevelTimeLimit");
@@ -62,7 +65,7 @@ public class FirebaseManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.Log(e);
+            Debug.LogError(e);
         }
 
         IsRemoteConfigReady = true;

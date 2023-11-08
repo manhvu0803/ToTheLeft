@@ -9,6 +9,24 @@ public class TapRotatable : Interactable
 
     private bool _isRotating = false;
 
+    protected void Start()
+    {
+        GameController.Instance.OnLevelEnded.AddListener(OnLevelEnded);
+    }
+
+    private void OnLevelEnded(float completionRate, int levelIndex)
+    {
+        if (completionRate < 1)
+        {
+            return;
+        }
+
+        GameController.Instance.OnLevelEnded.RemoveListener(OnLevelEnded);
+        DOTween.Kill(transform);
+        DOTween.Kill(this);
+        enabled = false;
+    }
+
     protected override void OnDoneInteract()
     {
         if (_isRotating)
@@ -31,5 +49,6 @@ public class TapRotatable : Interactable
     private void OnDestroy()
     {
         DOTween.Kill(transform);
+        GameController.Instance.OnLevelEnded.RemoveListener(OnLevelEnded);
     }
 }

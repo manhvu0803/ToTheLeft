@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -139,13 +141,20 @@ public class GameController : MonoBehaviour
         print("Level complete");
         _isCurrentLevelComplete = true;
 
+        try
+        {
+            OnLevelEnded?.Invoke(completionRate, LevelIndex);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
+
         if (LevelIndex >= Progress)
         {
             Progress = LevelIndex + 1;
+            PlayerPrefs.SetInt("progress", Progress);
         }
-
-        PlayerPrefs.SetInt("progress", Progress);
-        OnLevelEnded?.Invoke(completionRate, LevelIndex);
     }
 
     public void AddMoreTime()
