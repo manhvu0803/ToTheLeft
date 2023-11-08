@@ -5,14 +5,9 @@ using Firebase.RemoteConfig;
 using Firebase.Crashlytics;
 using UnityEngine;
 using System;
-using System.Threading.Tasks;
 
 public class FirebaseManager : MonoBehaviour
 {
-    public static FirebaseApp App { get; private set; }
-
-    public static FirebaseRemoteConfig RemoteConfig { get; private set; }
-
     public static bool IsRemoteConfigReady { get; private set; } = false;
 
     private static readonly Dictionary<string, object> Defaults = new()
@@ -39,29 +34,25 @@ public class FirebaseManager : MonoBehaviour
 
     public static int InterstitalAdsLevelPacing { get; private set; }
 
-    private static void InitRemoteConfig()
+    private async static void InitRemoteConfig()
     {
-        RemoteConfig = FirebaseRemoteConfig.DefaultInstance;
-        RemoteConfig.SetDefaultsAsync(Defaults);
-        RemoteConfig.FetchAndActivateAsync()
-            .ContinueWithOnMainThread(ReadRemoteConfig);
-    }
-
-    private static void ReadRemoteConfig(Task<bool> task)
-    {
-        Debug.Log("Fetch and activate: " + task.Result);
+        var remoteConfig = FirebaseRemoteConfig.DefaultInstance;
+        await remoteConfig.SetDefaultsAsync(Defaults);
+        await remoteConfig.FetchAsync(TimeSpan.Zero);
+        var justActivated = await remoteConfig.ActivateAsync();
+        Debug.Log("Firebase fetch and activate: " + justActivated);
 
         try
         {
-            var timeLimitConfig = RemoteConfig.GetValue("LevelTimeLimit");
+            var timeLimitConfig = remoteConfig.GetValue("LevelTimeLimit");
             Debug.Log($"Firebase source: {timeLimitConfig.Source}");
             LevelTimeLimits = Utils.ArrayFromJson<float>(timeLimitConfig.StringValue);
-            AdsExtraTime = (float)RemoteConfig.GetValue("AdsExtraTime").DoubleValue;
-            AdsExtraHintCount = (int)RemoteConfig.GetValue("AdsExtraHintCount").LongValue;
-            NewLevelConmpletedBonusHintCount = (int)RemoteConfig.GetValue("NewLevelConmpletedBonusHintCount").LongValue;
-            AllowProgressBar = RemoteConfig.GetValue("AllowProgressBar").BooleanValue;
-            InterstitalAdsLevelPacing = (int)RemoteConfig.GetValue("InterstitalAdsLevelPacing").LongValue;
-            InterstitalAdsTimePacing = (float)RemoteConfig.GetValue("InterstitalAdsTimePacing").DoubleValue;
+            AdsExtraTime = (float)remoteConfig.GetValue("AdsExtraTime").DoubleValue;
+            AdsExtraHintCount = (int)remoteConfig.GetValue("AdsExtraHintCount").LongValue;
+            NewLevelConmpletedBonusHintCount = (int)remoteConfig.GetValue("NewLevelConmpletedBonusHintCount").LongValue;
+            AllowProgressBar = remoteConfig.GetValue("AllowProgressBar").BooleanValue;
+            InterstitalAdsLevelPacing = (int)remoteConfig.GetValue("InterstitalAdsLevelPacing").LongValue;
+            InterstitalAdsTimePacing = (float)remoteConfig.GetValue("InterstitalAdsTimePacing").DoubleValue;
         }
         catch (Exception e)
         {
@@ -76,7 +67,6 @@ public class FirebaseManager : MonoBehaviour
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
             if (task.Result == DependencyStatus.Available)
             {
-                App = FirebaseApp.DefaultInstance;
                 Crashlytics.ReportUncaughtExceptionsAsFatal = true;
                 InitRemoteConfig();
             }

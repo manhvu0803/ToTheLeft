@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class CrashButton : Button
@@ -7,9 +8,15 @@ public class CrashButton : Button
     {
 #if TEST_BUILD
         base.Start();
-        onClick.AddListener(Crash);
+        if (Application.isPlaying)
+        {
+            onClick.AddListener(Crash);
+        }
 #else
-        Destroy(gameObject);
+        if (Application.isPlaying)
+        {
+            Destroy(gameObject);
+        }
 #endif
     }
 

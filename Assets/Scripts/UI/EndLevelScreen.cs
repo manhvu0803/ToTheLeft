@@ -101,7 +101,7 @@ public class EndLevelScreen : MonoBehaviour
         if (_addHintVFX != null
             && completionRate >= 1
             && FirebaseManager.AdsExtraHintCount > 0
-            && GameController.Progress <= levelIndex + 1)
+            && levelIndex >= GameController.Progress)
         {
             _addHintVFX.SetActive(true);
             _addHintVFX.GetComponentInChildren<TMP_Text>().text = $"+{FirebaseManager.AdsExtraHintCount}";
