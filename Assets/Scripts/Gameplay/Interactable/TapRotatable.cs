@@ -11,10 +11,16 @@ public class TapRotatable : Interactable
 
     protected void Start()
     {
+        Init();
+    }
+
+    public void Init()
+    {
+        enabled = true;
         GameController.Instance.OnLevelEnded.AddListener(OnLevelEnded);
     }
 
-    private void OnLevelEnded(float completionRate, int levelIndex)
+    private void OnLevelEnded(float completionRate, int levelIndex, int progress)
     {
         if (completionRate < 1)
         {

@@ -15,7 +15,11 @@ public class ProgressBar : MonoBehaviour
     private IEnumerator Start()
     {
         yield return null;
+        Init();
+    }
 
+    public void Init()
+    {
         if (GameController.Instance != null)
         {
             GameController.Instance.OnLoadingLevelComplete.AddListener(SubscribeToLevel);

@@ -73,10 +73,10 @@ public class EndLevelScreen : MonoBehaviour
 
     public void Appear(float completionRate)
     {
-        DelayedAppear(completionRate, 0);
+        DelayedAppear(completionRate, 0, 0);
     }
 
-    public void DelayedAppear(float completionRate, int levelIndex)
+    public void DelayedAppear(float completionRate, int levelIndex, int progress)
     {
         _moreTimeButton.gameObject.SetActive(completionRate < 1);
         _tryAgainButton.gameObject.SetActive(completionRate < 1);
@@ -87,21 +87,21 @@ public class EndLevelScreen : MonoBehaviour
 
         if (completionRate < 1)
         {
-            Appear(completionRate, levelIndex);
+            Appear(completionRate, levelIndex, progress);
             return;
         }
 
-        DOVirtual.DelayedCall(AppearanceDelay, () => Appear(completionRate, levelIndex), ignoreTimeScale: true)
+        DOVirtual.DelayedCall(AppearanceDelay, () => Appear(completionRate, levelIndex, progress), ignoreTimeScale: true)
             .SetRecyclable(true)
             .target = this;
     }
 
-    public void Appear(float completionRate, int levelIndex)
+    public void Appear(float completionRate, int levelIndex, int progress)
     {
         if (_addHintVFX != null
             && completionRate >= 1
             && FirebaseManager.AdsExtraHintCount > 0
-            && levelIndex >= GameController.Progress)
+            && levelIndex >= progress)
         {
             _addHintVFX.SetActive(true);
             _addHintVFX.GetComponentInChildren<TMP_Text>().text = $"+{FirebaseManager.AdsExtraHintCount}";

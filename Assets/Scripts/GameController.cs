@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
+using UnityEngine.EventSystems;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -24,7 +26,7 @@ public class GameController : MonoBehaviour
 
     public UnityEvent OnFirstLoadingComplete;
 
-    public UnityEvent<float, int> OnLevelEnded;
+    public UnityEvent<float, int, int> OnLevelEnded;
 
     public UnityEvent OnLoadingNextLevel;
 
@@ -143,7 +145,7 @@ public class GameController : MonoBehaviour
 
         try
         {
-            OnLevelEnded?.Invoke(completionRate, LevelIndex);
+            OnLevelEnded?.Invoke(completionRate, LevelIndex, Progress);
         }
         catch (Exception e)
         {
@@ -163,6 +165,17 @@ public class GameController : MonoBehaviour
         {
             _timeLeft = FirebaseManager.AdsExtraTime;
             _isCurrentLevelComplete = false;
+            SingletonManager.LevelController.enabled = true;
+            ProgressBar.Init();
+
+            // TODO: Change FindObject to something else
+            FindObjectOfType<Physics2DRaycaster>().enabled = true;
+            var rotatables = FindObjectsOfType<TapRotatable>();
+
+            foreach (var rotatable in rotatables)
+            {
+                rotatable.Init();
+            }
         });
     }
 

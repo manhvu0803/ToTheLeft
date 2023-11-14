@@ -54,11 +54,11 @@ public class HintButton : Button
         }
     }
 
-    private void OnLevelEnded(float completionRate, int levelIndex)
+    private void OnLevelEnded(float completionRate, int levelIndex, int progress)
     {
         _addHintVFX.SetActive(false);
 
-        if (completionRate >= 1 && levelIndex >= GameController.Progress)
+        if (completionRate >= 1 && levelIndex >= progress)
         {
             _hintAddedLastLevel = true;
             HintAmount += FirebaseManager.NewLevelConmpletedBonusHintCount;
