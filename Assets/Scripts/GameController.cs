@@ -46,7 +46,17 @@ public class GameController : MonoBehaviour
     public ProgressBar ProgressBar { get; private set; }
 
     [SerializeField]
-    private Image _timerCircle;
+    private UITimer _timer;
+
+    private float TimeLeft
+    {
+        get => _timeLeft;
+        set
+        {
+            _timeLeft = value;
+            _timer.TimeLeft = value;
+        }
+    }
 
     private float CurrentTimeLimit
     {
@@ -79,7 +89,6 @@ public class GameController : MonoBehaviour
         Progress = PlayerPrefs.GetInt("progress", 0);
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-        _timerCircle.fillAmount = 0;
         StartCoroutine(FirstLoading());
     }
 
@@ -96,29 +105,11 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        _timeLeft -= Time.deltaTime;
+        TimeLeft -= Time.deltaTime;
 
-        if (_timeLeft <= 0)
+        if (TimeLeft <= 0)
         {
             CompleteLevel(SingletonManager.LevelController.CompletionRate);
-        }
-        else
-        {
-            var ratio = _timeLeft / CurrentTimeLimit;
-            _timerCircle.fillAmount = ratio;
-
-            if (ratio > 0.5f)
-            {
-                _timerCircle.color = Color.green;
-            }
-            else if (ratio > 0.25f)
-            {
-                _timerCircle.color = Color.yellow;
-            }
-            else
-            {
-                _timerCircle.color = Color.red;
-            }
         }
     }
 
@@ -163,7 +154,7 @@ public class GameController : MonoBehaviour
     {
         AdsManager.ShowRewardedAd(() =>
         {
-            _timeLeft = FirebaseManager.AdsExtraTime;
+            TimeLeft = FirebaseManager.AdsExtraTime;
             _isCurrentLevelComplete = false;
             SingletonManager.LevelController.enabled = true;
             ProgressBar.Init();
@@ -219,10 +210,9 @@ public class GameController : MonoBehaviour
     {
         yield return SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
 
-        _timeLeft = CurrentTimeLimit;
+        TimeLeft = CurrentTimeLimit;
+        _timer.TimeLimit = TimeLeft;
         _isCurrentLevelComplete = false;
-        _timerCircle.fillAmount = 1;
-        _timerCircle.color = Color.green;
         OnLoadingLevelComplete?.Invoke();
     }
 
