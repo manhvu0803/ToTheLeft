@@ -11,6 +11,10 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip OnDoneInteractClip;
 
+    public AudioClip OnProgressIncreaseClip;
+
+    public AudioClip OnButtonInteractClip;
+
     public AudioClip OnLevelCompleteClip;
 
     private Queue<AudioSource> _sourcePool;
@@ -59,5 +63,15 @@ public class SoundManager : MonoBehaviour
     public void PlayLevelComplete()
     {
         Play(OnLevelCompleteClip);
+    }
+
+    public void PlayOnDoneInteract()
+    {
+        Play(OnDoneInteractClip);
+    }
+
+    public void PlayButtonInteractClip()
+    {
+        Play(OnButtonInteractClip);
     }
 }

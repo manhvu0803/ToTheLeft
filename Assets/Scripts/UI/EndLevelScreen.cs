@@ -78,7 +78,7 @@ public class EndLevelScreen : MonoBehaviour
 
     public void DelayedAppear(float completionRate, int levelIndex, int progress)
     {
-        _moreTimeButton.gameObject.SetActive(completionRate < 1);
+        _moreTimeButton.gameObject.SetActive(FirebaseManager.AllowMoreTimeButton && completionRate < 1);
         _tryAgainButton.gameObject.SetActive(completionRate < 1);
         _nextLevelText.gameObject.SetActive(completionRate >= 1);
         _continueButton.interactable = completionRate >= 1;

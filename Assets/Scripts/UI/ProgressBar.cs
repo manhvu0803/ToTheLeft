@@ -14,6 +14,14 @@ public class ProgressBar : MonoBehaviour
 
     private IEnumerator Start()
     {
+        yield return new WaitUntil(() => FirebaseManager.IsRemoteConfigReady);
+
+        if (!FirebaseManager.AllowProgressBar)
+        {
+            gameObject.SetActive(false);
+            yield break;
+        }
+
         yield return null;
         Init();
     }

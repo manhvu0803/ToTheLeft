@@ -18,7 +18,8 @@ public class FirebaseManager : MonoBehaviour
         { "AllowProgressBar", true },
         { "InterstitalAdsLevelPacing", 1 },
         { "InterstitalAdsTimePacing", 30 },
-        { "HintButtonFlashDelay", 5 }
+        { "HintButtonFlashDelay", 5 },
+        { "AllowMoreTimeButton", false }
     };
 
     public static float[] LevelTimeLimits { get; private set; }
@@ -36,6 +37,8 @@ public class FirebaseManager : MonoBehaviour
     public static int InterstitalAdsLevelPacing { get; private set; }
 
     public static float HintButtonFlashDelay { get; private set; }
+
+    public static bool AllowMoreTimeButton { get; private set; }
 
     private async static void InitRemoteConfig()
     {
@@ -62,6 +65,7 @@ public class FirebaseManager : MonoBehaviour
             InterstitalAdsLevelPacing = (int)remoteConfig.GetValue("InterstitalAdsLevelPacing").LongValue;
             InterstitalAdsTimePacing = (float)remoteConfig.GetValue("InterstitalAdsTimePacing").DoubleValue;
             HintButtonFlashDelay = (float)remoteConfig.GetValue("HintButtonFlashDelay").DoubleValue;
+            AllowMoreTimeButton = remoteConfig.GetValue("AllowMoreTimeButton").BooleanValue;
         }
         catch (Exception e)
         {
