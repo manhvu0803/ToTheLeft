@@ -54,6 +54,7 @@ public class SlottedMovable : Movable
 
     protected override void OnDoneInteract()
     {
+        SingletonManager.SoundManager.PlayDoneInteract();
         SnapAndReturn();
         HideShadow();
 
@@ -89,7 +90,6 @@ public class SlottedMovable : Movable
         }
 
         Controller.CheckCompletionRate();
-        SingletonManager.SoundManager.PlayDoneInteract();
     }
 
     protected void HideShadow()

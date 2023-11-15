@@ -26,15 +26,17 @@ public class PictureLevelController : LevelController
     public override float CompletionRate
     {
         get {
-            // How much farther all the pictures is from 0 degree
-            var angleSum = 0f;
+            var correctCount = 0;
 
             foreach (var target in _pictures)
             {
-                angleSum += Vector3.Angle(target.up, Vector3.up);
+                if (target.transform.eulerAngles.z <= 0.0001f)
+                {
+                    correctCount++;
+                }
             }
 
-            return 1 - angleSum / 180 / _pictures.Length;
+            return (float)correctCount / _pictures.Length;
         }
     }
 

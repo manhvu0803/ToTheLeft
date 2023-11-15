@@ -40,7 +40,6 @@ public class ProgressBar : MonoBehaviour
 
     private void SubscribeToLevel()
     {
-        gameObject.SetActive(GameController.Instance == null);
         var levelController = SingletonManager.Get<LevelController>();
         levelController.OnCompletionRateChanged.AddListener(UpdateProgress);
         UpdateProgress(levelController.CompletionRate);

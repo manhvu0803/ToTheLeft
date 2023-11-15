@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using System;
 using UnityEngine.EventSystems;
 
@@ -133,6 +132,11 @@ public class GameController : MonoBehaviour
 
         print("Level complete");
         _isCurrentLevelComplete = true;
+
+        if (completionRate >= 1)
+        {
+            SingletonManager.SoundManager.PlayLevelComplete();
+        }
 
         try
         {

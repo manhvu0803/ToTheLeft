@@ -24,6 +24,11 @@ public abstract class LevelController : MonoBehaviour
 
         if (Mathf.Abs(completionRate - _lastCompletionRate) >= Epsilon)
         {
+            if (completionRate > _lastCompletionRate)
+            {
+                SingletonManager.SoundManager.PlayProgressIncrease();
+            }
+
             try
             {
                 OnCompletionRateChanged?.Invoke(completionRate);

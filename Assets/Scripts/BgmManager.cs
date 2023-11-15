@@ -4,38 +4,50 @@ using UnityEngine;
 public class BgmManager : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource _bgmSource;
+    private AudioSource _audioSource;
+
+    public float FadeDuration = 5;
 
     [SerializeField]
-    private AudioClip[] _backgroundMusic;
+    private AudioClip[] _clips;
 
     private int index;
 
+    private float _maxVolume;
+
     private void Awake()
     {
+        _maxVolume = _audioSource.volume;
         SingletonManager.Add(this);
         NextSong();
     }
 
     private void NextSong()
     {
-        _bgmSource.clip = _backgroundMusic[index];
-        _bgmSource.Play();
-        index = (index + 1) % _backgroundMusic.Length;
-        DOVirtual.DelayedCall(_backgroundMusic[index].length, NextSong)
+        _audioSource.clip = _clips[index];
+        _audioSource.Play();
+        var fadeDuration = Mathf.Min(FadeDuration, _audioSource.clip.length);
+
+        DOTween.Sequence()
+            .AppendInterval(_audioSource.clip.length - fadeDuration)
+            .Append(_audioSource.DOFade(0, fadeDuration))
+            .AppendCallback(NextSong)
+            .Append(_audioSource.DOFade(_maxVolume, fadeDuration))
             .target = this;
+
+        index = (index + 1) % _clips.Length;
     }
 
     public void Play(AudioClip clip)
     {
         DOTween.Kill(this);
-        _bgmSource.clip = clip;
-        _bgmSource.loop = true;
+        _audioSource.clip = clip;
+        _audioSource.loop = true;
     }
 
     public void Play(AudioClip[] clips)
     {
-        _backgroundMusic = clips;
+        _clips = clips;
         index = 0;
         NextSong();
     }

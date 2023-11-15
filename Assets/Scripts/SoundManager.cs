@@ -13,7 +13,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip OnProgressIncreaseClip;
 
-    public AudioClip OnButtonInteractClip;
+    public AudioClip OnUIInteractClip;
 
     public AudioClip OnLevelCompleteClip;
 
@@ -65,13 +65,13 @@ public class SoundManager : MonoBehaviour
         Play(OnLevelCompleteClip);
     }
 
-    public void PlayOnDoneInteract()
+    public void PlayProgressIncrease()
     {
-        Play(OnDoneInteractClip);
+        Play(OnProgressIncreaseClip);
     }
 
-    public void PlayButtonInteractClip()
+    public void PlayUIInteract()
     {
-        Play(OnButtonInteractClip);
+        Play(OnUIInteractClip);
     }
 }
