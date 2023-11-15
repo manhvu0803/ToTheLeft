@@ -17,7 +17,8 @@ public class FirebaseManager : MonoBehaviour
         { "NewLevelConmpletedBonusHintCount", 1 },
         { "AllowProgressBar", true },
         { "InterstitalAdsLevelPacing", 1 },
-        { "InterstitalAdsTimePacing", 30 }
+        { "InterstitalAdsTimePacing", 30 },
+        { "HintButtonFlashDelay", 5 }
     };
 
     public static float[] LevelTimeLimits { get; private set; }
@@ -34,6 +35,8 @@ public class FirebaseManager : MonoBehaviour
 
     public static int InterstitalAdsLevelPacing { get; private set; }
 
+    public static float HintButtonFlashDelay { get; private set; }
+
     private async static void InitRemoteConfig()
     {
         var remoteConfig = FirebaseRemoteConfig.DefaultInstance;
@@ -41,11 +44,16 @@ public class FirebaseManager : MonoBehaviour
         await remoteConfig.FetchAsync(TimeSpan.Zero);
         var justActivated = await remoteConfig.ActivateAsync();
         Debug.Log("Firebase fetch and activate: " + justActivated);
+        GetRemoteConfigs();
+        IsRemoteConfigReady = true;
+    }
 
+    private static void GetRemoteConfigs()
+    {
         try
         {
+            var remoteConfig = FirebaseRemoteConfig.DefaultInstance;
             var timeLimitConfig = remoteConfig.GetValue("LevelTimeLimit");
-            Debug.Log($"Firebase source: {timeLimitConfig.Source}");
             LevelTimeLimits = Utils.ArrayFromJson<float>(timeLimitConfig.StringValue);
             AdsExtraTime = (float)remoteConfig.GetValue("AdsExtraTime").DoubleValue;
             AdsExtraHintCount = (int)remoteConfig.GetValue("AdsExtraHintCount").LongValue;
@@ -53,13 +61,13 @@ public class FirebaseManager : MonoBehaviour
             AllowProgressBar = remoteConfig.GetValue("AllowProgressBar").BooleanValue;
             InterstitalAdsLevelPacing = (int)remoteConfig.GetValue("InterstitalAdsLevelPacing").LongValue;
             InterstitalAdsTimePacing = (float)remoteConfig.GetValue("InterstitalAdsTimePacing").DoubleValue;
+            HintButtonFlashDelay = (float)remoteConfig.GetValue("HintButtonFlashDelay").DoubleValue;
         }
         catch (Exception e)
         {
             Debug.LogError(e);
         }
 
-        IsRemoteConfigReady = true;
     }
 
     protected void Awake()

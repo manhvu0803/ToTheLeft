@@ -15,6 +15,10 @@ public class HintButton : Button
 
     private bool _hintAddedLastLevel;
 
+    private float _maxCompletionRate = 0;
+
+    private float _lastHintFlashTime = 0;
+
     public int HintAmount
     {
         get => _hintAmount;
@@ -52,10 +56,24 @@ public class HintButton : Button
             GameController.Instance.OnLevelEnded.AddListener(OnLevelEnded);
             GameController.Instance.OnLoadingLevelComplete.AddListener(OnLoadingComplete);
         }
+        else
+        {
+            SingletonManager.LevelController.OnCompletionRateChanged.AddListener(OnCompletionRateChange);
+        }
+    }
+
+    private void OnCompletionRateChange(float completionRate)
+    {
+        if (completionRate > _maxCompletionRate)
+        {
+            _maxCompletionRate = completionRate;
+            _lastHintFlashTime = Time.realtimeSinceStartup;
+        }
     }
 
     private void OnLevelEnded(float completionRate, int levelIndex, int progress)
     {
+        SingletonManager.LevelController.OnCompletionRateChanged.RemoveListener(OnCompletionRateChange);
         _addHintVFX.SetActive(false);
 
         if (completionRate >= 1 && levelIndex >= progress)
@@ -82,6 +100,9 @@ public class HintButton : Button
         _hintAddedLastLevel = false;
         _addHintVFX.SetActive(true);
         _addHintVFX.transform.localPosition = -transform.position;
+        SingletonManager.LevelController.OnCompletionRateChanged.AddListener(OnCompletionRateChange);
+        _maxCompletionRate = 0;
+        _lastHintFlashTime = Time.realtimeSinceStartup;
 
         DOTween.Sequence()
             .Append(_addHintVFX.transform.DOLocalMove(Vector3.zero, 0.75f))
@@ -114,9 +135,26 @@ public class HintButton : Button
         AdsManager.ShowRewardedAd(() => UpdateHintAmount(HintAmount + FirebaseManager.AdsExtraHintCount));
     }
 
+    protected void Update()
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            return;
+        }
+#endif
+
+        if (Time.realtimeSinceStartup - _lastHintFlashTime > FirebaseManager.HintButtonFlashDelay)
+        {
+            transform.DoScaleUpDown();
+            _lastHintFlashTime = Time.realtimeSinceStartup;
+        }
+    }
+
     protected override void OnDestroy()
     {
         base.OnDestroy();
         onClick.RemoveAllListeners();
+        DOTween.Kill(transform);
     }
 }
