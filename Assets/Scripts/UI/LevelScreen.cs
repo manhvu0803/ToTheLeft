@@ -25,7 +25,13 @@ public class LevelScreen : MonoBehaviour
     private void CreateButton(int level)
     {
         var button = Instantiate(ButtonPrefab, _container);
-        button.Init($"Level {level + 1}", () => GameController.Instance.LoadLevel(level));
+
+        button.Init($"Level {level + 1}", () =>
+        {
+            SingletonManager.SoundManager.PlayUIInteract();
+            GameController.Instance.LoadLevel(level);
+        });
+
 #if TEST_BUILD
         button.Button.interactable = true;
 #else

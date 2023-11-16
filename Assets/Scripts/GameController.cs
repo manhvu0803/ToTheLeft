@@ -147,7 +147,7 @@ public class GameController : MonoBehaviour
             Debug.LogError(e);
         }
 
-        if (LevelIndex >= Progress)
+        if (LevelIndex >= Progress && completionRate >= 1)
         {
             Progress = LevelIndex + 1;
             PlayerPrefs.SetInt("progress", Progress);
