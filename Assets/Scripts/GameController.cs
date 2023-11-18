@@ -197,6 +197,15 @@ public class GameController : MonoBehaviour
 
     private IEnumerator UnloadAndLoad(int level)
     {
+        try
+        {
+            OnLoadingNextLevel?.Invoke();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
+
         if (LevelIndex >= 0 && LevelIndex < _levels.Count)
         {
             yield return SceneManager.UnloadSceneAsync(_levels[LevelIndex]);
@@ -207,7 +216,6 @@ public class GameController : MonoBehaviour
 
         LevelIndex = level;
         StartCoroutine(Load(_levels[level]));
-        OnLoadingNextLevel?.Invoke();
     }
 
     private IEnumerator Load(string levelName)

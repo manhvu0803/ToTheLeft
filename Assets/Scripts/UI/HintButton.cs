@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class HintButton : Button
 
     private bool _hintAddedLastLevel;
 
-    private float _maxCompletionRate = 0;
+    private float _lastCompletionRate = 0;
 
     private float _lastHintFlashTime = 0;
 
@@ -55,6 +56,7 @@ public class HintButton : Button
         {
             GameController.Instance.OnLevelEnded.AddListener(OnLevelEnded);
             GameController.Instance.OnLoadingLevelComplete.AddListener(OnLoadingComplete);
+            GameController.Instance.OnLoadingNextLevel.AddListener(OnLoadingNextLevel);
         }
         else
         {
@@ -64,17 +66,18 @@ public class HintButton : Button
 
     private void OnCompletionRateChange(float completionRate)
     {
-        if (completionRate > _maxCompletionRate)
+        if (completionRate > _lastCompletionRate)
         {
-            _maxCompletionRate = completionRate;
-            _lastHintFlashTime = Time.realtimeSinceStartup;
+            StopFlashingHint();
         }
+
+        _lastCompletionRate = completionRate;
     }
 
     private void OnLevelEnded(float completionRate, int levelIndex, int progress)
     {
-        SingletonManager.LevelController.OnCompletionRateChanged.RemoveListener(OnCompletionRateChange);
         _addHintVFX.SetActive(false);
+        StopFlashingHint();
 
         if (completionRate >= 1 && levelIndex >= progress)
         {
@@ -83,7 +86,23 @@ public class HintButton : Button
         }
     }
 
+    private void OnLoadingNextLevel()
+    {
+        if (SingletonManager.LevelController != null)
+        {
+            SingletonManager.LevelController.OnCompletionRateChanged.RemoveListener(OnCompletionRateChange);
+        }
+    }
+
     private void OnLoadingComplete()
+    {
+        SingletonManager.LevelController.OnCompletionRateChanged.AddListener(OnCompletionRateChange);
+        _lastCompletionRate = 0;
+        StopFlashingHint();
+        ShowAddHintVFX();
+    }
+
+    private void ShowAddHintVFX()
     {
         if (!_hintAddedLastLevel)
         {
@@ -100,9 +119,6 @@ public class HintButton : Button
         _hintAddedLastLevel = false;
         _addHintVFX.SetActive(true);
         _addHintVFX.transform.localPosition = -transform.position;
-        SingletonManager.LevelController.OnCompletionRateChanged.AddListener(OnCompletionRateChange);
-        _maxCompletionRate = 0;
-        _lastHintFlashTime = Time.realtimeSinceStartup;
 
         DOTween.Sequence()
             .Append(_addHintVFX.transform.DOLocalMove(Vector3.zero, 0.75f))
@@ -111,6 +127,13 @@ public class HintButton : Button
             .Append(transform.DOScale(1.25f, 0.25f).SetLoops(2, LoopType.Yoyo))
             .SetRecyclable(true)
             .target = this;
+    }
+
+    private void StopFlashingHint()
+    {
+        DOTween.Kill(transform, complete: true);
+        transform.localScale = Vector3.one;
+        _lastHintFlashTime = Time.realtimeSinceStartup;
     }
 
     private void UpdateHintAmount(int amount)
@@ -146,7 +169,7 @@ public class HintButton : Button
 
         if (Time.realtimeSinceStartup - _lastHintFlashTime > FirebaseManager.HintButtonFlashDelay)
         {
-            transform.DoScaleUpDown();
+            transform.DoScaleUpDown(multiplier: 1.2f, duration: 0.5f, times: -1);
             _lastHintFlashTime = Time.realtimeSinceStartup;
         }
     }
@@ -156,5 +179,6 @@ public class HintButton : Button
         base.OnDestroy();
         onClick.RemoveAllListeners();
         DOTween.Kill(transform);
+        DOTween.Kill(this);
     }
 }

@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 841462648}
   - component: {fileID: 841462647}
   m_Layer: 0
-  m_Name: NES1 (1)
+  m_Name: NES6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 1288456755}
   - component: {fileID: 1288456754}
   m_Layer: 0
-  m_Name: NES1 (1)
+  m_Name: NES2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -764,7 +764,7 @@ GameObject:
   - component: {fileID: 1321149650}
   - component: {fileID: 1321149649}
   m_Layer: 0
-  m_Name: NES1 (1)
+  m_Name: NES5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 1517177725}
   - component: {fileID: 1517177724}
   m_Layer: 0
-  m_Name: NES1 (1)
+  m_Name: NES4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1042,7 +1042,7 @@ GameObject:
   - component: {fileID: 1548801596}
   - component: {fileID: 1548801595}
   m_Layer: 0
-  m_Name: NES1 (1)
+  m_Name: NES3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1280,9 +1280,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _targets:
+  - {fileID: 451660640}
+  - {fileID: 1288456754}
+  - {fileID: 1548801595}
+  - {fileID: 1517177724}
   - {fileID: 1321149649}
   - {fileID: 841462647}
-  - {fileID: 1517177724}
-  - {fileID: 1548801595}
-  - {fileID: 1288456754}
-  - {fileID: 451660640}

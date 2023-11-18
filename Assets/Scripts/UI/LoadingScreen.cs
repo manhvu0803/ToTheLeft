@@ -20,7 +20,7 @@ public class LoadingScreen : MonoBehaviour
     private void Appear()
     {
         _canvasGroup.gameObject.SetActive(true);
-        _canvasGroup.DOFade(1, 0.5f);
+        _canvasGroup.DOFade(1, 0.15f);
     }
 
     private void Disappear()

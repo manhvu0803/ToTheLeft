@@ -18,7 +18,7 @@ public class FirebaseManager : MonoBehaviour
         { "AllowProgressBar", true },
         { "InterstitalAdsLevelPacing", 1 },
         { "InterstitalAdsTimePacing", 30 },
-        { "HintButtonFlashDelay", 5 },
+        { "HintButtonFlashDelay", 15 },
         { "AllowMoreTimeButton", false }
     };
 
@@ -38,7 +38,7 @@ public class FirebaseManager : MonoBehaviour
 
     public static float HintButtonFlashDelay { get; private set; }
 
-    public static bool AllowMoreTimeButton { get; private set; }
+    public static bool AllowMoreTimeButton { get; private set; } = true;
 
     private async static void InitRemoteConfig()
     {

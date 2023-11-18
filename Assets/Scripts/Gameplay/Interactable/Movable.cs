@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -73,11 +74,10 @@ public class Movable : Interactable
 
     protected override void OnDoneInteract()
     {
-        SnapAndReturn();
-        base.OnDoneInteract();
+        SnapAndReturn(base.OnDoneInteract);
     }
 
-    protected void SnapAndReturn()
+    protected void SnapAndReturn(Action onReturn = null)
     {
         if (_rigidbody != null)
         {
@@ -86,7 +86,12 @@ public class Movable : Interactable
 
         if (((Vector2)transform.localPosition).sqrMagnitude <= SnapDistance * SnapDistance)
         {
-            transform.DOLocalMove(Vector3.zero, 0.15f);
+            var tween = transform.DOLocalMove(Vector3.zero, 0.15f);
+
+            if (onReturn != null)
+            {
+                tween.OnComplete(() => onReturn());
+            }
         }
 
         transform.DOScale(OriginalScale, 0.15f);

@@ -24,7 +24,8 @@ public class Level6Controller : LevelController
 
     public override float CompletionRate
     {
-        get {
+        get
+        {
             var correctCount = 0;
 
             foreach (var target in _targets)

@@ -26,9 +26,9 @@ SpriteAtlas:
       m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
-      m_TextureCompression: 1
+      m_TextureCompression: 2
       m_CompressionQuality: 50
-      m_CrunchedCompression: 1
+      m_CrunchedCompression: 0
       m_AllowsAlphaSplitting: 0
       m_Overridden: 0
       m_AndroidETC2FallbackOverride: 0
@@ -63,6 +63,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 831211e66f11bf44387df1a04546a6c6, type: 3}
   - {fileID: 21300000, guid: 8a6be3a9471f0fd498df7a77c6d58a63, type: 3}
   - {fileID: 21300000, guid: 28281fdafa59c064eb9361dc87d960a7, type: 3}
+  - {fileID: 21300000, guid: 9cd67a3cb70907f4793d922bbed2982b, type: 3}
   - {fileID: 21300000, guid: 5a778ddc49ba8514c8437a097a3c8bf6, type: 3}
   - {fileID: 21300000, guid: 27af7cec9cd36e449988ef0bc12f2395, type: 3}
   - {fileID: 21300000, guid: 9f644aad70d2e894a92703850981a267, type: 3}
@@ -81,6 +82,7 @@ SpriteAtlas:
   - clipart3432880
   - hand_pointer
   - LTL-UI-chevron
+  - Key
   - LTL-LevelSelect-Overview-Unlocked-Square-01
   - LTL-LevelSelect-Chapter-border-outside
   - back1_89375

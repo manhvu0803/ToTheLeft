@@ -27,10 +27,8 @@ public class TapRotatable : Interactable
             return;
         }
 
-        GameController.Instance.OnLevelEnded.RemoveListener(OnLevelEnded);
         DOTween.Kill(transform);
         DOTween.Kill(this);
-        enabled = false;
     }
 
     protected override void OnDoneInteract()

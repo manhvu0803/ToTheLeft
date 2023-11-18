@@ -83,7 +83,6 @@ public class EndLevelScreen : MonoBehaviour
         _nextLevelText.gameObject.SetActive(completionRate >= 1);
         _continueButton.interactable = completionRate >= 1;
         _addHintVFX.TrySetActive(false);
-        _noCompletionVFX.TrySetActive(completionRate <= 0);
 
         if (completionRate < 1)
         {
@@ -108,12 +107,13 @@ public class EndLevelScreen : MonoBehaviour
         }
 
         completionRate = Mathf.Clamp01(completionRate);
-        var completeLevel = Mathf.RoundToInt(completionRate * _completionLevels.Length);
-        print("Complete level: " + completeLevel);
+        var completionLevel = (int)(completionRate * _completionLevels.Length);
+        _noCompletionVFX.TrySetActive(completionLevel <= 0);
+        print("Complete level: " + completionLevel);
 
         if (_completeMessage != null)
         {
-            _completeMessage.text = _completionLevels[Mathf.Max(0, completeLevel - 1)].Message;
+            _completeMessage.text = _completionLevels[Mathf.Max(0, completionLevel - 1)].Message;
         }
 
         var sequence = DOTween.Sequence();
@@ -129,7 +129,7 @@ public class EndLevelScreen : MonoBehaviour
 
             var star = _completionLevels[i].Star.transform;
 
-            if (i < completeLevel)
+            if (i < completionLevel)
             {
                 star.localScale = Vector3.zero;
                 star.transform.localPosition = _completionLevels[i].StarPosition - new Vector3(0, 200, 0);
