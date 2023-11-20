@@ -14,8 +14,11 @@ public class BackButton : Button
         }
 #endif
 
-        GameController.Instance.OnLevelEnded.AddListener(OnLevelEnded);
-        GameController.Instance.OnLoadingLevelComplete.AddListener(OnLoadingLevelComplete);
+        if (GameController.Instance != null)
+        {
+            GameController.Instance.OnLevelEnded.AddListener(OnLevelEnded);
+            GameController.Instance.OnLoadingLevelComplete.AddListener(OnLoadingLevelComplete);
+        }
     }
 
     private void OnLevelEnded(float completionRate, int levelIndex, int progress)
@@ -49,7 +52,10 @@ public class BackButton : Button
         }
 #endif
 
-        GameController.Instance.OnLevelEnded.RemoveListener(OnLevelEnded);
-        GameController.Instance.OnLoadingLevelComplete.RemoveListener(OnLoadingLevelComplete);
+        if (GameController.Instance != null)
+        {
+            GameController.Instance.OnLevelEnded.RemoveListener(OnLevelEnded);
+            GameController.Instance.OnLoadingLevelComplete.RemoveListener(OnLoadingLevelComplete);
+        }
     }
 }

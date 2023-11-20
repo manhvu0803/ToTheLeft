@@ -55,8 +55,8 @@ public class PushOutMovable : Movable
 
     protected override void OnDoneInteract()
     {
-        base.OnDoneInteract();
-        DOTween.Kill(transform, complete: false);
+        DOTween.Kill(transform, complete: true);
         _extraRenderer.transform.DOScale(_originalScale, 0.15f);
+        base.OnDoneInteract();
     }
 }

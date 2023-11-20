@@ -148,13 +148,14 @@ public class OrderingLevelController : LevelController
         {
             var position = NewValue(transform.position, restPosition);
             position.z = _currentIndex * -0.1f;
-            CurrentTarget.transform.DOMove(position, 0.15f);
+            CurrentTarget.transform.DOMove(position, 0.15f)
+                .OnComplete(CheckCompletionRate);
         }
         else
         {
             CurrentTarget.transform.SetZ(_currentIndex * -0.1f);
-            print("RestPosition: " + restPosition);
-            DoMove(CurrentTarget.transform, restPosition);
+            DoMove(CurrentTarget.transform, restPosition)
+                .OnComplete(CheckCompletionRate);
         }
     }
 
@@ -212,25 +213,21 @@ public class OrderingLevelController : LevelController
         index += dir;
     }
 
-    private void DoMove(Transform target, float position)
+    private Tween DoMove(Transform target, float position)
     {
-        switch (CompareAxis)
+        return CompareAxis switch
         {
-            case Axis.X:
-                target.DOMoveX(position, 0.15f);
-                break;
-            case Axis.Y:
-                target.DOMoveY(position, 0.15f);
-                break;
-            case Axis.Z:
-                target.DOMoveZ(position, 0.15f);
-                break;
-        }
+            Axis.X => target.DOMoveX(position, 0.15f),
+            Axis.Y => target.DOMoveY(position, 0.15f),
+            Axis.Z => target.DOMoveZ(position, 0.15f),
+            _ => null,
+        };
     }
 
     public override float CompletionRate
     {
-        get {
+        get
+        {
             if (_correctOrderedTargets == null)
             {
                 return 0;

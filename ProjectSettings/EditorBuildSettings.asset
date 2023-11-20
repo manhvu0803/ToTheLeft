@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level10_StackPaper.unity
     guid: a6c184e3a0035ac48a839b9bbe12d9c3
   - enabled: 1
-    path: Assets/Scenes/Levels/Level11_Books2.unity
+    path: Assets/Scenes/Levels/Level15_Books2.unity
     guid: da79025a5247bb441a2b0e140b900bec
   - enabled: 1
     path: Assets/Scenes/Levels/Level12_Pencil2.unity
@@ -54,7 +54,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level14_PostIt5x3.unity
     guid: 878da05d1b7ca3846a64a955f9aaf9dd
   - enabled: 1
-    path: Assets/Scenes/Levels/Level15_ToyBasket.unity
+    path: Assets/Scenes/Levels/Level11_ToyBasket.unity
     guid: 5637c8d5f804357409012eb284d3ae51
   - enabled: 1
     path: Assets/Scenes/Levels/Level16_Books3.unity

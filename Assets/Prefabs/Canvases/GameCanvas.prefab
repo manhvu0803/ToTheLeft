@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 63.4, y: 8.4}
-  m_SizeDelta: {x: 93.9369, y: 119.2042}
+  m_AnchoredPosition: {x: 52.5, y: 8.5}
+  m_SizeDelta: {x: 93.9369, y: 94.199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &307632961
 CanvasRenderer:
@@ -68,15 +68,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: +1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b52db2135912fbf43996a29e1b0aef1f, type: 2}
-  m_sharedMaterial: {fileID: -391149819685035286, guid: b52db2135912fbf43996a29e1b0aef1f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bbe6790a60d8906418af37c245c4ab9f, type: 2}
+  m_sharedMaterial: {fileID: -391149819685035286, guid: bbe6790a60d8906418af37c245c4ab9f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 85
-  m_fontSizeBase: 85
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -425,7 +425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2039362742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300148, guid: 6900ba9781fe4f86bd949023d3cafdc2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9cd67a3cb70907f4793d922bbed2982b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -643,7 +643,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 28.4, y: -44.9}
+  m_AnchoredPosition: {x: 24.8, y: -19.1}
   m_SizeDelta: {x: -86.3055, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &834593454824905236
@@ -737,7 +737,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 1.8846817, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1192,8 +1192,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -64.69995, y: -124.1001}
-  m_SizeDelta: {x: 143.70972, y: 110.43408}
+  m_AnchoredPosition: {x: -64.69995, y: -116.88336}
+  m_SizeDelta: {x: 143.7097, y: 118.6007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5547319617395413956
 CanvasRenderer:
@@ -1316,18 +1316,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4651469154338852978}
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: -0, y: -0, z: -0.3434548, w: 0.9391692}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3797521064032005199}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40.175}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.7965, y: 4.6815}
-  m_SizeDelta: {x: 23.69, y: 63.1}
+  m_AnchoredPosition: {x: -0.50354004, y: 4.6815186}
+  m_SizeDelta: {x: 43.05, y: 76.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7049136197932110350
 CanvasRenderer:
@@ -1357,9 +1357,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300028, guid: 6900ba9781fe4f86bd949023d3cafdc2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9cd67a3cb70907f4793d922bbed2982b, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

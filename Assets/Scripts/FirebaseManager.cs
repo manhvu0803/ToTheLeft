@@ -26,17 +26,17 @@ public class FirebaseManager : MonoBehaviour
 
     public static float AdsExtraTime { get; private set; }
 
-    public static int AdsExtraHintCount { get; private set; }
+    public static int AdsExtraHintCount { get; private set; } = 1;
 
     public static int NewLevelConmpletedBonusHintCount { get; private set; }
 
-    public static bool AllowProgressBar { get; private set; }
+    public static bool AllowProgressBar { get; private set; } = true;
 
     public static float InterstitalAdsTimePacing { get; private set; }
 
     public static int InterstitalAdsLevelPacing { get; private set; }
 
-    public static float HintButtonFlashDelay { get; private set; }
+    public static float HintButtonFlashDelay { get; private set; } = 15;
 
     public static bool AllowMoreTimeButton { get; private set; } = true;
 
@@ -71,7 +71,6 @@ public class FirebaseManager : MonoBehaviour
         {
             Debug.LogError(e);
         }
-
     }
 
     protected void Awake()

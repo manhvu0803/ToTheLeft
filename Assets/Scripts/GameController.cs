@@ -73,7 +73,7 @@ public class GameController : MonoBehaviour
                 return timeLimits[LevelIndex];
             }
 
-            return 60;
+            return 300;
         }
     }
 
